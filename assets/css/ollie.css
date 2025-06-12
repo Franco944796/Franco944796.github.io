@@ -11701,3 +11701,20 @@ pre .code {
   background: #2C3E50;
   color: #fff;
 }
+
+/* agregado x mi */
+.socials-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; /* Asegura que se muestre por encima de otros elementos */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Estilo para el icono */
+.lang-icon {
+  width: 24px;   /* Ajusta el tamaño según necesites */
+  height: 24px;  
+  margin-right: 8px;
+}
