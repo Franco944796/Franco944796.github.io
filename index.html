@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <title>Trilex: Simul invicti</title>
-    
+<!--<a href="https://www.flaticon.es/iconos-gratis/rusia" title="rusia iconos">Rusia iconos creados por Roundicons - Flaticon</a>-->
     <!-- font icons -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     
@@ -22,26 +22,6 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a> <!-- COMPLETAR EL HREF-->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="html - add/ingles.html">Inglés</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="html - add/aleman.html">Alemán</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="html - add/ruso.html">Ruso</a>
-                    </li>
-                    <li class="nav-item ml-0 ml-lg-4">
-                        <a class="nav-link btn btn-primary" href="components.html"> ?-?-? </a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
@@ -51,20 +31,25 @@
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">  
             <div class="container">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title"> Trilex <br><small>A tu ritmo, en tu idioma</small></h1>
-                            <button class="btn btn-primary btn-rounded">Haz click en un idioma</button>
-                        </div>
+                    <div class="carousel-caption d-none d-md-block" style="top: 0px; position: absolute;">
+                        <h1 class="carousel-title d-flex flex-column align-items-center justify-content-center">
+                            Trilex
+                            <small class="mt-2">Aprende, explora, comunica</small>
+                            <div class="d-flex align-items-center mt-2" style="gap: 0.5rem;">
+                                <a href="html - add/ingles.html" title="Inglés">
+                                    <img src="assets/imgs/estados-unidos.png" alt="Inglés" style="width:32px; height:32px; object-fit:cover; border:none; background:none;">
+                                </a>
+                                <a href="html - add/aleman.html" title="Deutsch">
+                                    <img src="assets/imgs/alemania.png" alt="Alemán" style="width:32px; height:32px; object-fit:cover; border:none; background:none;">
+                                </a>
+                                <a href="html - add/ruso.html" title="Ruso">
+                                    <img src="assets/imgs/rusia.png" alt="Ruso" style="width:32px; height:32px; object-fit:cover; border:none; background:none;">
+                                </a>
+                            </div>
+                        </h1>
                     </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title"> Trilex <br><small>Aprende, explora, comunica</small></h1>
-                            <button class="btn btn-primary btn-rounded">Haz click en un idioma</button>
-                          </div>
-                    </div>
-
+            </div>
+        </div>
         <div class="language-switch">
             <a href="html - add/ingles.html" class="lang-link">
                 <img src="assets/imgs/estados-unidos.png" alt="Icono Inglés" class="lang-icon">
