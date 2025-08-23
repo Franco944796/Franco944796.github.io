@@ -1,11 +1,224 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deutsch - Themen Auswahl</title>
+    <style>
+        /* Estilos principales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative; /* Importante para el fondo */
+            color: #fff; /* Aseguramos texto blanco */
+        }
+
+        /* Fondo con imagen translúcida */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'); /* Imagen de ejemplo (paisaje alemán) */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto parallax */
+            opacity: 0.25; /* Translucidez (25% opacidad) */
+            z-index: -1; /* Detrás del contenido */
+        }
+
+        /* Capa de oscurecimiento sutil para mejorar legibilidad */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)); /* Degradado sutil */
+            z-index: -1; /* Detrás del contenido */
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            z-index: 1; /* Asegura que esté por encima del fondo */
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #e60000; /* Rojo alemán */
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Sombra para legibilidad */
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #f0f0f0; /* Blanco suave */
+            margin-bottom: 3rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Sombra para legibilidad */
+        }
+
+        /* Burbujas rectangulares */
+        .bubbles-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .bubble {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(230,0,0,0.85), rgba(0,0,0,0.75)); /* Mayor opacidad */
+            border: 3px solid #e60000;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px); /* Efecto de desenfoque */
+            -webkit-backdrop-filter: blur(5px); /* Para Safari */
+        }
+
+        .bubble:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(230,0,0,0.4);
+            background: linear-gradient(135deg, rgba(230,0,0,0.95), rgba(0,0,0,0.85));
+        }
+
+        .bubble-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .bubble-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .bubble-desc {
+            font-size: 1rem;
+            color: #f0f0f0;
+            max-width: 80%;
+        }
+
+        /* Efecto de brillo en hover */
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bubble:hover::before {
+            opacity: 1;
+        }
+
+        /* Botón de navegación superior */
+        .nav-top {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: rgba(230, 0, 0, 0.8);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid #e60000;
+            backdrop-filter: blur(5px); /* Efecto de desenfoque */
+            -webkit-backdrop-filter: blur(5px); /* Para Safari */
+        }
+
+        .btn-home:hover {
+            background-color: #000;
+            border-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 0, 0, 0.4);
+        }
+
+        /* Diseño responsivo */
+        @media (max-width: 768px) {
+            .bubbles-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .bubble {
+                width: 90%;
+                max-width: 350px;
+            }
+            
+            .nav-top {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .btn-home {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón para volver a la página principal de idiomas -->
+    <div class="nav-top">
+        <a href="../index.html" class="btn-home">← Wissen</a> <!-- "Wissen" significa "Conocimento" en alemán -->
+    </div>
+    
+    <div class="container">
+        <h1>Deutsch</h1>
+        <p class="subtitle">Wählen Sie ein Thema, um fortzufahren</p>
         
-    </head>
-
-    <body>
-
-    </body>
-
+        <div class="bubbles-container">
+            <!-- Burbuja para Textos -->
+            <a href="textos.de.html" class="bubble">
+                <div class="bubble-icon">📝</div>
+                <div class="bubble-title">Texte</div>
+                <div class="bubble-desc">Lesen und analysieren Sie deutsche Texte</div>
+            </a>
+            
+            <!-- Burbuja para Historia -->
+            <a href="historia.de.html" class="bubble">
+                <div class="bubble-icon">🏛️</div>
+                <div class="bubble-title">Geschichte</div>
+                <div class="bubble-desc">Entdecken Sie die deutsche Geschichte</div>
+            </a>
+        </div>
+    </div>
+</body>
 </html>
