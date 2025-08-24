@@ -1,73 +1,372 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trilex: Simul invicti</title>
-    <!--<a href="https://www.flaticon.es/iconos-gratis/rusia" title="rusia iconos">Rusia iconos creados por Roundicons - Flaticon</a>-->
-    <!-- font icons -->
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
-    
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.carousel.css">
-    <link rel="stylesheet" href="assets/vendors/owl-carousel/css/owl.theme.default.css">
+    <style>
+        /* ===== ESTILOS GENERALES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Bootstrap + Ollie main styles -->
-	<link rel="stylesheet" href="assets/css/ollie.css">
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
 
+        /* ===== HEADER Y CARRUSEL ===== */
+        .header {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            top: 35%; /* Subido 30% (estaba en 50%) */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .carousel-title {
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .carousel-title small {
+            font-size: 1.8rem;
+            font-weight: normal;
+            display: block;
+            margin-top: 0.8rem;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* ===== SELECTOR DE IDIOMAS ===== */
+        .language-switch {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1.5rem;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .lang-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .lang-link:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .lang-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-link:hover .lang-icon {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+        }
+
+        .lang-text {
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lang-link:hover .lang-text {
+            opacity: 1;
+        }
+
+        /* ===== SECCIÓN DE REDES SOCIALES ===== */
+        .infos {
+            position: absolute;
+            bottom: 15px; /* Bajado de 30px a 15px */
+            right: 15px; /* Reducido el margen derecho */
+            z-index: 10;
+            transform: scale(0.85); /* Reducido el tamaño al 85% */
+        }
+
+        .socials-fixed {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 15px; /* Reducido de 20px a 15px */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 0.9rem; /* Reducido de 1rem a 0.9rem */
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 10px; /* Reducido de 15px a 10px */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px; /* Reducido de 12px a 8px */
+        }
+
+        .link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            padding: 6px 10px; /* Reducido de 8px 12px a 6px 10px */
+            border-radius: 8px;
+        }
+
+        .link:hover {
+            color: #4CAF50;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .ti-instagram {
+            font-size: 1.2rem; /* Reducido de 1.4rem a 1.2rem */
+        }
+
+        /* ===== UTILIDADES ===== */
+        .mb-4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mt-2 {
+            margin-top: 0.5rem;
+        }
+
+        .pr-1 {
+            padding-right: 0.25rem;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .font-weight-normal {
+            font-weight: normal;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        /* ===== DISEÑO RESPONSIVO ===== */
+        @media (max-width: 992px) {
+            .carousel-title {
+                font-size: 3.5rem;
+            }
+            
+            .carousel-title small {
+                font-size: 1.5rem;
+            }
+            
+            .language-switch {
+                gap: 1rem;
+            }
+            
+            .lang-icon {
+                width: 42px;
+                height: 42px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-title {
+                font-size: 2.8rem;
+            }
+            
+            .carousel-title small {
+                font-size: 1.3rem;
+            }
+            
+            .language-switch {
+                gap: 0.8rem;
+                padding: 12px 20px;
+            }
+            
+            .lang-icon {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .infos {
+                bottom: 10px;
+                right: 10px;
+                transform: scale(0.75);
+                padding: 12px;
+            }
+            
+            .socials-fixed {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-title {
+                font-size: 2.2rem;
+            }
+            
+            .carousel-title small {
+                font-size: 1.1rem;
+            }
+            
+            .header {
+                min-height: 500px;
+            }
+            
+            .language-switch {
+                bottom: 30px;
+                gap: 0.6rem;
+                padding: 10px 15px;
+            }
+            
+            .lang-icon {
+                width: 34px;
+                height: 34px;
+                border-width: 2px;
+            }
+            
+            .lang-text {
+                font-size: 0.8rem;
+            }
+            
+            .infos {
+                display: none;
+            }
+        }
+    </style>
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-
-    <nav id="scrollspy" class="navbar navbar-light bg-light navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="20">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="assets/imgs/brand.svg" alt="" class="brand-img"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-
-
-    <header id="home" class="header">
+<body>
+    <!-- Header con carrusel -->
+    <header class="header">
         <div class="overlay"></div>
-
-        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">  
-            <div class="container">
-                    <div class="carousel-caption d-none d-md-block" style="top: 0px; position: absolute;">
-                        <h1 class="carousel-title d-flex flex-column align-items-center justify-content-center">
-                            Trilex
-                            <small class="mt-2">Aprende, explora, comunica</small>
-                            <div class="d-flex align-items-center mt-2" style="gap: 0.5rem;">
-                                <a href="html_add/ingles.html" title="English/en">
-                                    <img src="assets/imgs/estados-unidos.png" alt="Inglés" style="width:32px; height:32px; object-fit:cover; border:none; background:none;">
-                                </a>
-                                <a href="html_add/aleman.html" title="Deutsch/de">
-                                    <img src="assets/imgs/alemania.png" alt="Alemán" style="width:32px; height:32px; object-fit:cover; border:none; background:none;">
-                                </a>
-                                <a href="html_add/ruso.html" title="Pyccкий/ru">
-                                    <img src="assets/imgs/rusia.png" alt="Ruso" style="width:32px; height:32px; object-fit:cover; border:none; background:none;">
-                                </a>
-                                <a href="html_add/español_arg.html" title="Castellano/es">
-                                    <img src="assets/imgs/argentina.png" alt="Castellano" style="width:32px; height:32px; object-fit:cover; border:none; background:none;">
-                                </a>
-                            </div>
-                        </h1>
-                    </div>
+        <div class="carousel">
+            <div class="carousel-caption">
+                <h1 class="carousel-title d-flex flex-column align-items-center justify-content-center">
+                    Trilex
+                    <small class="mt-2">Aprende, explora, comunica</small>
+                </h1>
             </div>
         </div>
+        
+        <!-- Selector de idiomas -->
         <div class="language-switch">
-            <a href="html_add/ingles.html" class="lang-link">
-                <img src="assets/imgs/estados-unidos.png" alt="Icono Inglés" class="lang-icon">
-                <span class="lang-text"> English </span>
+            <a href="html_add/ingles.html" class="lang-link" title="English/en">
+                <img src="assets/imgs/estados-unidos.png" alt="Inglés" class="lang-icon">
+                <span class="lang-text">English</span>
+            </a>
+            <a href="html_add/aleman.html" class="lang-link" title="Deutsch/de">
+                <img src="assets/imgs/alemania.png" alt="Alemán" class="lang-icon">
+                <span class="lang-text">Deutsch</span>
+            </a>
+            <a href="html_add/ruso.html" class="lang-link" title="Pyccкий/ru">
+                <img src="assets/imgs/rusia.png" alt="Ruso" class="lang-icon">
+                <span class="lang-text">Русский</span>
+            </a>
+            <a href="html_add/español_arg.html" class="lang-link" title="Castellano/es">
+                <img src="assets/imgs/argentina.png" alt="Castellano" class="lang-icon">
+                <span class="lang-text">Español</span>
             </a>
         </div>
-
-
+        
+        <!-- Redes sociales -->
         <div class="infos container mb-4 mb-md-2 socials-fixed">
             <div class="socials text-right">
                 <div class="row justify-content-between">
                     <div class="col">
-                        <h6 class="subtitle font-weight-normal mb-2"> Social Media </h6>
+                        <h6 class="subtitle font-weight-normal mb-2">Social Media</h6>
                         <div class="social-links">
-                            <a href="https://www.instagram.com/fran_insu" target="_blank" class="link pr-1"> fran_insu <i class="ti-instagram"> </i></a>
+                            <a href="https://www.instagram.com/fran_insu" target="_blank" class="link pr-1">
+                                <i class="ti-instagram"></i>
+                                fran_insu
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -75,20 +374,9 @@
         </div>
     </header>
 
-
-	<!-- core  -->
-    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-
-    <!-- bootstrap 3 affix -->
-	<script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
-    
-    <!-- Owl carousel  -->
-    <script src="assets/vendors/owl-carousel/js/owl.carousel.js"></script>
-
-
-    <!-- Ollie js -->
-    <script src="assets/js/Ollie.js"></script>
-
+    <script>
+        // Script simple para cualquier funcionalidad futura
+        console.log('Página cargada correctamente');
+    </script>
 </body>
 </html>
