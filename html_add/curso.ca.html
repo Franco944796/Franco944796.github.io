@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurs mit Lehrplan</title>
+    <title>Curso con Temario</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Arial', sans-serif;
             min-height: 100vh;
@@ -19,8 +18,7 @@
             color: #fff;
             background-color: #000;
         }
-
-        /* Fondo con imagen de escuela alemana */
+        /* Fondo con imagen del Glaciar Perito Moreno */
         body::before {
             content: "";
             position: absolute;
@@ -28,15 +26,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-image: url('https://cdn.pixabay.com/photo/2020/02/01/13/42/argentina-4810395_1280.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            opacity: 0.3;
+            opacity: 0.3; /* Misma opacidad que en las otras secciones */
             z-index: -1;
         }
-
-        /* Degradado con colores de la bandera alemana */
+        /* Degradado con colores de la bandera argentina */
         body::after {
             content: "";
             position: absolute;
@@ -46,14 +43,13 @@
             height: 100%;
             background: linear-gradient(
                 to bottom,
-                rgba(0, 0, 0, 0.4) 0%,      /* Negro */
-                rgba(221, 0, 0, 0.3) 33%,     /* Rojo */
-                rgba(255, 206, 0, 0.2) 66%,   /* Amarillo dorado */
-                rgba(0, 0, 0, 0.4) 100%      /* Negro */
+                rgba(74, 144, 226, 0.2) 0%,    /* Celeste */
+                rgba(255, 255, 255, 0.2) 33%,     /* Blanco */
+                rgba(255, 209, 0, 0.15) 66%,       /* Amarillo */
+                rgba(74, 144, 226, 0.2) 100%      /* Celeste */
             );
             z-index: -1;
         }
-
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -61,134 +57,124 @@
             position: relative;
             z-index: 1;
         }
-
         .header {
             text-align: center;
             margin-bottom: 40px;
-            border-bottom: 2px solid #FFCE00; /* Borde amarillo dorado */
+            border-bottom: 2px solid #74ACF2; /* Borde celeste */
             padding-bottom: 20px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            position: relative;
         }
-
         .header h1 {
-            color: #FFCE00; /* Amarillo dorado */
+            color: #74ACF2; /* Celeste */
             font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
-
         .back-link {
             display: inline-block;
             margin-top: 20px;
-            color: #DD0000; /* Rojo alemán */
+            color: #74ACF2; /* Celeste */
             text-decoration: none;
             font-weight: bold;
-            padding: 8px 15px;
-            border: 1px solid #DD0000;
+            padding: 12px 25px;
+            border: 1px solid #74ACF2; /* Borde celeste */
             border-radius: 5px;
             transition: all 0.3s;
-            background: rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 20;
+            cursor: pointer;
+            min-width: 200px;
+            text-align: center;
         }
-
         .back-link:hover {
-            background-color: #DD0000;
+            background-color: #74ACF2;
             color: #fff;
         }
-
         .levels-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-
         .level-card {
             background: linear-gradient(135deg, 
-                rgba(221, 0, 0, 0.2),    /* Rojo alemán */
-                rgba(0, 0, 0, 0.2)      /* Negro */
+                rgba(74, 144, 226, 0.15),    /* Celeste */
+                rgba(255, 255, 255, 0.2)      /* Blanco */
             );
-            border: 1px solid #FFCE00; /* Borde amarillo dorado */
-            border-radius: 10px;
+            border: 2px solid rgba(255, 209, 0, 0.5); /* Toque sutil de amarillo */
+            border-radius: 15px;
             padding: 20px;
             transition: all 0.3s;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
+            position: relative;
         }
-
         .level-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(255, 206, 0, 0.3);
             background: linear-gradient(135deg, 
-                rgba(221, 0, 0, 0.3),
-                rgba(0, 0, 0, 0.3)
+                rgba(74, 144, 226, 0.25),
+                rgba(255, 255, 255, 0.3)
             );
+            border-color: rgba(255, 209, 0, 0.7);
         }
-
         .level-header {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 206, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 209, 0, 0.3);
             padding-bottom: 10px;
         }
-
         .level-icon {
             font-size: 2rem;
             margin-right: 15px;
         }
-
         .level-title {
-            color: #FFCE00; /* Amarillo dorado */
+            color: #74ACF2; /* Celeste */
             font-size: 1.5rem;
             font-weight: bold;
         }
-
         .level-content {
             color: #ddd;
             line-height: 1.6;
             margin-bottom: 15px;
         }
-
         .level-topics {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 8px;
             padding: 15px;
             margin-top: 15px;
         }
-
         .topic-item {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
             color: #f0f0f0;
         }
-
         .topic-item:last-child {
             margin-bottom: 0;
         }
-
         .topic-bullet {
-            color: #DD0000; /* Rojo alemán */
+            color: #74ACF2; /* Celeste */
             margin-right: 10px;
             font-weight: bold;
         }
-
         .level-link {
             display: inline-block;
             margin-top: 15px;
-            color: #FFCE00; /* Amarillo dorado */
+            color: #74ACF2; /* Celeste */
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
         }
-
         .level-link:hover {
             color: #fff;
             text-decoration: underline;
         }
-
         @media (max-width: 768px) {
             .levels-container {
                 grid-template-columns: 1fr;
@@ -199,9 +185,9 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Kurs mit Lehrplan</h1>
-            <p>Lernen Sie die deutsche Sprache nach Niveaus von A1 bis C1</p>
-            <a href="aleman.html" class="back-link">← Zurück zur Themenwahl</a>
+            <h1>Curso con Temario</h1>
+            <p>Aprende el idioma español por niveles de A1 a C1</p>
+            <a href="castellano.html" class="back-link">← Volver a la selección de temas</a>
         </div>
         
         <div class="levels-container">
@@ -209,150 +195,150 @@
             <div class="level-card">
                 <div class="level-header">
                     <div class="level-icon">🔤</div>
-                    <div class="level-title">Niveau A1</div>
+                    <div class="level-title">Nivel A1</div>
                 </div>
                 <div class="level-content">
-                    <p>Anfängerniveau. Erlernen Sie die Grundlagen der deutschen Sprache: Alphabet, Grundwortschatz, einfache Sätze und Grammatik.</p>
+                    <p>Nivel inicial. Aprende los fundamentos del idioma español: alfabeto, vocabulario básico, frases simples y gramática elemental.</p>
                     <div class="level-topics">
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Alphabet und Aussprache</span>
+                            <span>Alfabeto y pronunciación</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Grundlegende Begrüßungen und Vorstellungen</span>
+                            <span>Saludos y presentaciones básicas</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Zahlen und Daten</span>
+                            <span>Números y fechas</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Einfache Sätze</span>
+                            <span>Frases simples</span>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="level-link">Mehr erfahren →</a>
+                <a href="#" class="level-link">Más información →</a>
             </div>
             
             <!-- Nivel A2 -->
             <div class="level-card">
                 <div class="level-header">
                     <div class="level-icon">🗣️</div>
-                    <div class="level-title">Niveau A2</div>
+                    <div class="level-title">Nivel A2</div>
                 </div>
                 <div class="level-content">
-                    <p>Elementarniveau. Erweitern Sie Ihren Wortschatz, verstehen Sie einfache Texte und führen Sie Gespräche zu vertrauten Themen.</p>
+                    <p>Nivel elemental. Amplía tu vocabulario, comprende textos sencillos y mantén conversaciones sobre temas familiares.</p>
                     <div class="level-topics">
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Bewegungsverben</span>
+                            <span>Verbos de movimiento</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Fälle und Deklinationen</span>
+                            <span>Casos y declinaciones</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Vergangenheit und Zukunft</span>
+                            <span>Pasado y futuro</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Beschreibung von Personen und Gegenständen</span>
+                            <span>Descripción de personas y objetos</span>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="level-link">Mehr erfahren →</a>
+                <a href="#" class="level-link">Más información →</a>
             </div>
             
             <!-- Nivel B1 -->
             <div class="level-card">
                 <div class="level-header">
                     <div class="level-icon">📖</div>
-                    <div class="level-title">Niveau B1</div>
+                    <div class="level-title">Nivel B1</div>
                 </div>
                 <div class="level-content">
-                    <p>Mittelstufe. Verstehen Sie die Hauptideen komplexer Texte, kommunizieren Sie zu verschiedenen Themen und äußern Sie Ihre Meinung.</p>
+                    <p>Nivel intermedio. Comprende las ideas principales de textos complejos, comunícate sobre diversos temas y expresa tu opinión.</p>
                     <div class="level-topics">
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Aspektverben</span>
+                            <span>Verbos aspectuales</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Nebensatzkonstruktionen</span>
+                            <span>Construcción de oraciones subordinadas</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Geschäftliche Korrespondenz</span>
+                            <span>Correspondencia comercial</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Kultur und Traditionen</span>
+                            <span>Cultura y tradiciones</span>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="level-link">Mehr erfahren →</a>
+                <a href="#" class="level-link">Más información →</a>
             </div>
             
             <!-- Nivel B2 -->
             <div class="level-card">
                 <div class="level-header">
                     <div class="level-icon">💼</div>
-                    <div class="level-title">Niveau B2</div>
+                    <div class="level-title">Nivel B2</div>
                 </div>
                 <div class="level-content">
-                    <p>Oberstufe. Kommunizieren Sie fließend, verstehen Sie komplexe Texte und verwenden Sie Idiome und Ausdrücke.</p>
+                    <p>Nivel avanzado. Comunícate con fluidez, comprende textos complejos y utiliza modismos y expresiones idiomáticas.</p>
                     <div class="level-topics">
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Stilistik und Register</span>
+                            <span>Estilística y registros</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Journalistischer Stil</span>
+                            <span>Estilo periodístico</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Geschäftliche Verhandlungen</span>
+                            <span>Negociaciones comerciales</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Textanalyse</span>
+                            <span>Análisis de textos</span>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="level-link">Mehr erfahren →</a>
+                <a href="#" class="level-link">Más información →</a>
             </div>
             
             <!-- Nivel C1 -->
             <div class="level-card">
                 <div class="level-header">
                     <div class="level-icon">🎓</div>
-                    <div class="level-title">Niveau C1</div>
+                    <div class="level-title">Nivel C1</div>
                 </div>
                 <div class="level-content">
-                    <p>Fortgeschrittenes Niveau. Beherrschen Sie die Sprache in verschiedenen Situationen und verstehen Sie Nuancen und implizite Bedeutungen.</p>
+                    <p>Nivel de dominio. Domina el idioma en diversas situaciones y comprende matices y significados implícitos.</p>
                     <div class="level-topics">
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Wissenschaftlicher und technischer Stil</span>
+                            <span>Estilo científico y técnico</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Belletristik</span>
+                            <span>Literatura</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Übersetzung und Dolmetschen</span>
+                            <span>Traducción e interpretación</span>
                         </div>
                         <div class="topic-item">
                             <span class="topic-bullet">•</span>
-                            <span>Regionale Varianten des Deutschen</span>
+                            <span>Variedades dialectales del español</span>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="level-link">Mehr erfahren →</a>
+                <a href="#" class="level-link">Más información →</a>
             </div>
         </div>
     </div>
