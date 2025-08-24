@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудирование</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            color: #fff;
+            background-color: #000;
+        }
+
+        /* Fondo con imagen de Moscú */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1533928298208-27ff66555d8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Degradado con colores de la bandera rusa */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.1) 0%,  /* Blanco */
+                rgba(0, 57, 166, 0.3) 33%,     /* Azul */
+                rgba(213, 43, 30, 0.3) 66%,   /* Rojo */
+                rgba(255, 255, 255, 0.1) 100%  /* Blanco */
+            );
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #fff; /* Borde blanco */
+            padding-bottom: 20px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            color: #fff; /* Blanco */
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #D52B1E; /* Rojo ruso */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 1px solid #D52B1E;
+            border-radius: 5px;
+            transition: all 0.3s;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .back-link:hover {
+            background-color: #D52B1E;
+            color: #fff;
+        }
+
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .audio-card {
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.2),    /* Azul ruso */
+                rgba(213, 43, 30, 0.2)    /* Rojo ruso */
+            );
+            border: 1px solid #fff; /* Borde blanco */
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .audio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.3),
+                rgba(213, 43, 30, 0.3)
+            );
+        }
+
+        .audio-card h3 {
+            color: #fff; /* Blanco */
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .audio-card p {
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .audio-player {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.8),    /* Azul ruso */
+                rgba(213, 43, 30, 0.8)   /* Rojo ruso */
+            );
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .progress-container {
+            flex: 1;
+            margin: 0 15px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #0039A6, #D52B1E); /* Azul a rojo */
+            border-radius: 3px;
+            width: 0%;
+        }
+
+        .time {
+            color: #fff; /* Blanco */
+            font-size: 0.9rem;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        .audio-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .easy {
+            background-color: rgba(0, 128, 0, 0.7);
+        }
+
+        .medium {
+            background-color: rgba(255, 165, 0, 0.7);
+        }
+
+        .hard {
+            background-color: rgba(213, 43, 30, 0.7);
+        }
+
+        .transcript-button {
+            display: inline-block;
+            margin-top: 10px;
+            color: #fff; /* Blanco */
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .transcript-button:hover {
+            color: #0039A6; /* Azul ruso */
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .audio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Аудирование</h1>
+            <p>Тренируйте свой слух с помощью различных русских аудиоматериалов</p>
+            <a href="ruso.html" class="back-link">← Вернуться к выбору темы</a>
+        </div>
+        
+        <div class="audio-grid">
+            <div class="audio-card">
+                <h3>Ежедневные диалоги</h3>
+                <p>Повседневные диалоги и разговоры в различных ситуациях повседневной жизни.</p>
+                
+                <div class="audio-player">
+                    <div class="audio-controls">
+                        <button class="play-button">▶</button>
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time">0:00 / 3:45</div>
+                    </div>
+                    <div class="audio-meta">
+                        <span class="difficulty easy">Легко</span>
+                        <span>Медленная речь</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="transcript-button">Показать транскрипт</a>
+            </div>
+            
+            <div class="audio-card">
+                <h3>Новости</h3>
+                <p>Актуальные новости и репортажи из России и мира на чистом стандартном русском языке.</p>
+                
+                <div class="audio-player">
+                    <div class="audio-controls">
+                        <button class="play-button">▶</button>
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time">0:00 / 5:20</div>
+                    </div>
+                    <div class="audio-meta">
+                        <span class="difficulty medium">Средне</span>
+                        <span>Нормальный темп</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="transcript-button">Показать транскрипт</a>
+            </div>
+            
+            <div class="audio-card">
+                <h3>Подкасты</h3>
+                <p>Интересные подкасты на различные темы с носителями русского языка.</p>
+                
+                <div class="audio-player">
+                    <div class="audio-controls">
+                        <button class="play-button">▶</button>
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time">0:00 / 12:30</div>
+                    </div>
+                    <div class="audio-meta">
+                        <span class="difficulty medium">Средне</span>
+                        <span>Естественная речь</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="transcript-button">Показать транскрипт</a>
+            </div>
+            
+            <div class="audio-card">
+                <h3>Аудиокниги</h3>
+                <p>Отрывки из популярных русских аудиокниг различных жанров.</p>
+                
+                <div class="audio-player">
+                    <div class="audio-controls">
+                        <button class="play-button">▶</button>
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time">0:00 / 8:15</div>
+                    </div>
+                    <div class="audio-meta">
+                        <span class="difficulty hard">Сложно</span>
+                        <span>Голос рассказчика</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="transcript-button">Показать транскрипт</a>
+            </div>
+            
+            <div class="audio-card">
+                <h3>Интервью</h3>
+                <p>Аутентичные интервью с российскими экспертами по различным областям знаний.</p>
+                
+                <div class="audio-player">
+                    <div class="audio-controls">
+                        <button class="play-button">▶</button>
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time">0:00 / 10:45</div>
+                    </div>
+                    <div class="audio-meta">
+                        <span class="difficulty hard">Сложно</span>
+                        <span>Профессиональная лексика</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="transcript-button">Показать транскрипт</a>
+            </div>
+            
+            <div class="audio-card">
+                <h3>Песни</h3>
+                <p>Русская музыка разных эпох с текстами для пения и понимания.</p>
+                
+                <div class="audio-player">
+                    <div class="audio-controls">
+                        <button class="play-button">▶</button>
+                        <div class="progress-container">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time">0:00 / 4:20</div>
+                    </div>
+                    <div class="audio-meta">
+                        <span class="difficulty easy">Легко</span>
+                        <span>Музыкально</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="transcript-button">Показать текст песни</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -59,7 +59,7 @@
         }
 
         .container {
-            max-width: 1200px; /* Aumentado para que quepan más burbujas */
+            max-width: 1200px;
             width: 100%;
             text-align: center;
             z-index: 1;
@@ -69,30 +69,30 @@
         h1 {
             font-size: 3rem;
             color: #FFCE00; /* Amarillo dorado alemán */
-            margin-bottom: 1.5rem; /* Reducido para ahorrar espacio */
+            margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .subtitle {
             font-size: 1.2rem;
             color: #DD0000; /* Rojo alemán */
-            margin-bottom: 2rem; /* Reducido para ahorrar espacio */
+            margin-bottom: 2rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
         }
 
-        /* Burbujas rectangulares - MODIFICADO */
+        /* Burbujas rectangulares */
         .bubbles-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Grid responsivo */
-            gap: 20px; /* Reducido el espacio entre burbujas */
-            max-width: 1300px; /* Ancho máximo para 5 burbujas */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1300px;
             margin: 0 auto;
             width: 100%;
         }
 
         .bubble {
-            width: 100%; /* Ocupa todo el ancho de la celda */
-            height: 180px; /* Reducido la altura */
+            width: 100%;
+            height: 180px;
             background: linear-gradient(135deg, 
                 rgba(221, 0, 0, 0.85),    /* Rojo alemán */
                 rgba(0, 0, 0, 0.75)      /* Negro */
@@ -110,11 +110,11 @@
             overflow: hidden;
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
-            padding: 15px; /* Añadido padding para mejor espaciado interno */
+            padding: 15px;
         }
 
         .bubble:hover {
-            transform: translateY(-5px); /* Reducido el efecto hover */
+            transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(255, 206, 0, 0.4);
             background: linear-gradient(135deg, 
                 rgba(221, 0, 0, 0.95),
@@ -123,21 +123,21 @@
         }
 
         .bubble-icon {
-            font-size: 2.5rem; /* Reducido el tamaño del icono */
-            margin-bottom: 10px; /* Reducido el margen */
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
 
         .bubble-title {
-            font-size: 1.5rem; /* Reducido el tamaño del título */
+            font-size: 1.5rem;
             font-weight: bold;
-            margin-bottom: 8px; /* Reducido el margen */
+            margin-bottom: 8px;
         }
 
         .bubble-desc {
-            font-size: 0.9rem; /* Reducido el tamaño del texto */
+            font-size: 0.9rem;
             color: #f0f0f0;
             max-width: 90%;
-            line-height: 1.3; /* Reducido el interlineado */
+            line-height: 1.3;
         }
 
         /* Efecto de brillo en hover */
@@ -194,7 +194,7 @@
         /* Diseño responsivo */
         @media (max-width: 1200px) {
             .bubbles-container {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Más pequeño en tablets */
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
             .bubble {
                 height: 170px;
@@ -213,7 +213,7 @@
             }
             
             .bubbles-container {
-                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Más pequeño en móviles */
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
                 gap: 15px;
             }
             
@@ -301,6 +301,13 @@
                 <div class="bubble-icon">🎧</div>
                 <div class="bubble-title">Hörverständnis</div>
                 <div class="bubble-desc">Trainieren Sie Ihr Gehör</div>
+            </a>
+            
+            <!-- Burbuja para Curso con Temario -->
+            <a href="curso.de.html" class="bubble">
+                <div class="bubble-icon">📚</div>
+                <div class="bubble-title">Kurs mit Lehrplan</div>
+                <div class="bubble-desc">Lernen Sie alle Niveilen der Sprache</div>
             </a>
         </div>
     </div>

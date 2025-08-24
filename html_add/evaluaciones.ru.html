@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оценки</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            color: #fff;
+            background-color: #000;
+        }
+
+        /* Fondo con imagen de Moscú */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1533928298208-27ff66555d8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Degradado con colores de la bandera rusa */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.1) 0%,  /* Blanco */
+                rgba(0, 57, 166, 0.3) 33%,     /* Azul */
+                rgba(213, 43, 30, 0.3) 66%,   /* Rojo */
+                rgba(255, 255, 255, 0.1) 100%  /* Blanco */
+            );
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #fff; /* Borde blanco */
+            padding-bottom: 20px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            color: #fff; /* Blanco */
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #D52B1E; /* Rojo ruso */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 1px solid #D52B1E;
+            border-radius: 5px;
+            transition: all 0.3s;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .back-link:hover {
+            background-color: #D52B1E;
+            color: #fff;
+        }
+
+        .tests-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .test-card {
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.2),    /* Azul ruso */
+                rgba(213, 43, 30, 0.2)    /* Rojo ruso */
+            );
+            border: 1px solid #fff; /* Borde blanco */
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.3),
+                rgba(213, 43, 30, 0.3)
+            );
+        }
+
+        .test-card h3 {
+            color: #fff; /* Blanco */
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .test-card p {
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .test-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .test-duration, .test-questions {
+            color: #fff; /* Blanco */
+        }
+
+        .test-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.8),    /* Azul ruso */
+                rgba(213, 43, 30, 0.8)   /* Rojo ruso */
+            );
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #fff;
+        }
+
+        .test-button:hover {
+            background: linear-gradient(135deg, 
+                rgba(213, 43, 30, 0.9),   /* Rojo ruso */
+                rgba(0, 57, 166, 0.9)      /* Azul ruso */
+            );
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #0039A6, #D52B1E); /* Azul a rojo */
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .tests-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Оценки</h1>
+            <p>Проверьте свои знания русского языка и отслеживайте свой прогресс</p>
+            <a href="ruso.html" class="back-link">← Вернуться к выбору темы</a>
+        </div>
+        
+        <div class="tests-container">
+            <div class="test-card">
+                <h3>Тест по грамматике</h3>
+                <p>Проверьте свои знания русской грамматики с помощью этого комплексного теста.</p>
+                <div class="test-info">
+                    <span class="test-duration">⏱️ 30 минут</span>
+                    <span class="test-questions">❓ 25 вопросов</span>
+                </div>
+                <a href="#" class="test-button">Начать тест</a>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%"></div>
+                </div>
+            </div>
+            
+            <div class="test-card">
+                <h3>Тест на словарный запас</h3>
+                <p>Измерьте свой русский словарный запас и определите области для улучшения.</p>
+                <div class="test-info">
+                    <span class="test-duration">⏱️ 20 минут</span>
+                    <span class="test-questions">❓ 30 вопросов</span>
+                </div>
+                <a href="#" class="test-button">Начать тест</a>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 60%"></div>
+                </div>
+            </div>
+            
+            <div class="test-card">
+                <h3>Тест на аудирование</h3>
+                <p>Проверьте свои навыки аудирования с помощью различных аутентичных русских аудиозаписей.</p>
+                <div class="test-info">
+                    <span class="test-duration">⏱️ 25 минут</span>
+                    <span class="test-questions">❓ 20 вопросов</span>
+                </div>
+                <a href="#" class="test-button">Начать тест</a>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 40%"></div>
+                </div>
+            </div>
+            
+            <div class="test-card">
+                <h3>Тест на чтение</h3>
+                <p>Оцените свои способности понимать и анализировать русские тексты.</p>
+                <div class="test-info">
+                    <span class="test-duration">⏱️ 35 минут</span>
+                    <span class="test-questions">❓ 15 вопросов</span>
+                </div>
+                <a href="#" class="test-button">Начать тест</a>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 85%"></div>
+                </div>
+            </div>
+            
+            <div class="test-card">
+                <h3>Тест на произношение</h3>
+                <p>Проверьте свое русское произношение с помощью нашей технологии оценки на основе ИИ.</p>
+                <div class="test-info">
+                    <span class="test-duration">⏱️ 15 минут</span>
+                    <span class="test-questions">❓ 10 заданий</span>
+                </div>
+                <a href="#" class="test-button">Начать тест</a>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 30%"></div>
+                </div>
+            </div>
+            
+            <div class="test-card">
+                <h3>Компетентностный тест</h3>
+                <p>Комплексный тест для оценки ваших общих знаний русского языка (A1-C1).</p>
+                <div class="test-info">
+                    <span class="test-duration">⏱️ 60 минут</span>
+                    <span class="test-questions">❓ 50 вопросов</span>
+                </div>
+                <a href="#" class="test-button">Начать тест</a>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

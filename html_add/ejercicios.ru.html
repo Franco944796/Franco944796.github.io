@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практические упражнения</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            color: #fff;
+            background-color: #000;
+        }
+
+        /* Fondo con imagen de Moscú */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1533928298208-27ff66555d8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Degradado con colores de la bandera rusa */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.1) 0%,  /* Blanco */
+                rgba(0, 57, 166, 0.3) 33%,     /* Azul */
+                rgba(213, 43, 30, 0.3) 66%,   /* Rojo */
+                rgba(255, 255, 255, 0.1) 100%  /* Blanco */
+            );
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #fff; /* Borde blanco */
+            padding-bottom: 20px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            color: #fff; /* Blanco */
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #D52B1E; /* Rojo ruso */
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 1px solid #D52B1E;
+            border-radius: 5px;
+            transition: all 0.3s;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .back-link:hover {
+            background-color: #D52B1E;
+            color: #fff;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .exercise-card {
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.2),    /* Azul ruso */
+                rgba(213, 43, 30, 0.2)    /* Rojo ruso */
+            );
+            border: 1px solid #fff; /* Borde blanco */
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.3),
+                rgba(213, 43, 30, 0.3)
+            );
+        }
+
+        .exercise-card h3 {
+            color: #fff; /* Blanco */
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .exercise-card p {
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        .exercise-level {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .beginner {
+            background-color: rgba(0, 128, 0, 0.7);
+        }
+
+        .intermediate {
+            background-color: rgba(255, 165, 0, 0.7);
+        }
+
+        .advanced {
+            background-color: rgba(213, 43, 30, 0.7);
+        }
+
+        .exercise-link {
+            display: inline-block;
+            color: #0039A6; /* Azul ruso */
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .exercise-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Практические упражнения</h1>
+            <p>Улучшите свои знания русского языка с помощью этих практических упражнений</p>
+            <a href="ruso.html" class="back-link">← Вернуться к выбору темы</a>
+        </div>
+        
+        <div class="exercises-grid">
+            <div class="exercise-card">
+                <span class="exercise-level beginner">Начальный</span>
+                <h3>Основы грамматики</h3>
+                <p>Практикуйте основные грамматические структуры русского языка с помощью интерактивных упражнений.</p>
+                <a href="#" class="exercise-link">Начать практику →</a>
+            </div>
+            
+            <div class="exercise-card">
+                <span class="exercise-level beginner">Начальный</span>
+                <h3>Словарный запас</h3>
+                <p>Расширьте русский словарный запас с помощью тематических упражнений по различным сферам жизни.</p>
+                <a href="#" class="exercise-link">Начать практику →</a>
+            </div>
+            
+            <div class="exercise-card">
+                <span class="exercise-level intermediate">Средний</span>
+                <h3>Разговорная практика</h3>
+                <p>Улучшите свои разговорные навыки с помощью диалогов и ролевых игр.</p>
+                <a href="#" class="exercise-link">Начать практику →</a>
+            </div>
+            
+            <div class="exercise-card">
+                <span class="exercise-level intermediate">Средний</span>
+                <h3>Построение предложений</h3>
+                <p>Научитесь составлять сложные предложения и использовать различные синтаксические конструкции.</p>
+                <a href="#" class="exercise-link">Начать практику →</a>
+            </div>
+            
+            <div class="exercise-card">
+                <span class="exercise-level advanced">Продвинутый</span>
+                <h3>Идиомы и выражения</h3>
+                <p>Освойте русские идиомы и выражения, чтобы звучать более естественно.</p>
+                <a href="#" class="exercise-link">Начать практику →</a>
+            </div>
+            
+            <div class="exercise-card">
+                <span class="exercise-level advanced">Продвинутый</span>
+                <h3>Деловой русский</h3>
+                <p>Специализированные упражнения для использования русского языка в профессиональной среде.</p>
+                <a href="#" class="exercise-link">Начать практику →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
