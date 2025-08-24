@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deutsche Texte</title>
+    <title>Praktische Übungen</title>
     <style>
         * {
             margin: 0;
@@ -97,14 +97,14 @@
             color: #fff;
         }
 
-        .content {
+        .exercises-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
 
-        .text-card {
+        .exercise-card {
             background: linear-gradient(135deg, 
                 rgba(221, 0, 0, 0.2),    /* Rojo alemán */
                 rgba(0, 0, 0, 0.2)      /* Negro */
@@ -117,7 +117,7 @@
             -webkit-backdrop-filter: blur(5px);
         }
 
-        .text-card:hover {
+        .exercise-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(255, 206, 0, 0.3);
             background: linear-gradient(135deg, 
@@ -126,26 +126,55 @@
             );
         }
 
-        .text-card h3 {
+        .exercise-card h3 {
             color: #FFCE00; /* Amarillo dorado */
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
 
-        .text-card p {
+        .exercise-card p {
             line-height: 1.6;
             color: #ddd;
+            margin-bottom: 15px;
         }
 
-        .text-card .date {
-            color: #DD0000; /* Rojo alemán */
+        .exercise-level {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
             font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .beginner {
+            background-color: rgba(0, 128, 0, 0.7);
+        }
+
+        .intermediate {
+            background-color: rgba(255, 165, 0, 0.7);
+        }
+
+        .advanced {
+            background-color: rgba(221, 0, 0, 0.7);
+        }
+
+        .exercise-link {
+            display: inline-block;
+            color: #FFCE00;
+            text-decoration: none;
+            font-weight: bold;
             margin-top: 10px;
-            text-align: right;
+            transition: all 0.3s;
+        }
+
+        .exercise-link:hover {
+            color: #fff;
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
-            .content {
+            .exercises-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -154,34 +183,52 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Deutsche Texte</h1>
-            <p>Hier finden Sie eine Auswahl deutscher Texte zum Lesen und Studieren</p>
+            <h1>Praktische Übungen</h1>
+            <p>Verbessern Sie Ihre Deutschkenntnisse mit diesen praktischen Übungen</p>
             <a href="aleman.html" class="back-link">← Zurück zur Themenwahl</a>
         </div>
         
-        <div class="content">
-            <div class="text-card">
-                <h3>Die Bundesrepublik Deutschland</h3>
-                <p>Deutschland ist ein Bundesstaat in Mitteleuropa. Er besteht aus 16 Bundesländern und hat über 83 Millionen Einwohner. Die Hauptstadt ist Berlin...</p>
-                <div class="date">Aktualisiert: 15.05.2023</div>
+        <div class="exercises-grid">
+            <div class="exercise-card">
+                <span class="exercise-level beginner">Anfänger</span>
+                <h3>Grammatik Grundlagen</h3>
+                <p>Üben Sie die grundlegenden grammatikalischen Strukturen der deutschen Sprache mit interaktiven Übungen.</p>
+                <a href="#" class="exercise-link">Jetzt üben →</a>
             </div>
             
-            <div class="text-card">
-                <h3>Deutsche Grammatik</h3>
-                <p>Die deutsche Grammatik ist bekannt für ihre vier Fälle (Nominativ, Akkusativ, Dativ, Genitiv) und drei grammatische Geschlechter (maskulin, feminin, neutral)...</p>
-                <div class="date">Aktualisiert: 10.05.2023</div>
+            <div class="exercise-card">
+                <span class="exercise-level beginner">Anfänger</span>
+                <h3>Wortschatz训练</h3>
+                <p>Erweitern Sie Ihren deutschen Wortschatz mit thematischen Übungen zu verschiedenen Lebensbereichen.</p>
+                <a href="#" class="exercise-link">Jetzt üben →</a>
             </div>
             
-            <div class="text-card">
-                <h3>Deutsche Literatur</h3>
-                <p>Die deutsche Literatur hat eine lange Tradition mit berühmten Autoren wie Goethe, Schiller, Thomas Mann und der Brüder Grimm...</p>
-                <div class="date">Aktualisiert: 05.05.2023</div>
+            <div class="exercise-card">
+                <span class="exercise-level intermediate">Mittelstufe</span>
+                <h3>Konversation</h3>
+                <p>Verbessern Sie Ihre Sprechfähigkeiten mit Dialogübungen und Rollenspielen.</p>
+                <a href="#" class="exercise-link">Jetzt üben →</a>
             </div>
             
-            <div class="text-card">
-                <h3>Deutsche Kultur</h3>
-                <p>Die deutsche Kultur ist vielfältig und reicht von klassischer Musik über Philosophie bis hin zu moderner Kunst und Technologie...</p>
-                <div class="date">Aktualisiert: 01.05.2023</div>
+            <div class="exercise-card">
+                <span class="exercise-level intermediate">Mittelstufe</span>
+                <h3>Satzbildung</h3>
+                <p>Lernen Sie, komplexe Sätze zu bilden und verschiedene Satzstrukturen zu verwenden.</p>
+                <a href="#" class="exercise-link">Jetzt üben →</a>
+            </div>
+            
+            <div class="exercise-card">
+                <span class="exercise-level advanced">Fortgeschritten</span>
+                <h3>Idiome und Redewendungen</h3>
+                <p>Meistern Sie deutsche Idiome und Redewendungen, um natürlicher zu klingen.</p>
+                <a href="#" class="exercise-link">Jetzt üben →</a>
+            </div>
+            
+            <div class="exercise-card">
+                <span class="exercise-level advanced">Fortgeschritten</span>
+                <h3>Business Deutsch</h3>
+                <p>Spezialisierte Übungen für die Verwendung des Deutschen im beruflichen Umfeld.</p>
+                <a href="#" class="exercise-link">Jetzt üben →</a>
             </div>
         </div>
     </div>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deutsche Geschichte</title>
+    <title>История России</title>
     <style>
         * {
             margin: 0;
@@ -20,7 +20,7 @@
             background-color: #000;
         }
 
-        /* Fondo con imagen histórica alemana */
+        /* Fondo con colores de la bandera rusa */
         body::before {
             content: "";
             position: absolute;
@@ -28,7 +28,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1589485343056-54f4a0d1f7c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-image: url('https://images.unsplash.com/photo-1533928298208-27ff66555d8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -36,7 +36,6 @@
             z-index: -1;
         }
 
-        /* Degradado con colores de la bandera alemana */
         body::after {
             content: "";
             position: absolute;
@@ -46,10 +45,10 @@
             height: 100%;
             background: linear-gradient(
                 to bottom,
-                rgba(0, 0, 0, 0.4) 0%,      /* Negro */
-                rgba(221, 0, 0, 0.3) 33%,     /* Rojo */
-                rgba(255, 206, 0, 0.2) 66%,   /* Amarillo dorado */
-                rgba(0, 0, 0, 0.4) 100%      /* Negro */
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(0, 57, 166, 0.3) 33%,
+                rgba(213, 43, 30, 0.3) 66%,
+                rgba(255, 255, 255, 0.1) 100%
             );
             z-index: -1;
         }
@@ -65,7 +64,7 @@
         .header {
             text-align: center;
             margin-bottom: 40px;
-            border-bottom: 2px solid #FFCE00; /* Borde amarillo dorado */
+            border-bottom: 2px solid #0039A6;
             padding-bottom: 20px;
             background: rgba(0,0,0,0.7);
             border-radius: 10px;
@@ -73,7 +72,7 @@
         }
 
         .header h1 {
-            color: #FFCE00; /* Amarillo dorado */
+            color: #0039A6;
             font-size: 2.5rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
@@ -82,18 +81,18 @@
         .back-link {
             display: inline-block;
             margin-top: 20px;
-            color: #DD0000; /* Rojo alemán */
+            color: #D52B1E;
             text-decoration: none;
             font-weight: bold;
             padding: 8px 15px;
-            border: 1px solid #DD0000;
+            border: 1px solid #D52B1E;
             border-radius: 5px;
             transition: all 0.3s;
             background: rgba(0,0,0,0.5);
         }
 
         .back-link:hover {
-            background-color: #DD0000;
+            background-color: #D52B1E;
             color: #fff;
         }
 
@@ -110,7 +109,7 @@
             transform: translateX(-50%);
             width: 4px;
             height: 100%;
-            background: linear-gradient(to bottom, #000000, #DD0000, #FFCE00); /* Degradado bandera alemana */
+            background: linear-gradient(to bottom, #0039A6, #D52B1E);
         }
 
         .timeline-item {
@@ -132,10 +131,10 @@
 
         .timeline-content {
             background: linear-gradient(135deg, 
-                rgba(221, 0, 0, 0.2),    /* Rojo alemán */
-                rgba(0, 0, 0, 0.2)      /* Negro */
+                rgba(0, 57, 166, 0.2),
+                rgba(213, 43, 30, 0.2)
             );
-            border: 1px solid #FFCE00; /* Borde amarillo dorado */
+            border: 1px solid #fff;
             border-radius: 10px;
             padding: 20px;
             position: relative;
@@ -150,7 +149,7 @@
             right: -10px;
             width: 20px;
             height: 20px;
-            background: #DD0000; /* Rojo alemán */
+            background: #D52B1E;
             border-radius: 50%;
             z-index: 1;
         }
@@ -162,13 +161,13 @@
             left: -10px;
             width: 20px;
             height: 20px;
-            background: #FFCE00; /* Amarillo dorado */
+            background: #0039A6;
             border-radius: 50%;
             z-index: 1;
         }
 
         .timeline-date {
-            color: #DD0000; /* Rojo alemán */
+            color: #D52B1E;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -176,7 +175,7 @@
         .timeline-title {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #FFCE00; /* Amarillo dorado */
+            color: #0039A6;
         }
 
         .timeline-text {
@@ -207,41 +206,49 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Deutsche Geschichte</h1>
-            <p>Entdecken Sie die wichtigsten Ereignisse der deutschen Geschichte</p>
-            <a href="aleman.html" class="back-link">← Zurück zur Themenwahl</a>
+            <h1>История России</h1>
+            <p>Откройте для себя ключевые события в истории России</p>
+            <a href="ruso.html" class="back-link">← Вернуться к выбору темы</a>
         </div>
         
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">800 n. Chr.</div>
-                    <div class="timeline-title">Karl der Große</div>
-                    <div class="timeline-text">Karl der Große wird zum Kaiser des Heiligen Römischen Reiches gekrönt und legt den Grundstein für die deutsche Geschichte.</div>
+                    <div class="timeline-date">862 г. н.э.</div>
+                    <div class="timeline-title">Основание Руси</div>
+                    <div class="timeline-text">Согласно летописи, князь Рюрик основал государство Русь с центром в Новгороде, положив начало русской государственности.</div>
                 </div>
             </div>
             
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">1871</div>
-                    <div class="timeline-title">Reichsgründung</div>
-                    <div class="timeline-text">Otto von Bismarck vereint die deutschen Staaten zum Deutschen Reich. Wilhelm I. wird im Spiegelsaal von Versailles zum Kaiser gekrönt.</div>
+                    <div class="timeline-date">988 г.</div>
+                    <div class="timeline-title">Крещение Руси</div>
+                    <div class="timeline-text">Князь Владимир Святославич принял христианство из Византии, что стало поворотным моментом в культурном развитии Руси.</div>
                 </div>
             </div>
             
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">1949</div>
-                    <div class="timeline-title">Zwei Staaten</div>
-                    <div class="timeline-text">Nach dem Zweiten Weltkrieg entstehen die Bundesrepublik Deutschland (West) und die Deutsche Demokratische Republik (Ost).</div>
+                    <div class="timeline-date">1547 г.</div>
+                    <div class="timeline-title">Царство Русское</div>
+                    <div class="timeline-text">Иван IV Грозный первым принял титул царя, провозгласив создание Русского царства и начало централизации власти.</div>
                 </div>
             </div>
             
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">1990</div>
-                    <div class="timeline-title">Deutsche Wiedervereinigung</div>
-                    <div class="timeline-text">Am 3. Oktober 1990 wird die Deutsche Wiedervereinigung vollzogen. Deutschland wird wieder ein geeintes Land.</div>
+                    <div class="timeline-date">1917 г.</div>
+                    <div class="timeline-title">Революция</div>
+                    <div class="timeline-text">Октябрьская революция привела к свержению Временного правительства и установлению советской власти во главе с Лениным.</div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">1991 г.</div>
+                    <div class="timeline-title">Распад СССР</div>
+                    <div class="timeline-text">Распад Советского Союза привел к образованию Российской Федерации как независимого государства.</div>
                 </div>
             </div>
         </div>
