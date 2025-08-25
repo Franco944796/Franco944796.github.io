@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Самый холодный город на Земле - Trilex</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            color: #fff;
+            background-color: #000;
+        }
+        /* Fondo con imagen de Oymyakon */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(0, 57, 166, 0.3) 33%,
+                rgba(213, 43, 30, 0.3) 66%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            z-index: -1;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #0039A6;
+            padding-bottom: 20px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .header h1 {
+            color: #0039A6;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #D52B1E;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 1px solid #D52B1E;
+            border-radius: 5px;
+            transition: all 0.3s;
+            background: rgba(0,0,0,0.5);
+        }
+        .back-link:hover {
+            background-color: #D52B1E;
+            color: #fff;
+        }
+        .content {
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .content h2 {
+            color: #0039A6;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #ddd;
+            font-size: 1.1rem;
+        }
+        .content h3 {
+            color: #D52B1E;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+        .content ul, .content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        .content li {
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        .difficulty {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .beginner {
+            background-color: rgba(0, 128, 0, 0.7);
+        }
+        .intermediate {
+            background-color: rgba(255, 165, 0, 0.7);
+        }
+        .advanced {
+            background-color: rgba(213, 43, 30, 0.7);
+        }
+        
+        /* Selector de idiomas */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .language-selector select {
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            padding: 5px;
+            cursor: pointer;
+            outline: none;
+            font-weight: bold;
+            color: #D52B1E;
+        }
+        .language-selector select option {
+            color: #333;
+        }
+        
+        /* Palabras destacadas */
+        .highlight {
+            background-color: rgba(213, 43, 30, 0.3);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        /* Sección de vocabulario */
+        .vocabulary {
+            background: rgba(0, 57, 166, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .vocabulary h3 {
+            color: #0039A6;
+            margin-bottom: 15px;
+        }
+        .vocab-item {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        .vocab-word {
+            font-weight: bold;
+            color: #D52B1E;
+            margin-right: 10px;
+            min-width: 150px;
+        }
+        .vocab-meaning {
+            color: #ddd;
+            flex: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .back-link {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .content p {
+                font-size: 1rem;
+            }
+            
+            .language-selector {
+                top: 10px;
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Selector de idiomas -->
+    <div class="language-selector">
+        <select id="languageSelect">
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="zh">🇨🇳 中文</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 id="mainTitle">Самый холодный город на Земле</h1>
+            <p id="subtitle">История и жизнь в Оймяконе - полюсе холода</p>
+            <a href="html_add/textos.ru.html" class="back-link" id="backLink">← Вернуться к списку текстов</a>
+        </div>
+        
+        <div class="content">
+            <h2 id="section1Title">Введение</h2>
+            <p id="section1Text">
+                <span class="highlight">Са́мый холо́дный го́род на Земле́</span> – это русская деревня Оймякон. Эта деревня находится на Востоке. Там живёт о́коло 500 (пятисо́т) челове́к. Зимо́й обы́чная температу́ра – ми́нус 50 (пятьдеся́т) гра́дусов. Одна́жды в э́той дере́вне бы́ло ми́нус 71 (се́мьдесят оди́н) гра́дус! Но жи́тели дере́вни привы́кли к хо́лоду. Здесь все друг дру́га зна́ют. Все друг дру́гу помога́ют.
+            </p>
+            
+            <h3 id="subsection1Title">Жизнь в экстремальных условиях</h3>
+            <p id="subsection1Text">
+                Люби́мое ме́сто встре́чи – в магази́не, где продаю́т све́жий хлеб. В дере́вне нет ба́ра, так как по́сле 18:00 (шести́) часо́в нельзя́ продава́ть ни во́дку ни пи́во. Пья́ный челове́к мо́жет умере́ть на у́лице от хо́лода о́чень бы́стро...
+            </p>
+            
+            <h2 id="section2Title">Климат и природа</h2>
+            <p id="section2Text">
+                Зимо́й день дли́тся всего́ 3 (три) часа́. А ле́том светло́ да́же но́чью. В ма́рте в дере́вне быва́ет фестива́ль. На э́тот фестива́ль приезжа́ет мно́го иностра́нцев. Они́ хотя́т почу́вствовать, что тако́е -50 (ми́нус пятьдеся́т) гра́дусов.
+            </p>
+            
+            <h3 id="subsection2Title">Адаптация к холоду</h3>
+            <p id="subsection2Text">
+                Жители Оймякона разработали уникальные способы выживания в таких экстремальных условиях. Дома строятся на сваях, чтобы тепло не уходило в мерзлую землю. Автомобили оставляют работающими всю ночь, иначе утром они не заведутся. Школы не закрываются даже при -50°C, дети продолжают ходить на занятия.
+            </p>
+            
+            <h2 id="section3Title">История Оймякона</h2>
+            <p id="section3Text">
+                Оймякон был основан в 1930-х годах как место для оленеводов. Название происходит от реки Оймякон, что в переводе с якутского означает "незамерзающая вода". Несмотря на экстремальный холод, в этих местах всегда находили незамерзающие источники воды, что позволяло выживать людям и животным.
+            </p>
+            
+            <!-- Sección de vocabulario -->
+            <div class="vocabulary">
+                <h3 id="vocabTitle">Ключевые слова</h3>
+                <div class="vocab-item">
+                    <div class="vocab-word" id="vocab1Word">холодный</div>
+                    <div class="vocab-meaning" id="vocab1Meaning">frío, de baja temperatura</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-word" id="vocab2Word">деревня</div>
+                    <div class="vocab-meaning" id="vocab2Meaning">pueblo, aldea</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-word" id="vocab3Word">температура</div>
+                    <div class="vocab-meaning" id="vocab3Meaning">temperatura</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-word" id="vocab4Word">жители</div>
+                    <div class="vocab-meaning" id="vocab4Meaning">habitantes, residentes</div>
+                </div>
+                <div class="vocab-item">
+                    <div class="vocab-word" id="vocab5Word">фестиваль</div>
+                    <div class="vocab-meaning" id="vocab5Meaning">festival, fiesta</div>
+                </div>
+            </div>
+            
+            <div class="meta-info">
+                <div>
+                    <span class="difficulty beginner" id="difficulty">Начальный</span>
+                </div>
+                <div id="lastUpdated">Последнее обновление: 15.05.2023</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Traducciones para los elementos de la página
+        const translations = {
+            ru: {
+                mainTitle: "Самый холодный город на Земле",
+                subtitle: "История и жизнь в Оймяконе - полюсе холода",
+                backLink: "← Вернуться к списку текстов",
+                section1Title: "Введение",
+                section1Text: "Са́мый холо́дный го́род на Земле́ – это русская деревня Оймякон. Эта деревня находится на Востоке. Там живёт о́коло 500 (пятисо́т) челове́к. Зимо́й обы́чная температу́ра – ми́нус 50 (пятьдеся́т) гра́дусов. Одна́жды в э́той дере́вне бы́ло ми́нус 71 (се́мьдесят оди́н) гра́дус! Но жи́тели дере́вни привы́кли к хо́лоду. Здесь все друг дру́га зна́ют. Все друг дру́гу помога́ют.",
+                subsection1Title: "Жизнь в экстремальных условиях",
+                subsection1Text: "Люби́мое ме́сто встре́чи – в магази́не, где продаю́т све́жий хлеб. В дере́вне нет ба́ра, так как по́сле 18:00 (шести́) часо́в нельзя́ продава́ть ни во́дку ни пи́во. Пья́ный челове́к мо́жет умере́ть на у́лице от хо́лода о́чень бы́стро...",
+                section2Title: "Климат и природа",
+                section2Text: "Зимо́й день дли́тся всего́ 3 (три) часа́. А ле́том светло́ да́же но́чью. В ма́рте в дере́вне быва́ет фестива́ль. На э́тот фестива́ль приезжа́ет мно́го иностра́нцев. Они́ хотя́т почу́вствовать, что тако́е -50 (ми́нус пятьдеся́т) гра́дусов.",
+                subsection2Title: "Адаптация к холоду",
+                subsection2Text: "Жители Оймякона разработали уникальные способы выживания в таких экстремальных условиях. Дома строятся на сваях, чтобы тепло не уходило в мерзлую землю. Автомобили оставляют работающими всю ночь, иначе утром они не заведутся. Школы не закрываются даже при -50°C, дети продолжают ходить на занятия.",
+                section3Title: "История Оймякона",
+                section3Text: "Оймякон был основан в 1930-х годах как место для оленеводов. Название происходит от реки Оймякон, что в переводе с якутского означает \"незамерзающая вода\". Несмотря на экстремальный холод, в этих местах всегда находили незамерзающие источники воды, что позволяло выживать людям и животным.",
+                vocabTitle: "Ключевые слова",
+                vocab1Word: "холодный",
+                vocab1Meaning: "frío, de baja temperatura",
+                vocab2Word: "деревня",
+                vocab2Meaning: "pueblo, aldea",
+                vocab3Word: "температура",
+                vocab3Meaning: "temperatura",
+                vocab4Word: "жители",
+                vocab4Meaning: "habitantes, residentes",
+                vocab5Word: "фестиваль",
+                vocab5Meaning: "festival, fiesta",
+                difficulty: "Начальный",
+                lastUpdated: "Последнее обновление: 15.05.2023"
+            },
+            es: {
+                mainTitle: "La ciudad más fría de la Tierra",
+                subtitle: "Historia y vida en Oymyakon - el polo del frío",
+                backLink: "← Volver a la lista de textos",
+                section1Title: "Introducción",
+                section1Text: "El lugar más frío del mundo es el pueblo ruso de Oymyakon. Este pueblo se encuentra en el Este. Allí viven unas 500 personas. En invierno la temperatura normal es de menos 50 grados. Una vez en este pueblo hubo menos 71 grados. Pero los habitantes del pueblo están acostumbrados al frío. Aquí todos se conocen. Todos se ayudan mutuamente.",
+                subsection1Title: "Vida en condiciones extremas",
+                subsection1Text: "El lugar favorito de encuentro es en la tienda donde venden pan fresco. En el pueblo no hay bar, ya que después de las 18:00 horas no se puede vender ni vodka ni cerveza. Una persona ebria puede morir en la calle de frío muy rápidamente...",
+                section2Title: "Clima y naturaleza",
+                section2Text: "En invierno el día dura solo 3 horas. Y en verano es claro incluso de noche. En marzo en el pueblo hay un festival. A este festival llegan muchos extranjeros. Quieren sentir qué es -50 grados.",
+                subsection2Title: "Adaptación al frío",
+                subsection2Text: "Los habitantes de Oymyakon han desarrollado formas únicas de sobrevivir en condiciones tan extremas. Las casas se construyen sobre pilotes para que el calor no se pierda en el suelo congelado. Los automóviles se dejan funcionando toda la noche, de lo contrario por la mañana no arrancarán. Las escuelas no cierran incluso a -50°C, los niños continúan yendo a clases.",
+                section3Title: "Historia de Oymyakon",
+                section3Text: "Oymyakon fue fundado en la década de 1930 como lugar para los criadores de renos. El nombre proviene del río Oymyakon, que en traducción del yakuto significa \"agua que no se congela\". A pesar del frío extremo, en estos lugares siempre se encontraban fuentes de agua que no se congelaban, lo que permitía sobrevivir a personas y animales.",
+                vocabTitle: "Palabras clave",
+                vocab1Word: "холодный",
+                vocab1Meaning: "frío, de baja temperatura",
+                vocab2Word: "деревня",
+                vocab2Meaning: "pueblo, aldea",
+                vocab3Word: "температура",
+                vocab3Meaning: "temperatura",
+                vocab4Word: "жители",
+                vocab4Meaning: "habitantes, residentes",
+                vocab5Word: "фестиваль",
+                vocab5Meaning: "festival, fiesta",
+                difficulty: "Principiante",
+                lastUpdated: "Última actualización: 15/05/2023"
+            },
+            en: {
+                mainTitle: "The Coldest City on Earth",
+                subtitle: "History and life in Oymyakon - the pole of cold",
+                backLink: "← Back to text list",
+                section1Title: "Introduction",
+                section1Text: "The coldest place in the world is the Russian village of Oymyakon. This village is located in the East. About 500 people live there. In winter the normal temperature is minus 50 degrees. Once in this village it was minus 71 degrees! But the villagers are used to the cold. Here everyone knows each other. Everyone helps each other.",
+                subsection1Title: "Life in extreme conditions",
+                subsection1Text: "The favorite meeting place is in the store where they sell fresh bread. In the village there is no bar, since after 18:00 (six) o'clock you cannot sell vodka or beer. A drunk person can die on the street from cold very quickly...",
+                section2Title: "Climate and nature",
+                section2Text: "In winter the day lasts only 3 hours. And in summer it is light even at night. In March there is a festival in the village. Many foreigners come to this festival. They want to feel what -50 degrees is like.",
+                subsection2Title: "Adaptation to cold",
+                subsection2Text: "The inhabitants of Oymyakon have developed unique ways to survive in such extreme conditions. Houses are built on stilts so that heat does not escape into the frozen ground. Cars are left running all night, otherwise in the morning they won't start. Schools do not close even at -50°C, children continue to go to classes.",
+                section3Title: "History of Oymyakon",
+                section3Text: "Oymyakon was founded in the 1930s as a place for reindeer herders. The name comes from the Oymyakon River, which in translation from Yakut means \"unfrozen water\". Despite the extreme cold, in these places there were always unfrozen water sources, which allowed people and animals to survive.",
+                vocabTitle: "Key words",
+                vocab1Word: "холодный",
+                vocab1Meaning: "cold, low temperature",
+                vocab2Word: "деревня",
+                vocab2Meaning: "village, hamlet",
+                vocab3Word: "температура",
+                vocab3Meaning: "temperature",
+                vocab4Word: "жители",
+                vocab4Meaning: "inhabitants, residents",
+                vocab5Word: "фестиваль",
+                vocab5Meaning: "festival, celebration",
+                difficulty: "Beginner",
+                lastUpdated: "Last updated: 05/15/2023"
+            },
+            // Agrega traducciones para los demás idiomas siguiendo el mismo patrón
+        };
+        
+        // Función para cambiar el idioma
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            
+            // Actualizar todos los elementos con IDs específicos
+            document.getElementById('mainTitle').textContent = t.mainTitle;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            document.getElementById('backLink').textContent = t.backLink;
+            document.getElementById('section1Title').textContent = t.section1Title;
+            document.getElementById('section1Text').textContent = t.section1Text;
+            document.getElementById('subsection1Title').textContent = t.subsection1Title;
+            document.getElementById('subsection1Text').textContent = t.subsection1Text;
+            document.getElementById('section2Title').textContent = t.section2Title;
+            document.getElementById('section2Text').textContent = t.section2Text;
+            document.getElementById('subsection2Title').textContent = t.subsection2Title;
+            document.getElementById('subsection2Text').textContent = t.subsection2Text;
+            document.getElementById('section3Title').textContent = t.section3Title;
+            document.getElementById('section3Text').textContent = t.section3Text;
+            document.getElementById('vocabTitle').textContent = t.vocabTitle;
+            document.getElementById('vocab1Word').textContent = t.vocab1Word;
+            document.getElementById('vocab1Meaning').textContent = t.vocab1Meaning;
+            document.getElementById('vocab2Word').textContent = t.vocab2Word;
+            document.getElementById('vocab2Meaning').textContent = t.vocab2Meaning;
+            document.getElementById('vocab3Word').textContent = t.vocab3Word;
+            document.getElementById('vocab3Meaning').textContent = t.vocab3Meaning;
+            document.getElementById('vocab4Word').textContent = t.vocab4Word;
+            document.getElementById('vocab4Meaning').textContent = t.vocab4Meaning;
+            document.getElementById('vocab5Word').textContent = t.vocab5Word;
+            document.getElementById('vocab5Meaning').textContent = t.vocab5Meaning;
+            document.getElementById('difficulty').textContent = t.difficulty;
+            document.getElementById('lastUpdated').textContent = t.lastUpdated;
+            
+            // Guardar la preferencia de idioma en localStorage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+        
+        // Event listener para el selector de idioma
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            changeLanguage(this.value);
+        });
+        
+        // Al cargar la página, verificar si hay una preferencia guardada
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('selectedLanguage');
+            if (savedLanguage) {
+                document.getElementById('languageSelect').value = savedLanguage;
+                changeLanguage(savedLanguage);
+            }
+        });
+    </script>
+</body>
+</html>

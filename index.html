@@ -11,14 +11,12 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
         }
-
         /* ===== HEADER Y CARRUSEL ===== */
         .header {
             position: relative;
@@ -32,7 +30,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .overlay {
             position: absolute;
             top: 0;
@@ -42,14 +39,12 @@
             background: rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
-
         .carousel {
             position: relative;
             width: 100%;
             height: 100%;
             z-index: 2;
         }
-
         .carousel-caption {
             position: absolute;
             top: 35%; /* Subido 30% (estaba en 50%) */
@@ -61,7 +56,6 @@
             width: 100%;
             padding: 0 20px;
         }
-
         .carousel-title {
             font-size: 4.5rem;
             font-weight: bold;
@@ -70,7 +64,6 @@
             margin-bottom: 1rem;
             letter-spacing: 1px;
         }
-
         .carousel-title small {
             font-size: 1.8rem;
             font-weight: normal;
@@ -79,7 +72,6 @@
             color: rgba(255, 255, 255, 0.95);
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
         }
-
         /* ===== SELECTOR DE IDIOMAS ===== */
         .language-switch {
             position: absolute;
@@ -95,7 +87,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-
         .lang-link {
             display: flex;
             flex-direction: column;
@@ -106,12 +97,10 @@
             padding: 8px;
             border-radius: 50%;
         }
-
         .lang-link:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.15);
         }
-
         .lang-icon {
             width: 48px;
             height: 48px;
@@ -122,12 +111,10 @@
             margin-bottom: 8px;
             transition: all 0.3s ease;
         }
-
         .lang-link:hover .lang-icon {
             transform: scale(1.1);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
         }
-
         .lang-text {
             font-size: 0.9rem;
             font-weight: bold;
@@ -135,11 +122,9 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
         .lang-link:hover .lang-text {
             opacity: 1;
         }
-
         /* ===== SECCIÓN DE REDES SOCIALES ===== */
         .infos {
             position: absolute;
@@ -148,7 +133,6 @@
             z-index: 10;
             transform: scale(0.85); /* Reducido el tamaño al 85% */
         }
-
         .socials-fixed {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
@@ -157,7 +141,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
-
         .subtitle {
             font-size: 0.9rem; /* Reducido de 1rem a 0.9rem */
             color: rgba(255, 255, 255, 0.95);
@@ -165,13 +148,11 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         .social-links {
             display: flex;
             flex-direction: column;
             gap: 8px; /* Reducido de 12px a 8px */
         }
-
         .link {
             color: white;
             text-decoration: none;
@@ -182,16 +163,13 @@
             padding: 6px 10px; /* Reducido de 8px 12px a 6px 10px */
             border-radius: 8px;
         }
-
         .link:hover {
             color: #4CAF50;
             background: rgba(255, 255, 255, 0.15);
         }
-
         .ti-instagram {
             font-size: 1.2rem; /* Reducido de 1.4rem a 1.2rem */
         }
-
         /* ===== PIE DE PÁGINA CON DERECHOS DE AUTOR ===== */
         .footer {
             position: fixed;
@@ -207,62 +185,75 @@
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
-
+        .footer p {
+            margin: 2px 0;
+        }
         .footer a {
             color: #4CAF50;
             text-decoration: none;
             margin: 0 5px;
         }
-
         .footer a:hover {
             text-decoration: underline;
         }
-
+        
+        /* ===== ATRIBUCIÓN DE ICONOS ===== */
+        .attribution {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 5px 8px;
+            border-radius: 5px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .attribution a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .attribution a:hover {
+            text-decoration: underline;
+        }
+        
         /* ===== UTILIDADES ===== */
         .mb-4 {
             margin-bottom: 1.5rem;
         }
-
         .mb-2 {
             margin-bottom: 0.5rem;
         }
-
         .mt-2 {
             margin-top: 0.5rem;
         }
-
         .pr-1 {
             padding-right: 0.25rem;
         }
-
         .text-right {
             text-align: right;
         }
-
         .font-weight-normal {
             font-weight: normal;
         }
-
         .d-flex {
             display: flex;
         }
-
         .flex-column {
             flex-direction: column;
         }
-
         .align-items-center {
             align-items: center;
         }
-
         .justify-content-center {
             justify-content: center;
         }
-
         .justify-content-between {
             justify-content: space-between;
         }
-
         /* ===== DISEÑO RESPONSIVO ===== */
         @media (max-width: 992px) {
             .carousel-title {
@@ -282,7 +273,6 @@
                 height: 42px;
             }
         }
-
         @media (max-width: 768px) {
             .carousel-title {
                 font-size: 2.8rem;
@@ -317,8 +307,12 @@
                 font-size: 0.7rem;
                 padding: 6px;
             }
+            
+            .attribution {
+                font-size: 0.6rem;
+                padding: 4px 6px;
+            }
         }
-
         @media (max-width: 576px) {
             .carousel-title {
                 font-size: 2.2rem;
@@ -356,6 +350,11 @@
                 font-size: 0.6rem;
                 padding: 4px;
             }
+            
+            .attribution {
+                font-size: 0.5rem;
+                padding: 3px 5px;
+            }
         }
     </style>
 </head>
@@ -376,19 +375,23 @@
         <div class="language-switch">
             <a href="html_add/ingles.html" class="lang-link" title="English/en">
                 <img src="imgs/estados-unidos.png" alt="Inglés" class="lang-icon">
-                <span class="lang-text">English/en</span>
+                <span class="lang-text">English</span>
             </a>
             <a href="html_add/aleman.html" class="lang-link" title="Deutsch/de">
                 <img src="imgs/alemania.png" alt="Alemán" class="lang-icon">
-                <span class="lang-text">Deutsch/de</span>
+                <span class="lang-text">Deutsch</span>
             </a>
             <a href="html_add/ruso.html" class="lang-link" title="Pyccкий/ru">
                 <img src="imgs/rusia.png" alt="Ruso" class="lang-icon">
-                <span class="lang-text">Русский/ru</span>
+                <span class="lang-text">Русский</span>
+            </a>
+            <a href="html_add/italiano.html" class="lang-link" title="Italiano/it">
+                <img src="imgs/italia.png" alt="Italiano" class="lang-icon">
+                <span class="lang-text">Italiano</span>
             </a>
             <a href="html_add/castellano.html" class="lang-link" title="Castellano/es">
                 <img src="imgs/argentina.png" alt="Castellano" class="lang-icon">
-                <span class="lang-text">Castellano/es</span>
+                <span class="lang-text">Castellano</span>
             </a>
         </div>
         
@@ -409,13 +412,18 @@
             </div>
         </div>
     </header>
-
+    
     <!-- Pie de página con derechos de autor -->
     <footer class="footer">
         <p>&copy; 2025 Trilex. Todos los derechos reservados | 
         <a href="html_add/terminos.html">Términos de uso</a></p>
     </footer>
-
+    
+    <!-- Atribución de iconos de banderas -->
+    <div class="attribution">
+        Iconos de banderas: <a href="https://www.flaticon.es/iconos-gratis/italia" title="italia iconos" target="_blank">Freepik - Flaticon</a>
+    </div>
+    
     <script>
         // Script simple para cualquier funcionalidad futura
         console.log('Página cargada correctamente');

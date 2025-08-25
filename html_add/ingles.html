@@ -159,6 +159,32 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(30, 30, 80, 0.4); /* Sombra azul oscuro */
         }
+        
+        /* Selector de idiomas */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .language-selector select {
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            padding: 5px;
+            cursor: pointer;
+            outline: none;
+            font-weight: bold;
+            color: #8B0000;
+        }
+        .language-selector select option {
+            color: #333;
+        }
+        
         /* Pie de página con atribución */
         .footer {
             position: fixed;
@@ -245,6 +271,11 @@
                 font-size: 0.9rem;
             }
             
+            .language-selector {
+                top: 10px;
+                left: 10px;
+            }
+            
             .footer {
                 font-size: 0.6rem;
                 padding: 3px;
@@ -253,65 +284,271 @@
     </style>
 </head>
 <body>
+    <!-- Selector de idiomas -->
+    <div class="language-selector">
+        <select id="languageSelect">
+            <option value="en">🇬🇧 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ru">🇷🇺 Русский</option>
+            <option value="zh">🇨🇳 中文</option>
+        </select>
+    </div>
+    
     <!-- Botón para volver a la página principal de idiomas -->
     <div class="nav-top">
-        <a href="../index.html" class="btn-home">← Languages</a>
+        <a href="../index.html" class="btn-home" data-translate="homeButton">← Languages</a>
     </div>
     
     <div class="container">
-        <h1>English</h1>
-        <p class="subtitle">Select a topic to continue</p>
+        <h1 id="mainTitle">English</h1>
+        <p class="subtitle" id="subtitle">Select a topic to continue</p>
         
         <div class="bubbles-container">
             <!-- Burbuja para Textos -->
             <a href="textos.en.html" class="bubble">
                 <div class="bubble-icon">📝</div>
-                <div class="bubble-title">Texts</div>
-                <div class="bubble-desc">Read and analyze texts in English</div>
+                <div class="bubble-title" data-translate="texts">Texts</div>
+                <div class="bubble-desc" data-translate="textsDesc">Read and analyze texts in English</div>
             </a>
             
             <!-- Burbuja para Historia -->
             <a href="historia.en.html" class="bubble">
                 <div class="bubble-icon">🏛️</div>
-                <div class="bubble-title">History</div>
-                <div class="bubble-desc">Discover the history of the U.S.</div>
+                <div class="bubble-title" data-translate="history">History</div>
+                <div class="bubble-desc" data-translate="historyDesc">Discover the history of the U.S.</div>
             </a>
             
             <!-- Burbuja para Ejercicios Prácticos -->
             <a href="ejercicios.en.html" class="bubble">
                 <div class="bubble-icon">✏️</div>
-                <div class="bubble-title">Exercises</div>
-                <div class="bubble-desc">Improve your English with practice</div>
+                <div class="bubble-title" data-translate="exercises">Exercises</div>
+                <div class="bubble-desc" data-translate="exercisesDesc">Improve your English with practice</div>
             </a>
             
             <!-- Burbuja para Evaluaciones -->
             <a href="evaluaciones.en.html" class="bubble">
                 <div class="bubble-icon">📊</div>
-                <div class="bubble-title">Assessments</div>
-                <div class="bubble-desc">Measure your progress</div>
+                <div class="bubble-title" data-translate="assessments">Assessments</div>
+                <div class="bubble-desc" data-translate="assessmentsDesc">Measure your progress</div>
             </a>
             
             <!-- Burbuja para Aprendizaje Auditivo -->
             <a href="auditivo.en.html" class="bubble">
                 <div class="bubble-icon">🎧</div>
-                <div class="bubble-title">Listening</div>
-                <div class="bubble-desc">Train your ear</div>
+                <div class="bubble-title" data-translate="listening">Listening</div>
+                <div class="bubble-desc" data-translate="listeningDesc">Train your ear</div>
             </a>
             
             <!-- Burbuja para Curso con Temario -->
             <a href="curso.en.html" class="bubble">
                 <div class="bubble-icon">📚</div>
-                <div class="bubble-title">Course</div>
-                <div class="bubble-desc">Study all levels</div>
+                <div class="bubble-title" data-translate="course">Course</div>
+                <div class="bubble-desc" data-translate="courseDesc">Study all levels</div>
             </a>
         </div>
     </div>
     
     <!-- Pie de página con atribución -->
     <div class="footer">
-        Urban landscape image of New York, United States. 
-        <a href="https://unsplash.com/photos/new-york-city-skyline-dbbd9a9932da" target="_blank">Source: Unsplash</a> | 
-        <a href="https://unsplash.com/license" target="_blank">License: Unsplash License</a>
+        <span data-translate="footerAttribution">Urban landscape image of New York, United States.</span>
+        <span data-translate="licenseText">License:</span>
+        <a href="https://unsplash.com/license" target="_blank">Unsplash License</a>
     </div>
+
+    <script>
+        // Traducciones para los elementos de la página
+        const translations = {
+            en: {
+                mainTitle: "English",
+                subtitle: "Select a topic to continue",
+                homeButton: "← Languages",
+                footerAttribution: "Urban landscape image of New York, United States.",
+                licenseText: "License:",
+                texts: "Texts",
+                textsDesc: "Read and analyze texts in English",
+                history: "History",
+                historyDesc: "Discover the history of the U.S.",
+                exercises: "Exercises",
+                exercisesDesc: "Improve your English with practice",
+                assessments: "Assessments",
+                assessmentsDesc: "Measure your progress",
+                listening: "Listening",
+                listeningDesc: "Train your ear",
+                course: "Course",
+                courseDesc: "Study all levels"
+            },
+            es: {
+                mainTitle: "Inglés",
+                subtitle: "Selecciona un tema para continuar",
+                homeButton: "← Idiomas",
+                footerAttribution: "Imagen de paisaje urbano de Nueva York, Estados Unidos.",
+                licenseText: "Licencia:",
+                texts: "Textos",
+                textsDesc: "Lee y analiza textos en inglés",
+                history: "Historia",
+                historyDesc: "Descubre la historia de EE.UU.",
+                exercises: "Ejercicios",
+                exercisesDesc: "Mejora tu inglés con práctica",
+                assessments: "Evaluaciones",
+                assessmentsDesc: "Mide tu progreso",
+                listening: "Auditivo",
+                listeningDesc: "Entrena tu oído",
+                course: "Curso",
+                courseDesc: "Estudia todos los niveles"
+            },
+            fr: {
+                mainTitle: "Anglais",
+                subtitle: "Sélectionnez un sujet pour continuer",
+                homeButton: "← Langues",
+                footerAttribution: "Image de paysage urbain de New York, États-Unis.",
+                licenseText: "Licence:",
+                texts: "Textes",
+                textsDesc: "Lisez et analysez des textes en anglais",
+                history: "Histoire",
+                historyDesc: "Découvrez l'histoire des États-Unis",
+                exercises: "Exercices",
+                exercisesDesc: "Améliorez votre anglais avec la pratique",
+                assessments: "Évaluations",
+                assessmentsDesc: "Mesurez vos progrès",
+                listening: "Écoute",
+                listeningDesc: "Entraînez votre oreille",
+                course: "Cours",
+                courseDesc: "Étudiez tous les niveaux"
+            },
+            de: {
+                mainTitle: "Englisch",
+                subtitle: "Wählen Sie ein Thema zum Fortfahren",
+                homeButton: "← Sprachen",
+                footerAttribution: "Stadtbild von New York, Vereinigte Staaten.",
+                licenseText: "Lizenz:",
+                texts: "Texte",
+                textsDesc: "Lesen und analysieren Sie Texte auf Englisch",
+                history: "Geschichte",
+                historyDesc: "Entdecken Sie die Geschichte der USA",
+                exercises: "Übungen",
+                exercisesDesc: "Verbessern Sie Ihr Englisch durch Übung",
+                assessments: "Bewertungen",
+                assessmentsDesc: "Messen Sie Ihren Fortschritt",
+                listening: "Hören",
+                listeningDesc: "Trainieren Sie Ihr Gehör",
+                course: "Kurs",
+                courseDesc: "Studieren Sie alle Niveaus"
+            },
+            it: {
+                mainTitle: "Inglese",
+                subtitle: "Seleziona un argomento per continuare",
+                homeButton: "← Lingue",
+                footerAttribution: "Immagine del paesaggio urbano di New York, Stati Uniti.",
+                licenseText: "Licenza:",
+                texts: "Testi",
+                textsDesc: "Leggi e analizza testi in inglese",
+                history: "Storia",
+                historyDesc: "Scopri la storia degli Stati Uniti",
+                exercises: "Esercizi",
+                exercisesDesc: "Migliora il tuo inglese con la pratica",
+                assessments: "Valutazioni",
+                assessmentsDesc: "Misura i tuoi progressi",
+                listening: "Ascolto",
+                listeningDesc: "Allena il tuo orecchio",
+                course: "Corso",
+                courseDesc: "Studia tutti i livelli"
+            },
+            pt: {
+                mainTitle: "Inglês",
+                subtitle: "Selecione um tópico para continuar",
+                homeButton: "← Idiomas",
+                footerAttribution: "Imagem de paisagem urbano de Nova York, Estados Unidos.",
+                licenseText: "Licença:",
+                texts: "Textos",
+                textsDesc: "Leia e analise textos em inglês",
+                history: "História",
+                historyDesc: "Descubra a história dos EUA",
+                exercises: "Exercícios",
+                exercisesDesc: "Melhore seu inglês com prática",
+                assessments: "Avaliações",
+                assessmentsDesc: "Meça seu progresso",
+                listening: "Audição",
+                listeningDesc: "Treine seu ouvido",
+                course: "Curso",
+                courseDesc: "Estude todos os níveis"
+            },
+            ru: {
+                mainTitle: "Английский",
+                subtitle: "Выберите тему для продолжения",
+                homeButton: "← Языки",
+                footerAttribution: "Изображение городского пейзажа Нью-Йорка, Соединенные Штаты.",
+                licenseText: "Лицензия:",
+                texts: "Тексты",
+                textsDesc: "Читайте и анализируйте тексты на английском",
+                history: "История",
+                historyDesc: "Откройте для себя историю США",
+                exercises: "Упражнения",
+                exercisesDesc: "Улучшайте свой английский с помощью практики",
+                assessments: "Оценки",
+                assessmentsDesc: "Измеряйте свой прогресс",
+                listening: "Аудирование",
+                listeningDesc: "Тренируйте свой слух",
+                course: "Курс",
+                courseDesc: "Изучайте все уровни"
+            },
+            zh: {
+                mainTitle: "英语",
+                subtitle: "选择一个主题继续",
+                homeButton: "← 语言",
+                footerAttribution: "纽约市城市景观图片，美国。",
+                licenseText: "许可证:",
+                texts: "文本",
+                textsDesc: "阅读和分析英语文本",
+                history: "历史",
+                historyDesc: "发现美国历史",
+                exercises: "练习",
+                exercisesDesc: "通过练习提高你的英语",
+                assessments: "评估",
+                assessmentsDesc: "衡量你的进步",
+                listening: "听力",
+                listeningDesc: "训练你的耳朵",
+                course: "课程",
+                courseDesc: "学习所有级别"
+            }
+        };
+
+        // Función para cambiar el idioma
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            
+            // Actualizar título principal y subtítulo
+            document.getElementById('mainTitle').textContent = t.mainTitle;
+            document.getElementById('subtitle').textContent = t.subtitle;
+            
+            // Actualizar todos los elementos con el atributo data-translate
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (t[key]) {
+                    element.textContent = t[key];
+                }
+            });
+            
+            // Guardar la preferencia de idioma en localStorage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // Event listener para el selector de idioma
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            changeLanguage(this.value);
+        });
+
+        // Al cargar la página, verificar si hay una preferencia guardada
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLanguage = localStorage.getItem('selectedLanguage');
+            if (savedLanguage) {
+                document.getElementById('languageSelect').value = savedLanguage;
+                changeLanguage(savedLanguage);
+            }
+        });
+    </script>
 </body>
 </html>

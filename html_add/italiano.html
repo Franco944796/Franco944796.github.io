@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Русский - Выбор темы</title>
+    <title>Italiano - Selezione di argomenti</title>
     <style>
         /* Estilos principales */
         * {
@@ -23,7 +23,7 @@
             color: #fff;
             background-color: #333;
         }
-        /* Fondo con imagen de San Petersburgo */
+        /* Fondo con imagen del Coliseo de Italia */
         body::before {
             content: "";
             position: absolute;
@@ -31,14 +31,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://cdn.pixabay.com/photo/2021/12/29/18/59/st-petersburg-6902540_960_720.jpg');
+            background-image: url('https://cdn.pixabay.com/photo/2014/08/20/22/27/colosseum-422942_1280.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            opacity: 0.3;
+            opacity: 0.1;
             z-index: -1;
         }
-        /* Capa con colores de la bandera rusa */
+        /* Capa con colores de la bandera italiana */
         body::after {
             content: "";
             position: absolute;
@@ -48,10 +48,10 @@
             height: 100%;
             background: linear-gradient(
                 to bottom,
-                rgba(255, 255, 255, 0.1) 0%,  /* Blanco */
-                rgba(0, 57, 166, 0.3) 33%,     /* Azul */
-                rgba(213, 43, 30, 0.3) 66%,   /* Rojo */
-                rgba(255, 255, 255, 0.1) 100%  /* Blanco */
+                rgba(0, 146, 70, 0.3) 0%,    /* Verde */
+                rgba(255, 255, 255, 0.2) 33%,     /* Blanco */
+                rgba(206, 43, 55, 0.2) 66%,       /* Rojo */
+                rgba(0, 146, 70, 0.3) 100%      /* Verde */
             );
             z-index: -1;
         }
@@ -64,13 +64,13 @@
         }
         h1 {
             font-size: 3rem;
-            color: #fff; /* Blanco */
+            color: #fff; /* Bianco */
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
         .subtitle {
             font-size: 1.2rem;
-            color: #D52B1E; /* Rojo ruso */
+            color: #009246; /* Verde */
             margin-bottom: 2rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
@@ -87,17 +87,17 @@
             width: 100%;
             height: 180px;
             background: linear-gradient(135deg, 
-                rgba(0, 57, 166, 0.85),    /* Azul ruso */
-                rgba(213, 43, 30, 0.75)    /* Rojo ruso */
+                rgba(0, 146, 70, 0.85),    /* Verde */
+                rgba(255, 255, 255, 0.75)      /* Bianco */
             );
-            border: 3px solid #fff; /* Borde blanco */
+            border: 3px solid #CE2B37; /* Bordo rosso */
             border-radius: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: #fff;
+            color: #333;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -109,8 +109,8 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(255, 255, 255, 0.4);
             background: linear-gradient(135deg, 
-                rgba(0, 57, 166, 0.95),
-                rgba(213, 43, 30, 0.85)
+                rgba(0, 146, 70, 0.95),
+                rgba(255, 255, 255, 0.85)
             );
         }
         .bubble-icon {
@@ -121,10 +121,11 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 8px;
+            color: #333;
         }
         .bubble-desc {
             font-size: 0.9rem;
-            color: #f0f0f0;
+            color: #333;
             max-width: 90%;
             line-height: 1.3;
         }
@@ -154,22 +155,22 @@
             display: inline-block;
             padding: 10px 20px;
             background: linear-gradient(135deg, 
-                rgba(0, 57, 166, 0.8),    /* Azul ruso */
-                rgba(213, 43, 30, 0.8)   /* Rojo ruso */
+                rgba(0, 146, 70, 0.8),    /* Verde */
+                rgba(255, 255, 255, 0.8)   /* Bianco */
             );
-            color: #fff;
+            color: #333;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             transition: all 0.3s ease;
-            border: 2px solid #fff; /* Borde blanco */
+            border: 2px solid #CE2B37; /* Bordo rosso */
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         .btn-home:hover {
             background: linear-gradient(135deg, 
-                rgba(213, 43, 30, 0.9),   /* Rojo ruso */
-                rgba(0, 57, 166, 0.9)      /* Azul ruso */
+                rgba(255, 255, 255, 0.9),   /* Bianco */
+                rgba(0, 146, 70, 0.9)      /* Verde */
             );
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
@@ -194,7 +195,7 @@
             cursor: pointer;
             outline: none;
             font-weight: bold;
-            color: #D52B1E;
+            color: #CE2B37;
         }
         .language-selector select option {
             color: #333;
@@ -223,7 +224,6 @@
         .footer a:hover {
             text-decoration: underline;
         }
-        
         /* Diseño responsivo */
         @media (max-width: 1200px) {
             .bubbles-container {
@@ -303,108 +303,108 @@
     <!-- Selector de idiomas -->
     <div class="language-selector">
         <select id="languageSelect">
-            <option value="ru">🇷🇺 Русский</option>
+            <option value="it">🇮🇹 Italiano</option>
             <option value="es">🇪🇸 Español</option>
             <option value="en">🇬🇧 English</option>
             <option value="fr">🇫🇷 Français</option>
             <option value="de">🇩🇪 Deutsch</option>
             <option value="pt">🇵🇹 Português</option>
-            <option value="it">🇮🇹 Italiano</option>
+            <option value="ru">🇷🇺 Русский</option>
             <option value="zh">🇨🇳 中文</option>
         </select>
     </div>
     
     <!-- Botón para volver a la página principal de idiomas -->
     <div class="nav-top">
-        <a href="../index.html" class="btn-home">← Языки</a>
+        <a href="../index.html" class="btn-home">← Lingue</a>
     </div>
     
     <div class="container">
-        <h1 id="mainTitle">Русский</h1>
-        <p class="subtitle" id="subtitle">Выберите тему, чтобы продолжить</p>
+        <h1 id="mainTitle">Italiano</h1>
+        <p class="subtitle" id="subtitle">Seleziona un argomento per continuare</p>
         
         <div class="bubbles-container">
             <!-- Burbuja para Textos -->
-            <a href="textos.ru.html" class="bubble">
+            <a href="textos.it.html" class="bubble">
                 <div class="bubble-icon">📝</div>
-                <div class="bubble-title" data-translate="texts">Тексты</div>
-                <div class="bubble-desc" data-translate="textsDesc">Читайте и анализируйте русские тексты</div>
+                <div class="bubble-title" data-translate="texts">Testi</div>
+                <div class="bubble-desc" data-translate="textsDesc">Leggi e analizza testi in italiano</div>
             </a>
             
             <!-- Burbuja para Historia -->
-            <a href="historia.ru.html" class="bubble">
+            <a href="historia.it.html" class="bubble">
                 <div class="bubble-icon">🏛️</div>
-                <div class="bubble-title" data-translate="history">История</div>
-                <div class="bubble-desc" data-translate="historyDesc">Откройте для себя историю России</div>
+                <div class="bubble-title" data-translate="history">Storia</div>
+                <div class="bubble-desc" data-translate="historyDesc">Scopri la storia italiana</div>
             </a>
             
             <!-- Burbuja para Ejercicios Prácticos -->
-            <a href="ejercicios.ru.html" class="bubble">
+            <a href="ejercicios.it.html" class="bubble">
                 <div class="bubble-icon">✏️</div>
-                <div class="bubble-title" data-translate="exercises">Практические упражнения</div>
-                <div class="bubble-desc" data-translate="exercisesDesc">Улучшите свои знания русского языка</div>
+                <div class="bubble-title" data-translate="exercises">Esercizi</div>
+                <div class="bubble-desc" data-translate="exercisesDesc">Migliora il tuo italiano con la pratica</div>
             </a>
             
             <!-- Burbuja para Evaluaciones -->
-            <a href="evaluaciones.ru.html" class="bubble">
+            <a href="evaluaciones.it.html" class="bubble">
                 <div class="bubble-icon">📊</div>
-                <div class="bubble-title" data-translate="assessments">Оценки</div>
-                <div class="bubble-desc" data-translate="assessmentsDesc">Проверьте свой прогресс</div>
+                <div class="bubble-title" data-translate="assessments">Valutazioni</div>
+                <div class="bubble-desc" data-translate="assessmentsDesc">Misura i tuoi progressi</div>
             </a>
             
             <!-- Burbuja para Aprendizaje Auditivo -->
-            <a href="auditivo.ru.html" class="bubble">
+            <a href="auditivo.it.html" class="bubble">
                 <div class="bubble-icon">🎧</div>
-                <div class="bubble-title" data-translate="listening">Аудирование</div>
-                <div class="bubble-desc" data-translate="listeningDesc">Тренируйте свой слух</div>
+                <div class="bubble-title" data-translate="listening">Ascolto</div>
+                <div class="bubble-desc" data-translate="listeningDesc">Allena il tuo orecchio</div>
             </a>
             
             <!-- Burbuja para Curso con Temario -->
-            <a href="curso.ru.html" class="bubble">
+            <a href="curso.it.html" class="bubble">
                 <div class="bubble-icon">📚</div>
-                <div class="bubble-title" data-translate="course">Курс с учебным планом</div>
-                <div class="bubble-desc" data-translate="courseDesc">Изучите все уровни языка</div>
+                <div class="bubble-title" data-translate="course">Corso</div>
+                <div class="bubble-desc" data-translate="courseDesc">Studia tutti i livelli</div>
             </a>
         </div>
     </div>
     
     <!-- Pie de página con atribución -->
     <div class="footer">
-        <span data-translate="footerAttribution">Изображение Санкт-Петербурга, Россия.</span>
-        <a href="https://pixabay.com/photos/st-petersburg-russia-architecture-6902540/" target="_blank">Источник: Pixabay</a> | 
-        <a href="https://pixabay.com/service/license/" target="_blank">Лицензия: Pixabay License</a>
+        <span data-translate="footerAttribution">Immagine del Colosseo, Roma, Italia.</span>
+        <a href="https://pixabay.com/photos/colosseum-rome-italy-ancient-422942/" target="_blank">Fonte: Pixabay</a> | 
+        <a href="https://pixabay.com/service/license/" target="_blank">Licenza: Pixabay License</a>
     </div>
-    
+
     <script>
         // Traducciones para los elementos de la página
         const translations = {
-            ru: {
-                mainTitle: "Русский",
-                subtitle: "Выберите тему, чтобы продолжить",
-                footerAttribution: "Изображение Санкт-Петербурга, Россия.",
-                texts: "Тексты",
-                textsDesc: "Читайте и анализируйте русские тексты",
-                history: "История",
-                historyDesc: "Откройте для себя историю России",
-                exercises: "Практические упражнения",
-                exercisesDesc: "Улучшите свои знания русского языка",
-                assessments: "Оценки",
-                assessmentsDesc: "Проверьте свой прогресс",
-                listening: "Аудирование",
-                listeningDesc: "Тренируйте свой слух",
-                course: "Курс с учебным планом",
-                courseDesc: "Изучите все уровни языка"
+            it: {
+                mainTitle: "Italiano",
+                subtitle: "Seleziona un argomento per continuare",
+                footerAttribution: "Immagine del Colosseo, Roma, Italia.",
+                texts: "Testi",
+                textsDesc: "Leggi e analizza testi in italiano",
+                history: "Storia",
+                historyDesc: "Scopri la storia italiana",
+                exercises: "Esercizi",
+                exercisesDesc: "Migliora il tuo italiano con la pratica",
+                assessments: "Valutazioni",
+                assessmentsDesc: "Misura i tuoi progressi",
+                listening: "Ascolto",
+                listeningDesc: "Allena il tuo orecchio",
+                course: "Corso",
+                courseDesc: "Studia tutti i livelli"
             },
             es: {
-                mainTitle: "Ruso",
+                mainTitle: "Italiano",
                 subtitle: "Selecciona un tema para continuar",
-                footerAttribution: "Imagen de San Petersburgo, Rusia.",
+                footerAttribution: "Imagen del Coliseo, Roma, Italia.",
                 texts: "Textos",
-                textsDesc: "Lee y analiza textos en ruso",
+                textsDesc: "Lee y analiza textos en italiano",
                 history: "Historia",
-                historyDesc: "Descubre la historia de Rusia",
+                historyDesc: "Descubre la historia italiana",
                 exercises: "Ejercicios",
-                exercisesDesc: "Mejora tu ruso con práctica",
+                exercisesDesc: "Mejora tu italiano con práctica",
                 assessments: "Evaluaciones",
                 assessmentsDesc: "Mide tu progreso",
                 listening: "Auditivo",
@@ -413,15 +413,15 @@
                 courseDesc: "Estudia todos los niveles"
             },
             en: {
-                mainTitle: "Russian",
+                mainTitle: "Italian",
                 subtitle: "Select a topic to continue",
-                footerAttribution: "Image of St. Petersburg, Russia.",
+                footerAttribution: "Image of the Colosseum, Rome, Italy.",
                 texts: "Texts",
-                textsDesc: "Read and analyze texts in Russian",
+                textsDesc: "Read and analyze texts in Italian",
                 history: "History",
-                historyDesc: "Discover the history of Russia",
+                historyDesc: "Discover the history of Italy",
                 exercises: "Exercises",
-                exercisesDesc: "Improve your Russian with practice",
+                exercisesDesc: "Improve your Italian with practice",
                 assessments: "Assessments",
                 assessmentsDesc: "Measure your progress",
                 listening: "Listening",
@@ -430,15 +430,15 @@
                 courseDesc: "Study all levels"
             },
             fr: {
-                mainTitle: "Russe",
+                mainTitle: "Italien",
                 subtitle: "Sélectionnez un sujet pour continuer",
-                footerAttribution: "Image de Saint-Pétersbourg, Russie.",
+                footerAttribution: "Image du Colisée, Rome, Italie.",
                 texts: "Textes",
-                textsDesc: "Lisez et analysez des textes en russe",
+                textsDesc: "Lisez et analysez des textes en italien",
                 history: "Histoire",
-                historyDesc: "Découvrez l'histoire de la Russie",
+                historyDesc: "Découvrez l'histoire italienne",
                 exercises: "Exercices",
-                exercisesDesc: "Améliorez votre russe avec la pratique",
+                exercisesDesc: "Améliorez votre italien avec la pratique",
                 assessments: "Évaluations",
                 assessmentsDesc: "Mesurez vos progrès",
                 listening: "Écoute",
@@ -447,15 +447,15 @@
                 courseDesc: "Étudiez tous les niveaux"
             },
             de: {
-                mainTitle: "Russisch",
+                mainTitle: "Italienisch",
                 subtitle: "Wählen Sie ein Thema zum Fortfahren",
-                footerAttribution: "Bild von Sankt Petersburg, Russland.",
+                footerAttribution: "Bild des Kolosseums, Rom, Italien.",
                 texts: "Texte",
-                textsDesc: "Lesen und analysieren Sie Texte auf Russisch",
+                textsDesc: "Lesen und analysieren Sie Texte auf Italienisch",
                 history: "Geschichte",
-                historyDesc: "Entdecken Sie die Geschichte Russlands",
+                historyDesc: "Entdecken Sie die italienische Geschichte",
                 exercises: "Übungen",
-                exercisesDesc: "Verbessern Sie Ihr Russisch durch Übung",
+                exercisesDesc: "Verbessern Sie Ihr Italienisch durch Übung",
                 assessments: "Bewertungen",
                 assessmentsDesc: "Messen Sie Ihren Fortschritt",
                 listening: "Hören",
@@ -464,15 +464,15 @@
                 courseDesc: "Studieren Sie alle Niveaus"
             },
             pt: {
-                mainTitle: "Russo",
+                mainTitle: "Italiano",
                 subtitle: "Selecione um tópico para continuar",
-                footerAttribution: "Imagem de São Petersburgo, Rússia.",
+                footerAttribution: "Imagem do Coliseu, Roma, Itália.",
                 texts: "Textos",
-                textsDesc: "Leia e analise textos em russo",
+                textsDesc: "Leia e analise textos em italiano",
                 history: "História",
-                historyDesc: "Descubra a história da Rússia",
+                historyDesc: "Descubra a história italiana",
                 exercises: "Exercícios",
-                exercisesDesc: "Melhore seu russo com prática",
+                exercisesDesc: "Melhore seu italiano com prática",
                 assessments: "Avaliações",
                 assessmentsDesc: "Meça seu progresso",
                 listening: "Audição",
@@ -480,33 +480,33 @@
                 course: "Curso",
                 courseDesc: "Estude todos os níveis"
             },
-            it: {
-                mainTitle: "Russo",
-                subtitle: "Seleziona un argomento per continuare",
-                footerAttribution: "Immagine di San Pietroburgo, Russia.",
-                texts: "Testi",
-                textsDesc: "Leggi e analizza testi in russo",
-                history: "Storia",
-                historyDesc: "Scopri la storia della Russia",
-                exercises: "Esercizi",
-                exercisesDesc: "Migliora il tuo russo con la pratica",
-                assessments: "Valutazioni",
-                assessmentsDesc: "Misura i tuoi progressi",
-                listening: "Ascolto",
-                listeningDesc: "Allena il tuo orecchio",
-                course: "Corso",
-                courseDesc: "Studia tutti i livelli"
+            ru: {
+                mainTitle: "Итальянский",
+                subtitle: "Выберите тему для продолжения",
+                footerAttribution: "Изображение Колизея, Рим, Италия.",
+                texts: "Тексты",
+                textsDesc: "Читайте и анализируйте тексты на итальянском",
+                history: "История",
+                historyDesc: "Откройте для себя историю Италии",
+                exercises: "Упражнения",
+                exercisesDesc: "Улучшайте свой итальянский с помощью практики",
+                assessments: "Оценки",
+                assessmentsDesc: "Измеряйте свой прогресс",
+                listening: "Аудирование",
+                listeningDesc: "Тренируйте свой слух",
+                course: "Курс",
+                courseDesc: "Изучайте все уровни"
             },
             zh: {
-                mainTitle: "俄语",
+                mainTitle: "意大利语",
                 subtitle: "选择一个主题继续",
-                footerAttribution: "俄罗斯圣彼得堡图片。",
+                footerAttribution: "罗马斗兽场图片，意大利罗马。",
                 texts: "文本",
-                textsDesc: "阅读和分析俄语文本",
+                textsDesc: "阅读和分析意大利语文本",
                 history: "历史",
-                historyDesc: "发现俄罗斯历史",
+                historyDesc: "发现意大利历史",
                 exercises: "练习",
-                exercisesDesc: "通过练习提高你的俄语",
+                exercisesDesc: "通过练习提高你的意大利语",
                 assessments: "评估",
                 assessmentsDesc: "衡量你的进步",
                 listening: "听力",
@@ -515,7 +515,7 @@
                 courseDesc: "学习所有级别"
             }
         };
-        
+
         // Función para cambiar el idioma
         function changeLanguage(lang) {
             const t = translations[lang];
@@ -538,12 +538,12 @@
             // Guardar la preferencia de idioma en localStorage
             localStorage.setItem('selectedLanguage', lang);
         }
-        
+
         // Event listener para el selector de idioma
         document.getElementById('languageSelect').addEventListener('change', function() {
             changeLanguage(this.value);
         });
-        
+
         // Al cargar la página, verificar si hay una preferencia guardada
         document.addEventListener('DOMContentLoaded', function() {
             const savedLanguage = localStorage.getItem('selectedLanguage');
