@@ -1,0 +1,49 @@
+Aca escribo ideas para programar eventualmente:
+
+1. AGREGAR ICONOS DE LOS IDIOMAS QUE VAYA IMPLEMENTANDO EN LA PAGINA DE INICIO
+
+
+2. teniendo en cuenta que se pueden unir gente de otros paises, por ejemplo al entrar al idioma aleman, si hay textos
+con sus respectivas traducciones, necesito poner al inicio que elijan su idioma de origen...Para esto necesitaria tener
+todo el material de ese idioma en el idioma de origen de la persona, es decir que para enseñarle a un ingles aleman, deberia
+contar con todas las traducciones del aleman al ingles y viceversa...Necesitaria traducir y verificar todo o tener gente
+que me ayude a la hora de agregar nuevos idiomas.
+
+3. iconos interactivos para cada idioma en particular con:
+- seccion de textos 
+- seccion de aprendizaje auditivo (eso en algun futuro, quiza necesite colaboraciones)
+- seccion con ejercicios 
+- seccion de curso con temario
+- seccion de evaluaciones
+- seccion de cultura sobre el idioma, la historia
+
+4. eliminar la funcion que vuelve para atras o adelante cuando deslizas la pantalla muy a la izq o der.
+
+
+
+
+---  Texto estándar chat inteligente  ---
+Estoy diseñando una pagina web de idiomas, la he ido modificando con sugerencias de este mismo chat inteligente, pero me 
+he quedado sin espacio en el chat por lo que continuaré en este, a continuacion le proporcionaré el index de mi pagina 
+web para que se familiarice con el, una vez hecho esto le enviaré mas archivos. No tiene que modificar nada de este 
+codigo a continuacion:
+
+Ahora le proporcionaré la seccion principal del idioma en el cual estoy haciendo modificaciones, para que se familiarice 
+con el y pueda ayudarme cuando le pida hacer cambios en algo específico
+
+Ahora le proporcionaré la seccion en la cual estoy haciendo cambios para que se familiarice con su codigo
+
+ya que lo que se ve en la pagina (texto e informacion) es lo que esta en las secciones del idioma con los simbolos "" como
+texto, el codigo en el IDE tiene que estar en español, para que se me facilite mas su modificacion cuando corrija errores.
+El archivo en el que necesito que haga esas modificaciones es el ultimo que proporcioné.
+
+quiero modificar por ejemplo el titulo de "Osos en Rusia" para probar, pero cuando modifico el codigo no cambia, mi 
+suposicion es que como ya está la opcion en el selector de idiomas de español, puedo por ejemplo cambiar el titulo dentro
+ del html que dice <title> Osos en Rusia - Trilex </title> , pero al estar el selector seleccionado, pisa esa informacion,
+  dejando la que está en la del selector traducido al idioma correspondiente. En la mayoria de casos es util, pero en este
+   caso que es el idioma base que estoy usando para programar no me sirve, quiero poder modificar ese codigo y que cambie
+    en la pagina, sería una buena idea separar todos los idiomas del selector actual para dejarlos como estan ahora, pero
+     poner otra opcion unica digamos, como para volver al idioma base en el que hago los cambios en el codigo y que se vea?
+      se eliminaria la opcion de español del selector tambien, se dejaria como una opcion unica en otro lado, pero no 
+      estaria como parte de las traducciones, seria el texto que pongo en el codigo, el que usan los otros idiomas dentro 
+      del selector como base para saber que traducir al idioma seleccionado

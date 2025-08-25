@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Самый холодный город на Земле - Trilex</title>
+    <title>La ciudad más fría de la Tierra - Trilex</title>
     <style>
         * {
             margin: 0;
@@ -130,29 +130,49 @@
             background-color: rgba(213, 43, 30, 0.7);
         }
         
-        /* Selector de idiomas */
+        /* Selector de idiomas - Modificado para ser más compacto */
         .language-selector {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.9);
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            padding: 3px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            max-width: 150px;
         }
         .language-selector select {
             border: none;
             background: transparent;
-            font-size: 14px;
-            padding: 5px;
+            font-size: 12px;
+            padding: 2px 4px;
             cursor: pointer;
             outline: none;
             font-weight: bold;
             color: #D52B1E;
+            width: 100px;
         }
         .language-selector select option {
             color: #333;
+        }
+        .base-mode-btn {
+            background: #D52B1E;
+            color: white;
+            border: none;
+            padding: 2px 6px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 10px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .base-mode-btn:hover {
+            background: #a0201f;
         }
         
         /* Palabras destacadas */
@@ -209,8 +229,19 @@
             }
             
             .language-selector {
-                top: 10px;
-                left: 10px;
+                top: 5px;
+                left: 5px;
+                max-width: 130px;
+            }
+            
+            .language-selector select {
+                width: 80px;
+                font-size: 11px;
+            }
+            
+            .base-mode-btn {
+                font-size: 9px;
+                padding: 2px 4px;
             }
         }
     </style>
@@ -220,7 +251,6 @@
     <div class="language-selector">
         <select id="languageSelect">
             <option value="ru">🇷🇺 Русский</option>
-            <option value="es">🇪🇸 Español</option>
             <option value="en">🇬🇧 English</option>
             <option value="fr">🇫🇷 Français</option>
             <option value="de">🇩🇪 Deutsch</option>
@@ -228,33 +258,34 @@
             <option value="it">🇮🇹 Italiano</option>
             <option value="zh">🇨🇳 中文</option>
         </select>
+        <button id="baseModeBtn" class="base-mode-btn">Español</button>
     </div>
     
     <div class="container">
         <div class="header">
-            <h1 id="mainTitle">Са́мый холо́дный го́род на Земле́</h1>
-            <p id="subtitle">История и жизнь в Оймяконе - полюсе холода</p>
-            <a href="../html_add/textos.ru.html" class="back-link" id="backLink">← Вернуться к списку текстов</a>
+            <h1 id="mainTitle">La ciudad más fría de la Tierra</h1>
+            <p id="subtitle">Historia y vida en Oymyakon - el polo del frío</p>
+            <a href="../html_add/textos.ru.html" class="back-link" id="backLink">← Volver a la lista de textos</a>
         </div>
         
         <div class="content">
-            <h2 id="contentTitle">Са́мый холо́дный го́род на Земле́</h2>
+            <h2 id="contentTitle">La ciudad más fría de la Tierra</h2>
             
             <p id="paragraph1">
-                Са́мое холо́дное ме́сто в ми́ре – это русская деревня Оймякон. Эта деревня нахо́дится на Восто́ке. Там живёт о́коло 500 (пятисо́т) челове́к. Зимо́й обы́чная температу́ра – ми́нус 50 (пятьдеся́т) гра́дусов.
+                El lugar más frío del mundo es el pueblo ruso de Oymyakon. Este pueblo se encuentra en el Este. Allí viven unas 500 personas. En invierno la temperatura normal es de menos 50 grados.
             </p>
             
             <p id="paragraph2">
-                Одна́жды в э́той дере́вне бы́ло ми́нус 71 (се́мьдесят оди́н) гра́дус! Но жи́тели дере́вни привы́кли к хо́лоду. Здесь все друг дру́га зна́ют. Все друг дру́гу помога́ют. Люби́мое ме́сто встре́чи – в магази́не, где продаю́т све́жий хлеб. В дере́вне нет ба́ра, так как по́сле 18:00 (шести́) часо́в нельзя́ продава́ть ни во́дку ни пи́во. Пья́ный челове́к мо́жет умере́ть на у́лице от хо́лода о́чень бы́стро...
+                Una vez en este pueblo hubo menos 71 grados. Pero los habitantes del pueblo están acostumbrados al frío. Aquí todos se conocen. Todos se ayudan mutuamente. El lugar favorito de encuentro es en la tienda donde venden pan fresco. En el pueblo no hay bar, ya que después de las 18:00 horas no se puede vender ni vodka ni cerveza. Una persona ebria puede morir en la calle de frío muy rápidamente...
             </p>
             
             <p id="paragraph3">
-                Зимо́й день дли́тся всего́ 3 (три) часа́. А ле́том светло́ да́же но́чью. В ма́рте в дере́вне быва́ет фестива́ль. На э́тот фестива́ль приезжа́ет мно́го иностра́нцев. Они́ хотя́т почу́вствовать, что тако́е -50 (ми́нус пятьдеся́т) гра́дусов.
+                En invierno el día dura solo 3 horas. Y en verano es claro incluso de noche. En marzo en el pueblo hay un festival. A este festival llegan muchos extranjeros. Quieren sentir qué es -50 grados.
             </p>
             
             <!-- Sección de vocabulario -->
             <div class="vocabulary">
-                <h3 id="vocabTitle">Ключевые слова</h3>
+                <h3 id="vocabTitle">Palabras clave</h3>
                 <div class="vocab-item">
                     <div class="vocab-word" id="vocab1Word">холодный</div>
                     <div class="vocab-meaning" id="vocab1Meaning">frío, de baja temperatura</div>
@@ -299,15 +330,49 @@
             
             <div class="meta-info">
                 <div>
-                    <span class="difficulty beginner" id="difficulty">Начальный</span>
+                    <span class="difficulty beginner" id="difficulty">Principiante</span>
                 </div>
-                <div id="lastUpdated">Последнее обновление: 24.08.2025</div>
+                <div id="lastUpdated">Última actualización: 24/08/2025</div>
             </div>
         </div>
     </div>
     
     <script>
-        // Traducciones para los elementos de la página
+        // Guardar el contenido original del HTML (modo edición)
+        const originalContent = {
+            mainTitle: document.getElementById('mainTitle').textContent,
+            subtitle: document.getElementById('subtitle').textContent,
+            backLink: document.getElementById('backLink').textContent,
+            contentTitle: document.getElementById('contentTitle').textContent,
+            paragraph1: document.getElementById('paragraph1').textContent,
+            paragraph2: document.getElementById('paragraph2').textContent,
+            paragraph3: document.getElementById('paragraph3').textContent,
+            vocabTitle: document.getElementById('vocabTitle').textContent,
+            vocab1Word: document.getElementById('vocab1Word').textContent,
+            vocab1Meaning: document.getElementById('vocab1Meaning').textContent,
+            vocab2Word: document.getElementById('vocab2Word').textContent,
+            vocab2Meaning: document.getElementById('vocab2Meaning').textContent,
+            vocab3Word: document.getElementById('vocab3Word').textContent,
+            vocab3Meaning: document.getElementById('vocab3Meaning').textContent,
+            vocab4Word: document.getElementById('vocab4Word').textContent,
+            vocab4Meaning: document.getElementById('vocab4Meaning').textContent,
+            vocab5Word: document.getElementById('vocab5Word').textContent,
+            vocab5Meaning: document.getElementById('vocab5Meaning').textContent,
+            vocab6Word: document.getElementById('vocab6Word').textContent,
+            vocab6Meaning: document.getElementById('vocab6Meaning').textContent,
+            vocab7Word: document.getElementById('vocab7Word').textContent,
+            vocab7Meaning: document.getElementById('vocab7Meaning').textContent,
+            vocab8Word: document.getElementById('vocab8Word').textContent,
+            vocab8Meaning: document.getElementById('vocab8Meaning').textContent,
+            vocab9Word: document.getElementById('vocab9Word').textContent,
+            vocab9Meaning: document.getElementById('vocab9Meaning').textContent,
+            vocab10Word: document.getElementById('vocab10Word').textContent,
+            vocab10Meaning: document.getElementById('vocab10Meaning').textContent,
+            difficulty: document.getElementById('difficulty').textContent,
+            lastUpdated: document.getElementById('lastUpdated').textContent
+        };
+        
+        // Traducciones para los elementos de la página (sin incluir español)
         const translations = {
             ru: {
                 mainTitle: "Са́мый холо́дный го́род на Земле́",
@@ -341,38 +406,6 @@
                 difficulty: "Начальный",
                 lastUpdated: "Последнее обновление: 24.08.2025"
             },
-            es: {
-                mainTitle: "La ciudad más fría de la Tierra",
-                subtitle: "Historia y vida en Oymyakon - el polo del frío",
-                backLink: "← Volver a la lista de textos",
-                contentTitle: "La ciudad más fría de la Tierra",
-                paragraph1: "El lugar más frío del mundo es el pueblo ruso de Oymyakon. Este pueblo se encuentra en el Este. Allí viven unas 500 personas. En invierno la temperatura normal es de menos 50 grados.",
-                paragraph2: "Una vez en este pueblo hubo menos 71 grados. Pero los habitantes del pueblo están acostumbrados al frío. Aquí todos se conocen. Todos se ayudan mutuamente. El lugar favorito de encuentro es en la tienda donde venden pan fresco. En el pueblo no hay bar, ya que después de las 18:00 horas no se puede vender ni vodka ni cerveza. Una persona ebria puede morir en la calle de frío muy rápidamente...",
-                paragraph3: "En invierno el día dura solo 3 horas. Y en verano es claro incluso de noche. En marzo en el pueblo hay un festival. A este festival llegan muchos extranjeros. Quieren sentir qué es -50 grados.",
-                vocabTitle: "Palabras clave",
-                vocab1Word: "холодный",
-                vocab1Meaning: "frío, de baja temperatura",
-                vocab2Word: "деревня",
-                vocab2Meaning: "pueblo, aldea",
-                vocab3Word: "на востоке",
-                vocab3Meaning: "en el este",
-                vocab4Word: "однажды",
-                vocab4Meaning: "una vez",
-                vocab5Word: "житель",
-                vocab5Meaning: "habitante",
-                vocab6Word: "привыкать / привыкнуть",
-                vocab6Meaning: "acostumbrarse (привыкать - imperfectivo, привыкнуть - perfectivo)",
-                vocab7Word: "свежий",
-                vocab7Meaning: "fresco",
-                vocab8Word: "пьяный",
-                vocab8Meaning: "borracho",
-                vocab9Word: "длиться",
-                vocab9Meaning: "durar",
-                vocab10Word: "чувствовать - почувствовать",
-                vocab10Meaning: "sentir (чувствовать - imperfectivo, почувствовать - perfectivo)",
-                difficulty: "Principiante",
-                lastUpdated: "Última actualización: 24/08/2025"
-            },
             en: {
                 mainTitle: "The Coldest City on Earth",
                 subtitle: "History and life in Oymyakon - the pole of cold",
@@ -405,12 +438,174 @@
                 difficulty: "Beginner",
                 lastUpdated: "Last updated: 24/08/2025"
             },
-            // Agrega traducciones para los demás idiomas siguiendo el mismo patrón
+            fr: {
+                mainTitle: "La ville la plus froide de la Terre",
+                subtitle: "Histoire et vie à Oymyakon - le pôle du froid",
+                backLink: "← Retour à la liste de textes",
+                contentTitle: "La ville la plus froide de la Terre",
+                paragraph1: "L'endroit le plus froid du monde est le village russe d'Oymyakon. Ce village est situé à l'Est. Environ 500 personnes y vivent. En hiver, la température normale est de moins 50 degrés.",
+                paragraph2: "Une fois dans ce village, il a fait moins 71 degrés ! Mais les habitants du village sont habitués au froid. Ici, tout le monde se connaît. Tout le monde s'aide mutuellement. L'endroit de rencontre préféré est dans le magasin où ils vendent du pain frais. Il n'y a pas de bar dans le village, car après 18h00, on ne peut vendre ni vodka ni bière. Une personne ivre peut mourir dans la rue de froid très rapidement...",
+                paragraph3: "En hiver, le jour ne dure que 3 heures. Et en été, il fait clair même la nuit. En mars, il y a un festival dans le village. De nombreux étrangers viennent à ce festival. Ils veulent ressentir ce que sont -50 degrés.",
+                vocabTitle: "Mots clés",
+                vocab1Word: "холодный",
+                vocab1Meaning: "froid, de basse température",
+                vocab2Word: "деревня",
+                vocab2Meaning: "village, hameau",
+                vocab3Word: "на востоке",
+                vocab3Meaning: "à l'est",
+                vocab4Word: "однажды",
+                vocab4Meaning: "une fois",
+                vocab5Word: "житель",
+                vocab5Meaning: "habitant",
+                vocab6Word: "привыкать / привыкнуть",
+                vocab6Meaning: "s'habituer à (привыкать - imperfectif, привыкнуть - perfectif)",
+                vocab7Word: "свежий",
+                vocab7Meaning: "frais",
+                vocab8Word: "пьяный",
+                vocab8Meaning: "ivre",
+                vocab9Word: "длиться",
+                vocab9Meaning: "durer",
+                vocab10Word: "чувствовать - почувствовать",
+                vocab10Meaning: "sentir (чувствовать - imperfectif, почувствовать - perfectif)",
+                difficulty: "Débutant",
+                lastUpdated: "Dernière mise à jour: 24/08/2025"
+            },
+            de: {
+                mainTitle: "Die kälteste Stadt der Erde",
+                subtitle: "Geschichte und Leben in Oymyakon - der Pol der Kälte",
+                backLink: "← Zurück zur Textliste",
+                contentTitle: "Die kälteste Stadt der Erde",
+                paragraph1: "Der kälteste Ort der Welt ist das russische Dorf Oimjakon. Dieses Dorf liegt im Osten. Dort leben etwa 500 Menschen. Im Winter ist die normale Temperatur minus 50 Grad.",
+                paragraph2: "Einmal in diesem Dorf waren es minus 71 Grad! Aber die Dorfbewohner sind an die Kälte gewöhnt. Hier kennt jeder jeden. Jeder hilft jedem. Der Lieblingstreffpunkt ist im Laden, wo sie frisches Brot verkaufen. Im Dorf gibt es keine Bar, da nach 18:00 Uhr weder Wodka noch Bier verkauft werden darf. Ein betrunkener Mensch kann sehr schnell auf der Straße an Kälte sterben...",
+                paragraph3: "Im Winter dauert der Tag nur 3 Stunden. Und im Sommer ist es auch nachts hell. Im März gibt es im Dorf ein Festival. Viele Ausländer kommen zu diesem Festival. Sie wollen fühlen, wie minus 50 Grad sind.",
+                vocabTitle: "Schlüsselwörter",
+                vocab1Word: "холодный",
+                vocab1Meaning: "kalt, niedrige Temperatur",
+                vocab2Word: "деревня",
+                vocab2Meaning: "Dorf",
+                vocab3Word: "на востоке",
+                vocab3Meaning: "im Osten",
+                vocab4Word: "однажды",
+                vocab4Meaning: "einmal",
+                vocab5Word: "житель",
+                vocab5Meaning: "Einwohner",
+                vocab6Word: "привыкать / привыкнуть",
+                vocab6Meaning: "sich gewöhnen an (привыкать - imperfektiv, привыкнуть - perfektiv)",
+                vocab7Word: "свежий",
+                vocab7Meaning: "frisch",
+                vocab8Word: "пьяный",
+                vocab8Meaning: "betrunken",
+                vocab9Word: "длиться",
+                vocab9Meaning: "dauern",
+                vocab10Word: "чувствовать - почувствовать",
+                vocab10Meaning: "fühlen (чувствовать - imperfektiv, почувствовать - perfektiv)",
+                difficulty: "Anfänger",
+                lastUpdated: "Letzte Aktualisierung: 24/08/2025"
+            },
+            pt: {
+                mainTitle: "A cidade mais fria da Terra",
+                subtitle: "História e vida em Oymyakon - o polo do frio",
+                backLink: "← Voltar à lista de textos",
+                contentTitle: "A cidade mais fria da Terra",
+                paragraph1: "O lugar mais frio do mundo é a aldeia russa de Oymyakon. Esta aldeia está localizada no Leste. Cerca de 500 pessoas vivem lá. No inverno, a temperatura normal é de menos 50 graus.",
+                paragraph2: "Uma vez nesta aldeia fez menos 71 graus! Mas os habitantes da aldeia estão acostumados ao frio. Aqui todos se conhecem. Todos se ajudam mutuamente. O local favorito de encontro é na loja onde vendem pão fresco. Na aldeia não há bar, já que depois das 18:00 horas não se pode vender nem vodka nem cerveja. Uma pessoa bêbada pode morrer na rua de frio muito rapidamente...",
+                paragraph3: "No inverno o dia dura apenas 3 horas. E no verão é claro mesmo de noite. Em março há um festival na aldeia. Muitos estrangeiros vêm a este festival. Eles querem sentir o que são -50 graus.",
+                vocabTitle: "Palavras-chave",
+                vocab1Word: "холодный",
+                vocab1Meaning: "frio, de baixa temperatura",
+                vocab2Word: "деревня",
+                vocab2Meaning: "aldeia, povoado",
+                vocab3Word: "на востоке",
+                vocab3Meaning: "no leste",
+                vocab4Word: "однажды",
+                vocab4Meaning: "uma vez",
+                vocab5Word: "житель",
+                vocab5Meaning: "habitante",
+                vocab6Word: "привыкать / привыкнуть",
+                vocab6Meaning: "acostumar-se (привыкать - imperfectivo, привыкнуть - perfectivo)",
+                vocab7Word: "свежий",
+                vocab7Meaning: "fresco",
+                vocab8Word: "пьяный",
+                vocab8Meaning: "bêbado",
+                vocab9Word: "длиться",
+                vocab9Meaning: "durar",
+                vocab10Word: "чувствовать - почувствовать",
+                vocab10Meaning: "sentir (чувствовать - imperfectivo, почувствовать - perfectivo)",
+                difficulty: "Principiante",
+                lastUpdated: "Última atualização: 24/08/2025"
+            },
+            it: {
+                mainTitle: "La città più fredda della Terra",
+                subtitle: "Storia e vita a Oymyakon - il polo del freddo",
+                backLink: "← Torna alla lista dei testi",
+                contentTitle: "La città più fredda della Terra",
+                paragraph1: "Il luogo più freddo del mondo è il villaggio russo di Oymyakon. Questo villaggio si trova nell'Est. Lì vivono circa 500 persone. In inverno la temperatura normale è di meno 50 gradi.",
+                paragraph2: "Una volta in questo villaggio c'erano meno 71 gradi! Ma gli abitanti del villaggio sono abituati al freddo. Qui tutti si conoscono. Tutti si aiutano a vicenda. Il luogo preferito per gli incontri è nel negozio dove vendono pane fresco. Nel villaggio non c'è bar, poiché dopo le 18:00 non si può vendere né vodka né birra. Una persona ubriaca può morire per strada di freddo molto rapidamente...",
+                paragraph3: "In inverno il giorno dura solo 3 ore. E in estate è chiaro anche di notte. A marzo c'è un festival nel villaggio. Molti stranieri vengono a questo festival. Vogliono sentire cosa sono -50 gradi.",
+                vocabTitle: "Parole chiave",
+                vocab1Word: "холодный",
+                vocab1Meaning: "freddo, di bassa temperatura",
+                vocab2Word: "деревня",
+                vocab2Meaning: "villaggio, borgo",
+                vocab3Word: "на востоке",
+                vocab3Meaning: "a est",
+                vocab4Word: "однажды",
+                vocab4Meaning: "una volta",
+                vocab5Word: "житель",
+                vocab5Meaning: "abitante",
+                vocab6Word: "привыкать / привыкнуть",
+                vocab6Meaning: "abituarsi (привыкать - imperfetto, привыкнуть - perfetto)",
+                vocab7Word: "свежий",
+                vocab7Meaning: "fresco",
+                vocab8Word: "пьяный",
+                vocab8Meaning: "ubriaco",
+                vocab9Word: "длиться",
+                vocab9Meaning: "durare",
+                vocab10Word: "чувствовать - почувствовать",
+                vocab10Meaning: "sentire (чувствовать - imperfetto, почувствовать - perfetto)",
+                difficulty: "Principiante",
+                lastUpdated: "Ultimo aggiornamento: 24/08/2025"
+            },
+            zh: {
+                mainTitle: "地球上最冷的城市",
+                subtitle: "奥伊米亚康的历史与生活 - 寒极",
+                backLink: "← 返回文本列表",
+                contentTitle: "地球上最冷的城市",
+                paragraph1: "世界上最冷的地方是俄罗斯村庄奥伊米亚康。这个村庄位于东部。那里居住着大约500人。冬季正常温度为零下50度。",
+                paragraph2: "有一次，这个村庄的温度达到了零下71度！但村民们已经习惯了寒冷。在这里，大家都互相认识。大家都互相帮助。最喜欢的会面地点是卖新鲜面包的商店。村子里没有酒吧，因为18:00以后不能卖伏特加或啤酒。醉酒的人可能会很快在街上冻死...",
+                paragraph3: "冬天白天只有3个小时。而夏天即使是夜晚也很明亮。三月村里有一个节日。许多外国人来到这个节日。他们想感受一下零下50度是什么感觉。",
+                vocabTitle: "关键词",
+                vocab1Word: "холодный",
+                vocab1Meaning: "寒冷的，低温度的",
+                vocab2Word: "деревня",
+                vocab2Meaning: "村庄，村镇",
+                vocab3Word: "на востоке",
+                vocab3Meaning: "在东部",
+                vocab4Word: "однажды",
+                vocab4Meaning: "一次",
+                vocab5Word: "житель",
+                vocab5Meaning: "居民",
+                vocab6Word: "привыкать / привыкнуть",
+                vocab6Meaning: "习惯于 (привыкать - 未完成体, привыкнуть - 完成体)",
+                vocab7Word: "свежий",
+                vocab7Meaning: "新鲜的",
+                vocab8Word: "пьяный",
+                vocab8Meaning: "醉酒的",
+                vocab9Word: "длиться",
+                vocab9Meaning: "持续",
+                vocab10Word: "чувствовать - почувствовать",
+                vocab10Meaning: "感觉 (чувствовать - 未完成体, почувствовать - 完成体)",
+                difficulty: "初级",
+                lastUpdated: "最后更新: 2025年8月24日"
+            }
         };
         
         // Función para cambiar el idioma
         function changeLanguage(lang) {
             const t = translations[lang];
+            
+            // Actualizar el atributo lang del HTML
+            document.documentElement.lang = lang;
             
             // Actualizar todos los elementos con IDs específicos
             document.getElementById('mainTitle').textContent = t.mainTitle;
@@ -448,10 +643,59 @@
             localStorage.setItem('selectedLanguage', lang);
         }
         
+        // Función para volver al modo edición (contenido base en español)
+        function returnToBaseMode() {
+            // Restaurar el contenido original
+            document.getElementById('mainTitle').textContent = originalContent.mainTitle;
+            document.getElementById('subtitle').textContent = originalContent.subtitle;
+            document.getElementById('backLink').textContent = originalContent.backLink;
+            document.getElementById('contentTitle').textContent = originalContent.contentTitle;
+            document.getElementById('paragraph1').textContent = originalContent.paragraph1;
+            document.getElementById('paragraph2').textContent = originalContent.paragraph2;
+            document.getElementById('paragraph3').textContent = originalContent.paragraph3;
+            document.getElementById('vocabTitle').textContent = originalContent.vocabTitle;
+            document.getElementById('vocab1Word').textContent = originalContent.vocab1Word;
+            document.getElementById('vocab1Meaning').textContent = originalContent.vocab1Meaning;
+            document.getElementById('vocab2Word').textContent = originalContent.vocab2Word;
+            document.getElementById('vocab2Meaning').textContent = originalContent.vocab2Meaning;
+            document.getElementById('vocab3Word').textContent = originalContent.vocab3Word;
+            document.getElementById('vocab3Meaning').textContent = originalContent.vocab3Meaning;
+            document.getElementById('vocab4Word').textContent = originalContent.vocab4Word;
+            document.getElementById('vocab4Meaning').textContent = originalContent.vocab4Meaning;
+            document.getElementById('vocab5Word').textContent = originalContent.vocab5Word;
+            document.getElementById('vocab5Meaning').textContent = originalContent.vocab5Meaning;
+            document.getElementById('vocab6Word').textContent = originalContent.vocab6Word;
+            document.getElementById('vocab6Meaning').textContent = originalContent.vocab6Meaning;
+            document.getElementById('vocab7Word').textContent = originalContent.vocab7Word;
+            document.getElementById('vocab7Meaning').textContent = originalContent.vocab7Meaning;
+            document.getElementById('vocab8Word').textContent = originalContent.vocab8Word;
+            document.getElementById('vocab8Meaning').textContent = originalContent.vocab8Meaning;
+            document.getElementById('vocab9Word').textContent = originalContent.vocab9Word;
+            document.getElementById('vocab9Meaning').textContent = originalContent.vocab9Meaning;
+            document.getElementById('vocab10Word').textContent = originalContent.vocab10Word;
+            document.getElementById('vocab10Meaning').textContent = originalContent.vocab10Meaning;
+            document.getElementById('difficulty').textContent = originalContent.difficulty;
+            document.getElementById('lastUpdated').textContent = originalContent.lastUpdated;
+            
+            // Actualizar el atributo lang a español
+            document.documentElement.lang = 'es';
+            
+            // Limpiar la preferencia de idioma en localStorage
+            localStorage.removeItem('selectedLanguage');
+            
+            // Restablecer el selector a una opción neutra
+            document.getElementById('languageSelect').value = '';
+        }
+        
         // Event listener para el selector de idioma
         document.getElementById('languageSelect').addEventListener('change', function() {
-            changeLanguage(this.value);
+            if (this.value) {
+                changeLanguage(this.value);
+            }
         });
+        
+        // Event listener para el botón de modo edición
+        document.getElementById('baseModeBtn').addEventListener('click', returnToBaseMode);
         
         // Al cargar la página, verificar si hay una preferencia guardada
         document.addEventListener('DOMContentLoaded', function() {

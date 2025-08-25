@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Русские тексты</title>
+    <title>Textos en Ruso - Trilex</title>
     <style>
         * {
             margin: 0;
@@ -151,29 +151,49 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
-        /* Selector de idiomas */
+        /* Selector de idiomas - Modificado para ser más compacto */
         .language-selector {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.9);
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            padding: 3px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            max-width: 150px;
         }
         .language-selector select {
             border: none;
             background: transparent;
-            font-size: 14px;
-            padding: 5px;
+            font-size: 12px;
+            padding: 2px 4px;
             cursor: pointer;
             outline: none;
             font-weight: bold;
             color: #D52B1E;
+            width: 100px;
         }
         .language-selector select option {
             color: #333;
+        }
+        .base-mode-btn {
+            background: #D52B1E;
+            color: white;
+            border: none;
+            padding: 2px 6px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 10px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .base-mode-btn:hover {
+            background: #a0201f;
         }
         
         /* Filtros de nivel */
@@ -214,8 +234,19 @@
             }
             
             .language-selector {
-                top: 10px;
-                left: 10px;
+                top: 5px;
+                left: 5px;
+                max-width: 130px;
+            }
+            
+            .language-selector select {
+                width: 80px;
+                font-size: 11px;
+            }
+            
+            .base-mode-btn {
+                font-size: 9px;
+                padding: 2px 4px;
             }
         }
     </style>
@@ -225,7 +256,6 @@
     <div class="language-selector">
         <select id="languageSelect">
             <option value="ru">🇷🇺 Русский</option>
-            <option value="es">🇪🇸 Español</option>
             <option value="en">🇬🇧 English</option>
             <option value="fr">🇫🇷 Français</option>
             <option value="de">🇩🇪 Deutsch</option>
@@ -233,114 +263,173 @@
             <option value="it">🇮🇹 Italiano</option>
             <option value="zh">🇨🇳 中文</option>
         </select>
+        <button id="baseModeBtn" class="base-mode-btn">Español</button>
     </div>
     
     <div class="container">
         <div class="header">
-            <h1 id="mainTitle">Русские тексты</h1>
-            <p id="subtitle">Здесь вы найдете подборку русских текстов для чтения и изучения</p>
-            <a href="ruso.html" class="back-link" id="backLink">← Вернуться к выбору темы</a>
+            <h1 id="mainTitle">Textos en Ruso</h1>
+            <p id="subtitle">Aquí encontrarás una selección de textos en ruso para leer y estudiar</p>
+            <a href="ruso.html" class="back-link" id="backLink">← Volver a la selección de temas</a>
         </div>
         
         <!-- Filtros de nivel -->
         <div class="filters">
-            <button class="filter-btn active" id="filterBeginner" data-level="beginner">Начальный</button>
-            <button class="filter-btn" id="filterIntermediate" data-level="intermediate">Средний</button>
-            <button class="filter-btn" id="filterAdvanced" data-level="advanced">Продвинутый</button>
+            <button class="filter-btn active" id="filterBeginner" data-level="beginner">Principiante</button>
+            <button class="filter-btn" id="filterIntermediate" data-level="intermediate">Intermedio</button>
+            <button class="filter-btn" id="filterAdvanced" data-level="advanced">Avanzado</button>
         </div>
         
         <div class="content">
             <!-- Textos de nivel principiante -->
             <div class="text-card" data-level="beginner">
-                <h3 id="card1Title">Самый холодный город на Земле</h3>
-                <p id="card1Text">Самое холодное место в мире – это русская деревня Оймякон. Эта деревня находится на Востоке. Там живёт около 500 человек. Зимой обычная температура – минус 50 градусов...</p>
-                <div class="date" id="card1Date">Обновлено: 24.08.2025</div>
-                <a href="../html_textos/texto_ru1.html" class="read-more" id="readMore1">Читать полностью →</a>
+                <h3 id="card1Title">La ciudad más fría de la Tierra</h3>
+                <p id="card1Text">El lugar más frío del mundo es el pueblo ruso de Oymyakon. Este pueblo se encuentra en el Este. Allí viven unas 500 personas. En invierno la temperatura normal es de menos 50 grados...</p>
+                <div class="date" id="card1Date">Actualizado: 24/08/2025</div>
+                <a href="../html_textos/texto_ru1.html" class="read-more" id="readMore1">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="beginner">
-                <h3 id="card2Title">Текст 2 уровень начинающий</h3>
-                <p id="card2Text">Здесь будет второй текст для начинающих. Este es un texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card2Date">Обновлено: 10.05.2023</div>
-                <a href="textos/beginner2.html" class="read-more" id="readMore2">Читать полностью →</a>
+                <h3 id="card2Title">El oso ruso</h3>
+                <p id="card2Text">Algunos extranjeros piensan que en Rusia los osos caminan por la calle. ¡Por supuesto, esto no es cierto! Los osos viven en el bosque y no les gusta la gente...</p>
+                <div class="date" id="card2Date">Actualizado: 25/08/2025</div>
+                <a href="../html_textos/texto_ru.2.html" class="read-more" id="readMore2">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="beginner">
-                <h3 id="card3Title">Текст 3 уровень начинающий</h3>
+                <h3 id="card3Title">Texto 3 nivel principiante</h3>
                 <p id="card3Text">Aquí irá el tercer texto para principiantes. Este es un texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card3Date">Обновлено: 05.05.2023</div>
-                <a href="textos/beginner3.html" class="read-more" id="readMore3">Читать полностью →</a>
+                <div class="date" id="card3Date">Actualizado: 05/05/2023</div>
+                <a href="textos/beginner3.html" class="read-more" id="readMore3">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="beginner">
-                <h3 id="card4Title">Текст 4 уровень начинающий</h3>
+                <h3 id="card4Title">Texto 4 nivel principiante</h3>
                 <p id="card4Text">Este es el cuarto texto para nivel principiante. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card4Date">Обновлено: 01.05.2023</div>
-                <a href="textos/beginner4.html" class="read-more" id="readMore4">Читать полностью →</a>
+                <div class="date" id="card4Date">Actualizado: 01/05/2023</div>
+                <a href="textos/beginner4.html" class="read-more" id="readMore4">Leer completo →</a>
             </div>
             
             <!-- Textos de nivel intermedio -->
             <div class="text-card" data-level="intermediate">
-                <h3 id="card5Title">Текст 1 уровень средний</h3>
+                <h3 id="card5Title">Texto 1 nivel intermedio</h3>
                 <p id="card5Text">Aquí irá el primer texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card5Date">Обновлено: 20.04.2023</div>
-                <a href="textos/intermediate1.html" class="read-more" id="readMore5">Читать полностью →</a>
+                <div class="date" id="card5Date">Actualizado: 20/04/2023</div>
+                <a href="textos/intermediate1.html" class="read-more" id="readMore5">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="intermediate">
-                <h3 id="card6Title">Текст 2 уровень средний</h3>
+                <h3 id="card6Title">Texto 2 nivel intermedio</h3>
                 <p id="card6Text">Este es el segundo texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card6Date">Обновлено: 15.04.2023</div>
-                <a href="textos/intermediate2.html" class="read-more" id="readMore6">Читать полностью →</a>
+                <div class="date" id="card6Date">Actualizado: 15/04/2023</div>
+                <a href="textos/intermediate2.html" class="read-more" id="readMore6">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="intermediate">
-                <h3 id="card7Title">Текст 3 уровень средний</h3>
+                <h3 id="card7Title">Texto 3 nivel intermedio</h3>
                 <p id="card7Text">Aquí irá el tercer texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card7Date">Обновлено: 10.04.2023</div>
-                <a href="textos/intermediate3.html" class="read-more" id="readMore7">Читать полностью →</a>
+                <div class="date" id="card7Date">Actualizado: 10/04/2023</div>
+                <a href="textos/intermediate3.html" class="read-more" id="readMore7">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="intermediate">
-                <h3 id="card8Title">Текст 4 уровень средний</h3>
+                <h3 id="card8Title">Texto 4 nivel intermedio</h3>
                 <p id="card8Text">Este es el cuarto texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card8Date">Обновлено: 05.04.2023</div>
-                <a href="textos/intermediate4.html" class="read-more" id="readMore8">Читать полностью →</a>
+                <div class="date" id="card8Date">Actualizado: 05/04/2023</div>
+                <a href="textos/intermediate4.html" class="read-more" id="readMore8">Leer completo →</a>
             </div>
             
             <!-- Textos de nivel avanzado -->
             <div class="text-card" data-level="advanced">
-                <h3 id="card9Title">Текст 1 уровень продвинутый</h3>
+                <h3 id="card9Title">Texto 1 nivel avanzado</h3>
                 <p id="card9Text">Aquí irá el primer texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card9Date">Обновлено: 01.04.2023</div>
-                <a href="textos/advanced1.html" class="read-more" id="readMore9">Читать полностью →</a>
+                <div class="date" id="card9Date">Actualizado: 01/04/2023</div>
+                <a href="textos/advanced1.html" class="read-more" id="readMore9">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="advanced">
-                <h3 id="card10Title">Текст 2 уровень продвинутый</h3>
+                <h3 id="card10Title">Texto 2 nivel avanzado</h3>
                 <p id="card10Text">Este es el segundo texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card10Date">Обновлено: 25.03.2023</div>
-                <a href="textos/advanced2.html" class="read-more" id="readMore10">Читать полностью →</a>
+                <div class="date" id="card10Date">Actualizado: 25/03/2023</div>
+                <a href="textos/advanced2.html" class="read-more" id="readMore10">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="advanced">
-                <h3 id="card11Title">Текст 3 уровень продвинутый</h3>
+                <h3 id="card11Title">Texto 3 nivel avanzado</h3>
                 <p id="card11Text">Aquí irá el tercer texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card11Date">Обновлено: 20.03.2023</div>
-                <a href="textos/advanced3.html" class="read-more" id="readMore11">Читать полностью →</a>
+                <div class="date" id="card11Date">Actualizado: 20/03/2023</div>
+                <a href="textos/advanced3.html" class="read-more" id="readMore11">Leer completo →</a>
             </div>
             
             <div class="text-card" data-level="advanced">
-                <h3 id="card12Title">Текст 4 уровень продвинутый</h3>
+                <h3 id="card12Title">Texto 4 nivel avanzado</h3>
                 <p id="card12Text">Este es el cuarto texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.</p>
-                <div class="date" id="card12Date">Обновлено: 15.03.2023</div>
-                <a href="textos/advanced4.html" class="read-more" id="readMore12">Читать completamente →</a>
+                <div class="date" id="card12Date">Actualizado: 15/03/2023</div>
+                <a href="textos/advanced4.html" class="read-more" id="readMore12">Leer completamente →</a>
             </div>
         </div>
     </div>
     
     <script>
-        // Traducciones para los elementos de la página
+        // Guardar el contenido original del HTML (modo edición)
+        const originalContent = {
+            mainTitle: document.getElementById('mainTitle').textContent,
+            subtitle: document.getElementById('subtitle').textContent,
+            backLink: document.getElementById('backLink').textContent,
+            filterBeginner: document.getElementById('filterBeginner').textContent,
+            filterIntermediate: document.getElementById('filterIntermediate').textContent,
+            filterAdvanced: document.getElementById('filterAdvanced').textContent,
+            card1Title: document.getElementById('card1Title').textContent,
+            card1Text: document.getElementById('card1Text').textContent,
+            card1Date: document.getElementById('card1Date').textContent,
+            readMore1: document.getElementById('readMore1').textContent,
+            card2Title: document.getElementById('card2Title').textContent,
+            card2Text: document.getElementById('card2Text').textContent,
+            card2Date: document.getElementById('card2Date').textContent,
+            readMore2: document.getElementById('readMore2').textContent,
+            card3Title: document.getElementById('card3Title').textContent,
+            card3Text: document.getElementById('card3Text').textContent,
+            card3Date: document.getElementById('card3Date').textContent,
+            readMore3: document.getElementById('readMore3').textContent,
+            card4Title: document.getElementById('card4Title').textContent,
+            card4Text: document.getElementById('card4Text').textContent,
+            card4Date: document.getElementById('card4Date').textContent,
+            readMore4: document.getElementById('readMore4').textContent,
+            card5Title: document.getElementById('card5Title').textContent,
+            card5Text: document.getElementById('card5Text').textContent,
+            card5Date: document.getElementById('card5Date').textContent,
+            readMore5: document.getElementById('readMore5').textContent,
+            card6Title: document.getElementById('card6Title').textContent,
+            card6Text: document.getElementById('card6Text').textContent,
+            card6Date: document.getElementById('card6Date').textContent,
+            readMore6: document.getElementById('readMore6').textContent,
+            card7Title: document.getElementById('card7Title').textContent,
+            card7Text: document.getElementById('card7Text').textContent,
+            card7Date: document.getElementById('card7Date').textContent,
+            readMore7: document.getElementById('readMore7').textContent,
+            card8Title: document.getElementById('card8Title').textContent,
+            card8Text: document.getElementById('card8Text').textContent,
+            card8Date: document.getElementById('card8Date').textContent,
+            readMore8: document.getElementById('readMore8').textContent,
+            card9Title: document.getElementById('card9Title').textContent,
+            card9Text: document.getElementById('card9Text').textContent,
+            card9Date: document.getElementById('card9Date').textContent,
+            readMore9: document.getElementById('readMore9').textContent,
+            card10Title: document.getElementById('card10Title').textContent,
+            card10Text: document.getElementById('card10Text').textContent,
+            card10Date: document.getElementById('card10Date').textContent,
+            readMore10: document.getElementById('readMore10').textContent,
+            card11Title: document.getElementById('card11Title').textContent,
+            card11Text: document.getElementById('card11Text').textContent,
+            card11Date: document.getElementById('card11Date').textContent,
+            readMore11: document.getElementById('readMore11').textContent,
+            card12Title: document.getElementById('card12Title').textContent,
+            card12Text: document.getElementById('card12Text').textContent,
+            card12Date: document.getElementById('card12Date').textContent,
+            readMore12: document.getElementById('readMore12').textContent
+        };
+        
+        // Traducciones para los elementos de la página (sin incluir español)
         const translations = {
             ru: {
                 mainTitle: "Русские тексты",
@@ -353,7 +442,7 @@
                 card1Text: "Самое холодное место в мире – это русская деревня Оймякон. Эта деревня находится на Востоке. Там живёт около 500 человек. Зимой обычная температура – минус 50 градусов...",
                 card1Date: "Обновлено: 24.08.2025",
                 readMore1: "Читать полностью →",
-                card2Title: "Текст 2 уровень начинающий",
+                card2Title: "Медведи в России",
                 card2Text: "Здесь будет второй текст для начинающих. Este es un texto temporal que será reemplazado cuando proporciones el contenido.",
                 card2Date: "Обновлено: 10.05.2023",
                 readMore2: "Читать полностью →",
@@ -366,93 +455,37 @@
                 card4Date: "Обновлено: 01.05.2023",
                 readMore4: "Читать полностью →",
                 card5Title: "Текст 1 уровень средний",
-                card5Text: "Aquí irá el primer texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.",
+                card5Text: "Aquí irá el primer texto para nivel intermedio. Texto temporal que será reemplазado cuando proporciones el contenido.",
                 card5Date: "Обновлено: 20.04.2023",
                 readMore5: "Читать полностью →",
                 card6Title: "Текст 2 уровень средний",
-                card6Text: "Este es el segundo texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.",
+                card6Text: "Este es el segundo texto para nivel intermedio. Texto temporal que será reemplазado cuando proporciones el contenido.",
                 card6Date: "Обновлено: 15.04.2023",
                 readMore6: "Читать полностью →",
                 card7Title: "Текст 3 уровень средний",
-                card7Text: "Aquí irá el tercer texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.",
+                card7Text: "Aquí irá el tercer texto para nivel intermedio. Texto temporal que será reemplазado cuando proporciones el contenido.",
                 card7Date: "Обновлено: 10.04.2023",
                 readMore7: "Читать полностью →",
                 card8Title: "Текст 4 уровень средний",
-                card8Text: "Este es el cuarto texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.",
+                card8Text: "Este es el cuarto texto para nivel intermedio. Texto temporal que será reemplазado cuando proporciones el contenido.",
                 card8Date: "Обновлено: 05.04.2023",
                 readMore8: "Читать полностью →",
                 card9Title: "Текст 1 уровень продвинутый",
-                card9Text: "Aquí irá el primer texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.",
+                card9Text: "Aquí irá el primer texto para nivel avanzado. Texto temporal que será reemplазado cuando proporciones el contenido.",
                 card9Date: "Обновлено: 01.04.2023",
                 readMore9: "Читать полностью →",
                 card10Title: "Текст 2 уровень продвинутый",
-                card10Text: "Este es el segundo texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.",
+                card10Text: "Este es el segundo texto para nivel avanzado. Texto temporal que será reemplазado cuando proporciones el contenido.",
                 card10Date: "Обновлено: 25.03.2023",
                 readMore10: "Читать полностью →",
                 card11Title: "Текст 3 уровень продвинутый",
-                card11Text: "Aquí irá el tercer texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.",
+                card11Text: "Aquí irá el tercer texto para nivel avanzado. Texto temporal que será reemplазado cuando proporciones el contenido.",
                 card11Date: "Обновлено: 20.03.2023",
                 readMore11: "Читать полностью →",
                 card12Title: "Текст 4 уровень продвинутый",
-                card12Text: "Este es el cuarto texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.",
+                card12Text: "Este es el cuarto texto para nivel avanzado. Texto temporal que será reemplазado cuando proporciones el contenido.",
                 card12Date: "Обновлено: 15.03.2023",
                 readMore12: "Читать полностью →"
-            },
-            es: {
-                mainTitle: "Textos en Ruso",
-                subtitle: "Aquí encontrarás una selección de textos en ruso para leer y estudiar",
-                backLink: "← Volver a la selección de temas",
-                filterBeginner: "Principiante",
-                filterIntermediate: "Intermedio",
-                filterAdvanced: "Avanzado",
-                card1Title: "La ciudad más fría de la Tierra",
-                card1Text: "El lugar más frío del mundo es el pueblo ruso de Oymyakon. Este pueblo se encuentra en el Este. Allí viven unas 500 personas. En invierno la temperatura normal es de menos 50 grados...",
-                card1Date: "Actualizado: 24/08/2025",
-                readMore1: "Leer completo →",
-                card2Title: "Texto 2 nivel principiante",
-                card2Text: "Aquí irá el segundo texto para principiantes. Este es un texto temporal que será reemplazado cuando proporciones el contenido.",
-                card2Date: "Actualizado: 10/05/2023",
-                readMore2: "Leer completo →",
-                card3Title: "Texto 3 nivel principiante",
-                card3Text: "Aquí irá el tercer texto para principiantes. Este es un texto temporal que será reemplazado cuando proporciones el contenido.",
-                card3Date: "Actualizado: 05/05/2023",
-                readMore3: "Leer completo →",
-                card4Title: "Texto 4 nivel principiante",
-                card4Text: "Este es el cuarto texto para nivel principiante. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card4Date: "Actualizado: 01/05/2023",
-                readMore4: "Leer completo →",
-                card5Title: "Texto 1 nivel intermedio",
-                card5Text: "Aquí irá el primer texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card5Date: "Actualizado: 20/04/2023",
-                readMore5: "Leer completo →",
-                card6Title: "Texto 2 nivel intermedio",
-                card6Text: "Este es el segundo texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card6Date: "Actualizado: 15/04/2023",
-                readMore6: "Leer completo →",
-                card7Title: "Texto 3 nivel intermedio",
-                card7Text: "Aquí irá el tercer texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card7Date: "Actualizado: 10/04/2023",
-                readMore7: "Leer completo →",
-                card8Title: "Texto 4 nivel intermedio",
-                card8Text: "Este es el cuarto texto para nivel intermedio. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card8Date: "Actualizado: 05/04/2023",
-                readMore8: "Leer completo →",
-                card9Title: "Texto 1 nivel avanzado",
-                card9Text: "Aquí irá el primer texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card9Date: "Actualizado: 01/04/2023",
-                readMore9: "Leer completo →",
-                card10Title: "Texto 2 nivel avanzado",
-                card10Text: "Este es el segundo texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card10Date: "Actualizado: 25/03/2023",
-                readMore10: "Leer completo →",
-                card11Title: "Texto 3 nivel avanzado",
-                card11Text: "Aquí irá el tercer texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card11Date: "Actualizado: 20/03/2023",
-                readMore11: "Leer completo →",
-                card12Title: "Texto 4 nivel avanzado",
-                card12Text: "Este es el cuarto texto para nivel avanzado. Texto temporal que será reemplazado cuando proporciones el contenido.",
-                card12Date: "Actualizado: 15/03/2023",
-                readMore12: "Leer completo →"
             },
             en: {
                 mainTitle: "Russian Texts",
@@ -796,6 +829,9 @@
         function changeLanguage(lang) {
             const t = translations[lang];
             
+            // Actualizar el atributo lang del HTML
+            document.documentElement.lang = lang;
+            
             // Actualizar todos los elementos con IDs específicos
             document.getElementById('mainTitle').textContent = t.mainTitle;
             document.getElementById('subtitle').textContent = t.subtitle;
@@ -816,10 +852,43 @@
             localStorage.setItem('selectedLanguage', lang);
         }
         
+        // Función para volver al modo edición (contenido base en español)
+        function returnToBaseMode() {
+            // Restaurar el contenido original
+            document.getElementById('mainTitle').textContent = originalContent.mainTitle;
+            document.getElementById('subtitle').textContent = originalContent.subtitle;
+            document.getElementById('backLink').textContent = originalContent.backLink;
+            document.getElementById('filterBeginner').textContent = originalContent.filterBeginner;
+            document.getElementById('filterIntermediate').textContent = originalContent.filterIntermediate;
+            document.getElementById('filterAdvanced').textContent = originalContent.filterAdvanced;
+            
+            // Actualizar elementos de las tarjetas de texto
+            for (let i = 1; i <= 12; i++) {
+                document.getElementById(`card${i}Title`).textContent = originalContent[`card${i}Title`];
+                document.getElementById(`card${i}Text`).textContent = originalContent[`card${i}Text`];
+                document.getElementById(`card${i}Date`).textContent = originalContent[`card${i}Date`];
+                document.getElementById(`readMore${i}`).textContent = originalContent[`readMore${i}`];
+            }
+            
+            // Actualizar el atributo lang a español
+            document.documentElement.lang = 'es';
+            
+            // Limpiar la preferencia de idioma en localStorage
+            localStorage.removeItem('selectedLanguage');
+            
+            // Restablecer el selector a una opción neutra
+            document.getElementById('languageSelect').value = '';
+        }
+        
         // Event listener para el selector de idioma
         document.getElementById('languageSelect').addEventListener('change', function() {
-            changeLanguage(this.value);
+            if (this.value) {
+                changeLanguage(this.value);
+            }
         });
+        
+        // Event listener para el botón de modo edición
+        document.getElementById('baseModeBtn').addEventListener('click', returnToBaseMode);
         
         // Al cargar la página, verificar si hay una preferencia guardada
         document.addEventListener('DOMContentLoaded', function() {

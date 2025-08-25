@@ -56,26 +56,100 @@
             width: 100%;
             padding: 0 20px;
         }
+        
+        /* ===== ESTILO ESPACIAL PARA EL TÍTULO ===== */
         .carousel-title {
             font-size: 4.5rem;
             font-weight: bold;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
             margin-bottom: 1rem;
             letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, #001a4d, #0039A6, #0052cc, #0039A6, #001a4d);
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 57, 166, 0.4);
+            animation: gradientMove 8s ease infinite;
         }
+        
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* Línea azul brillante para el título - más corta */
+        .carousel-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0039A6, transparent);
+            animation: glowLine 3s ease-in-out infinite;
+        }
+        
+        @keyframes glowLine {
+            0%, 100% {
+                opacity: 0.5;
+                width: 40%;
+            }
+            50% {
+                opacity: 1;
+                width: 50%;
+            }
+        }
+        
+        /* Estilo espacial para el subtítulo */
         .carousel-title small {
             font-size: 1.8rem;
             font-weight: normal;
             display: block;
-            margin-top: 0.8rem;
+            margin-top: 1.5rem;
             color: rgba(255, 255, 255, 0.95);
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+            text-shadow: 0 0 8px rgba(0, 57, 166, 0.3);
+            position: relative;
+            letter-spacing: 2px;
         }
+        
+        /* Línea blanca para el subtítulo - más larga */
+        .carousel-title small::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: whiteGlowLine 4s ease-in-out infinite;
+        }
+        
+        @keyframes whiteGlowLine {
+            0%, 100% {
+                opacity: 0.6;
+                width: 75%;
+            }
+            50% {
+                opacity: 1;
+                width: 85%;
+            }
+        }
+        
         /* ===== SELECTOR DE IDIOMAS ===== */
         .language-switch {
             position: absolute;
-            bottom: 40px;
+            bottom: 70px; /* Elevado de 40px a 70px para evitar superposición */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -87,7 +161,8 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        .lang-link {
+        .lang-item {
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -97,7 +172,7 @@
             padding: 8px;
             border-radius: 50%;
         }
-        .lang-link:hover {
+        .lang-item:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.15);
         }
@@ -111,7 +186,7 @@
             margin-bottom: 8px;
             transition: all 0.3s ease;
         }
-        .lang-link:hover .lang-icon {
+        .lang-item:hover .lang-icon {
             transform: scale(1.1);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
         }
@@ -122,9 +197,69 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .lang-link:hover .lang-text {
+        .lang-item:hover .lang-text {
             opacity: 1;
         }
+        
+        /* ===== ESTILOS PARA EL CANDADO ===== */
+        .lock-icon {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff5252;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        .lang-item.locked {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        
+        .lang-item.locked:hover {
+            transform: none;
+            background: transparent;
+        }
+        
+        .lang-item.locked:hover .lang-text {
+            opacity: 1;
+            color: #ff5252;
+        }
+        
+        .lang-item.locked:hover .lang-icon {
+            transform: none;
+            border-color: #ff5252;
+        }
+        
+        /* Mensaje de desarrollo */
+        .development-message {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .lang-item.locked:hover .development-message {
+            opacity: 1;
+        }
+        
         /* ===== SECCIÓN DE REDES SOCIALES ===== */
         .infos {
             position: absolute;
@@ -220,6 +355,155 @@
             text-decoration: underline;
         }
         
+        /* ===== ESTILOS PARA EL MODAL ESPACIAL ===== */
+        .spatial-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .spatial-modal.show {
+            opacity: 1;
+        }
+        
+        .spatial-modal-content {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 380px;
+            width: 85%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 57, 166, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .spatial-modal.show .spatial-modal-content {
+            transform: scale(1);
+        }
+        
+        /* Efecto de estrellas en el fondo del modal */
+        .spatial-modal-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        /* Líneas espaciales decorativas */
+        .spatial-modal-content::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 57, 166, 0.1) 50%, transparent 70%);
+            z-index: -1;
+            animation: spaceLines 8s linear infinite;
+        }
+        
+        @keyframes spaceLines {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(50%, 50%) rotate(360deg);
+            }
+        }
+        
+        .spatial-modal-title {
+            color: #0039A6; /* Azul ruso */
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 57, 166, 0.7);
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Efecto de brillo para el título */
+        .spatial-modal-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0039A6, transparent);
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        .spatial-modal-message {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .spatial-modal-close {
+            background: linear-gradient(135deg, #0039A6 0%, #0052cc 100%); /* Azul ruso */
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 57, 166, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .spatial-modal-close::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .spatial-modal-close:hover::before {
+            left: 100%;
+        }
+        
+        .spatial-modal-close:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 57, 166, 0.6);
+        }
+        
         /* ===== UTILIDADES ===== */
         .mb-4 {
             margin-bottom: 1.5rem;
@@ -285,6 +569,7 @@
             .language-switch {
                 gap: 0.8rem;
                 padding: 12px 20px;
+                bottom: 60px; /* Ajustado para pantallas medianas */
             }
             
             .lang-icon {
@@ -327,7 +612,7 @@
             }
             
             .language-switch {
-                bottom: 30px;
+                bottom: 50px; /* Ajustado para pantallas pequeñas */
                 gap: 0.6rem;
                 padding: 10px 15px;
             }
@@ -373,26 +658,43 @@
         
         <!-- Selector de idiomas -->
         <div class="language-switch">
-            <a href="html_add/ingles.html" class="lang-link" title="English/en">
+            <!-- Inglés (bloqueado) -->
+            <div class="lang-item locked" data-lang="en">
                 <img src="imgs/estados-unidos.png" alt="Inglés" class="lang-icon">
                 <span class="lang-text">English</span>
-            </a>
-            <a href="html_add/aleman.html" class="lang-link" title="Deutsch/de">
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">In development</span>
+            </div>
+            
+            <!-- Alemán (bloqueado) -->
+            <div class="lang-item locked" data-lang="de">
                 <img src="imgs/alemania.png" alt="Alemán" class="lang-icon">
                 <span class="lang-text">Deutsch</span>
-            </a>
-            <a href="html_add/ruso.html" class="lang-link" title="Pyccкий/ru">
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">In Entwicklung</span>
+            </div>
+            
+            <!-- Ruso (disponible) -->
+            <a href="html_add/ruso.html" class="lang-item" title="Pyccкий/ru">
                 <img src="imgs/rusia.png" alt="Ruso" class="lang-icon">
                 <span class="lang-text">Русский</span>
             </a>
-            <a href="html_add/italiano.html" class="lang-link" title="Italiano/it">
+            
+            <!-- Italiano (bloqueado) -->
+            <div class="lang-item locked" data-lang="it">
                 <img src="imgs/italia.png" alt="Italiano" class="lang-icon">
                 <span class="lang-text">Italiano</span>
-            </a>
-            <a href="html_add/castellano.html" class="lang-link" title="Castellano/es">
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">In sviluppo</span>
+            </div>
+            
+            <!-- Castellano (bloqueado) -->
+            <div class="lang-item locked" data-lang="es">
                 <img src="imgs/argentina.png" alt="Castellano" class="lang-icon">
                 <span class="lang-text">Castellano</span>
-            </a>
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">En desarrollo</span>
+            </div>
         </div>
         
         <!-- Redes sociales -->
@@ -461,6 +763,82 @@
                 e.preventDefault();
                 alert('Las herramientas de desarrollador están deshabilitadas.');
             }
+        });
+        
+        // Traducciones para el modal
+        const modalTranslations = {
+            en: {
+                title: "Trilex announces",
+                message: "This section is under development"
+            },
+            de: {
+                title: "Trilex kündigt an",
+                message: "Dieser Abschnitt befindet sich in der Entwicklung"
+            },
+            it: {
+                title: "Trilex annuncia",
+                message: "Questa sezione è in sviluppo"
+            },
+            es: {
+                title: "Trilex anuncia",
+                message: "Esta sección se encuentra en desarrollo"
+            }
+        };
+        
+        // Prevenir navegación en idiomas bloqueados
+        document.querySelectorAll('.lang-item.locked').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Obtener el idioma del atributo data-lang
+                const lang = this.getAttribute('data-lang');
+                
+                // Obtener las traducciones para el modal
+                let modalTitle = 'Trilex anuncia';
+                let modalMessage = 'Esta sección se encuentra en desarrollo';
+                
+                if (lang && modalTranslations[lang]) {
+                    modalTitle = modalTranslations[lang].title;
+                    modalMessage = modalTranslations[lang].message;
+                }
+                
+                // Crear un modal espacial personalizado
+                const modal = document.createElement('div');
+                modal.className = 'spatial-modal';
+                
+                const modalContent = document.createElement('div');
+                modalContent.className = 'spatial-modal-content';
+                
+                const modalTitleElement = document.createElement('h2');
+                modalTitleElement.className = 'spatial-modal-title';
+                modalTitleElement.textContent = modalTitle;
+                
+                const modalMessageElement = document.createElement('p');
+                modalMessageElement.className = 'spatial-modal-message';
+                modalMessageElement.textContent = modalMessage;
+                
+                const closeButton = document.createElement('button');
+                closeButton.className = 'spatial-modal-close';
+                closeButton.textContent = 'Cerrar';
+                
+                closeButton.addEventListener('click', function() {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(modal);
+                    }, 300);
+                });
+                
+                modalContent.appendChild(modalTitleElement);
+                modalContent.appendChild(modalMessageElement);
+                modalContent.appendChild(closeButton);
+                modal.appendChild(modalContent);
+                document.body.appendChild(modal);
+                
+                // Activar la animación de aparición
+                setTimeout(() => {
+                    modal.classList.add('show');
+                }, 10);
+            });
         });
     </script>
 </body>

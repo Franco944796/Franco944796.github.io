@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Русский - Выбор темы</title>
+    <title>Ruso - Selección de temas - Trilex</title>
     <style>
         /* Estilos principales */
         * {
@@ -143,6 +143,7 @@
         .bubble:hover::before {
             opacity: 1;
         }
+        
         /* Botón de navegación superior */
         .nav-top {
             position: fixed;
@@ -175,29 +176,128 @@
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
         }
         
-        /* Selector de idiomas */
+        /* Selector de idiomas - Modificado para ser más compacto */
         .language-selector {
             position: fixed;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.9);
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            padding: 3px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            max-width: 150px;
         }
         .language-selector select {
             border: none;
             background: transparent;
-            font-size: 14px;
-            padding: 5px;
+            font-size: 12px;
+            padding: 2px 4px;
             cursor: pointer;
             outline: none;
             font-weight: bold;
             color: #D52B1E;
+            width: 100px;
         }
         .language-selector select option {
             color: #333;
+        }
+        .base-mode-btn {
+            background: #D52B1E;
+            color: white;
+            border: none;
+            padding: 2px 6px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 10px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .base-mode-btn:hover {
+            background: #a0201f;
+        }
+        
+        /* Estilo para opciones bloqueadas */
+        .language-selector select option:disabled {
+            color: #888;
+            font-style: italic;
+        }
+        
+        /* Mensaje de desarrollo para idiomas bloqueados */
+        .lang-development-message {
+            position: fixed;
+            top: 40px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1001;
+        }
+        
+        /* Estilos para burbujas bloqueadas */
+        .bubble.locked {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+        
+        .bubble.locked:hover {
+            transform: none;
+            background: linear-gradient(135deg, 
+                rgba(0, 57, 166, 0.85),
+                rgba(213, 43, 30, 0.75)
+            );
+            box-shadow: none;
+        }
+        
+        .bubble.locked:hover .bubble-title {
+            color: #ff5252;
+        }
+        
+        .bubble.locked .lock-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff5252;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        .bubble.locked .development-message {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .bubble.locked:hover .development-message {
+            opacity: 1;
         }
         
         /* Pie de página con atribución */
@@ -288,8 +388,19 @@
             }
             
             .language-selector {
-                top: 10px;
-                left: 10px;
+                top: 5px;
+                left: 5px;
+                max-width: 130px;
+            }
+            
+            .language-selector select {
+                width: 80px;
+                font-size: 11px;
+            }
+            
+            .base-mode-btn {
+                font-size: 9px;
+                padding: 2px 4px;
             }
             
             .footer {
@@ -297,91 +408,280 @@
                 padding: 3px;
             }
         }
+        
+        /* Estilos para el modal espacial */
+        .spatial-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .spatial-modal.show {
+            opacity: 1;
+        }
+        
+        .spatial-modal-content {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 380px;
+            width: 85%;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 57, 166, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .spatial-modal.show .spatial-modal-content {
+            transform: scale(1);
+        }
+        
+        /* Efecto de estrellas en el fondo del modal */
+        .spatial-modal-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        /* Líneas espaciales decorativas */
+        .spatial-modal-content::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(0, 57, 166, 0.1) 50%, transparent 70%);
+            z-index: -1;
+            animation: spaceLines 8s linear infinite;
+        }
+        
+        @keyframes spaceLines {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(50%, 50%) rotate(360deg);
+            }
+        }
+        
+        .spatial-modal-title {
+            color: #0039A6; /* Azul ruso */
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 57, 166, 0.7);
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Efecto de brillo para el título */
+        .spatial-modal-title::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0039A6, transparent);
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        .spatial-modal-message {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .spatial-modal-close {
+            background: linear-gradient(135deg, #0039A6 0%, #0052cc 100%); /* Azul ruso */
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 57, 166, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .spatial-modal-close::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .spatial-modal-close:hover::before {
+            left: 100%;
+        }
+        
+        .spatial-modal-close:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 57, 166, 0.6);
+        }
     </style>
 </head>
 <body>
     <!-- Selector de idiomas -->
     <div class="language-selector">
         <select id="languageSelect">
-            <option value="ru">🇷🇺 Русский</option>
-            <option value="es">🇪🇸 Español</option>
-            <option value="en">🇬🇧 English</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="de">🇩🇪 Deutsch</option>
-            <option value="pt">🇵🇹 Português</option>
-            <option value="it">🇮🇹 Italiano</option>
-            <option value="zh">🇨🇳 中文</option>
+            <option value="ru">🇷🇺 Русский</option>  
+            <option value="en" disabled>🇬🇧 English 🔒</option>  <!-- PARA HABILITAR EL IDIOMA, ELIMINE EL ATRIBUTO DISABLE -->
+            <option value="fr" disabled>🇫🇷 Français 🔒</option>
+            <option value="de" disabled>🇩🇪 Deutsch 🔒</option>
+            <option value="pt" disabled>🇵🇹 Português 🔒</option>
+            <option value="it" disabled>🇮🇹 Italiano 🔒</option>
+            <option value="zh" disabled>🇨🇳 中文 🔒</option>
         </select>
+        <button id="baseModeBtn" class="base-mode-btn">Español</button>
     </div>
+    
+    <!-- Mensaje de desarrollo para idiomas bloqueados -->
+    <div id="langDevelopmentMessage" class="lang-development-message">En desarrollo</div>
     
     <!-- Botón para volver a la página principal de idiomas -->
     <div class="nav-top">
-        <a href="../index.html" class="btn-home">← Языки</a>
+        <a href="../index.html" class="btn-home" id="btnHome">← Idiomas</a>
     </div>
     
     <div class="container">
-        <h1 id="mainTitle">Русский</h1>
-        <p class="subtitle" id="subtitle">Выберите тему, чтобы продолжить</p>
+        <h1 id="mainTitle">Ruso</h1>
+        <p class="subtitle" id="subtitle">Selecciona un tema para continuar</p>
         
         <div class="bubbles-container">
-            <!-- Burbuja para Textos -->
+            <!-- Burbuja para Textos (accesible) -->
             <a href="textos.ru.html" class="bubble">
                 <div class="bubble-icon">📝</div>
-                <div class="bubble-title" data-translate="texts">Тексты</div>
-                <div class="bubble-desc" data-translate="textsDesc">Читайте и анализируйте русские тексты</div>
+                <div class="bubble-title" data-translate="texts">Textos</div>
+                <div class="bubble-desc" data-translate="textsDesc">Lee y analiza textos en ruso</div>
             </a>
             
-            <!-- Burbuja para Historia -->
-            <a href="historia.ru.html" class="bubble">
+            <!-- Burbuja para Historia (bloqueada) -->
+            <div class="bubble locked">
                 <div class="bubble-icon">🏛️</div>
-                <div class="bubble-title" data-translate="history">История</div>
-                <div class="bubble-desc" data-translate="historyDesc">Откройте для себя историю России</div>
-            </a>
+                <div class="bubble-title" data-translate="history">Historia</div>
+                <div class="bubble-desc" data-translate="historyDesc">Descubre la historia de Rusia</div>
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">Esta sección se encuentra en desarrollo</span>
+            </div>
             
-            <!-- Burbuja para Ejercicios Prácticos -->
-            <a href="ejercicios.ru.html" class="bubble">
+            <!-- Burbuja para Ejercicios Prácticos (bloqueada) -->
+            <div class="bubble locked">
                 <div class="bubble-icon">✏️</div>
-                <div class="bubble-title" data-translate="exercises">Практические упражнения</div>
-                <div class="bubble-desc" data-translate="exercisesDesc">Улучшите свои знания русского языка</div>
-            </a>
+                <div class="bubble-title" data-translate="exercises">Ejercicios</div>
+                <div class="bubble-desc" data-translate="exercisesDesc">Mejora tu ruso con práctica</div>
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">Esta sección se encuentra en desarrollo</span>
+            </div>
             
-            <!-- Burbuja para Evaluaciones -->
-            <a href="evaluaciones.ru.html" class="bubble">
+            <!-- Burbuja para Evaluaciones (bloqueada) -->
+            <div class="bubble locked">
                 <div class="bubble-icon">📊</div>
-                <div class="bubble-title" data-translate="assessments">Оценки</div>
-                <div class="bubble-desc" data-translate="assessmentsDesc">Проверьте свой прогресс</div>
-            </a>
+                <div class="bubble-title" data-translate="assessments">Evaluaciones</div>
+                <div class="bubble-desc" data-translate="assessmentsDesc">Mide tu progreso</div>
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">Esta sección se encuentra en desarrollo</span>
+            </div>
             
-            <!-- Burbuja para Aprendizaje Auditivo -->
-            <a href="auditivo.ru.html" class="bubble">
+            <!-- Burbuja para Aprendizaje Auditivo (bloqueada) -->
+            <div class="bubble locked">
                 <div class="bubble-icon">🎧</div>
-                <div class="bubble-title" data-translate="listening">Аудирование</div>
-                <div class="bubble-desc" data-translate="listeningDesc">Тренируйте свой слух</div>
-            </a>
+                <div class="bubble-title" data-translate="listening">Auditivo</div>
+                <div class="bubble-desc" data-translate="listeningDesc">Entrena tu oído</div>
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">Esta sección se encuentra en desarrollo</span>
+            </div>
             
-            <!-- Burbuja para Curso con Temario -->
-            <a href="curso.ru.html" class="bubble">
+            <!-- Burbuja para Curso con Temario (bloqueada) -->
+            <div class="bubble locked">
                 <div class="bubble-icon">📚</div>
-                <div class="bubble-title" data-translate="course">Курс с учебным планом</div>
-                <div class="bubble-desc" data-translate="courseDesc">Изучите все уровни языка</div>
-            </a>
+                <div class="bubble-title" data-translate="course">Curso</div>
+                <div class="bubble-desc" data-translate="courseDesc">Estudia todos los niveles</div>
+                <span class="lock-icon">🔒</span>
+                <span class="development-message">Esta sección se encuentra en desarrollo</span>
+            </div>
         </div>
     </div>
     
     <!-- Pie de página con atribución -->
     <div class="footer">
-        <span data-translate="footerAttribution">Изображение Санкт-Петербурга, Россия.</span>
-        <a href="https://pixabay.com/photos/st-petersburg-russia-architecture-6902540/" target="_blank">Источник: Pixabay</a> | 
-        <a href="https://pixabay.com/service/license/" target="_blank">Лицензия: Pixabay License</a>
+        <span data-translate="footerAttribution">Imagen de San Petersburgo, Rusia.</span>
+        <span data-translate="source">Fuente:</span>
+        <a href="https://pixabay.com/photos/st-petersburg-russia-architecture-6902540/" target="_blank">Pixabay</a> | 
+        <span data-translate="license">Licencia:</span>
+        <a href="https://pixabay.com/service/license/" target="_blank">Pixabay License</a>
     </div>
     
     <script>
-        // Traducciones para los elementos de la página
+        // Guardar el contenido original del HTML (modo edición)
+        const originalContent = {
+            mainTitle: document.getElementById('mainTitle').textContent,
+            subtitle: document.getElementById('subtitle').textContent,
+            btnHome: document.getElementById('btnHome').textContent,
+            footerAttribution: document.querySelector('[data-translate="footerAttribution"]').textContent,
+            source: document.querySelector('[data-translate="source"]').textContent,
+            license: document.querySelector('[data-translate="license"]').textContent,
+            texts: document.querySelector('[data-translate="texts"]').textContent,
+            textsDesc: document.querySelector('[data-translate="textsDesc"]').textContent,
+            history: document.querySelector('[data-translate="history"]').textContent,
+            historyDesc: document.querySelector('[data-translate="historyDesc"]').textContent,
+            exercises: document.querySelector('[data-translate="exercises"]').textContent,
+            exercisesDesc: document.querySelector('[data-translate="exercisesDesc"]').textContent,
+            assessments: document.querySelector('[data-translate="assessments"]').textContent,
+            assessmentsDesc: document.querySelector('[data-translate="assessmentsDesc"]').textContent,
+            listening: document.querySelector('[data-translate="listening"]').textContent,
+            listeningDesc: document.querySelector('[data-translate="listeningDesc"]').textContent,
+            course: document.querySelector('[data-translate="course"]').textContent,
+            courseDesc: document.querySelector('[data-translate="courseDesc"]').textContent
+        };
+        
+        // Traducciones para los elementos de la página (sin incluir español)
         const translations = {
             ru: {
                 mainTitle: "Русский",
                 subtitle: "Выберите тему, чтобы продолжить",
+                btnHome: "← Языки",
                 footerAttribution: "Изображение Санкт-Петербурга, Россия.",
+                source: "Источник:",
+                license: "Лицензия:",
                 texts: "Тексты",
                 textsDesc: "Читайте и анализируйте русские тексты",
                 history: "История",
@@ -393,29 +693,17 @@
                 listening: "Аудирование",
                 listeningDesc: "Тренируйте свой слух",
                 course: "Курс с учебным планом",
-                courseDesc: "Изучите все уровни языка"
-            },
-            es: {
-                mainTitle: "Ruso",
-                subtitle: "Selecciona un tema para continuar",
-                footerAttribution: "Imagen de San Petersburgo, Rusia.",
-                texts: "Textos",
-                textsDesc: "Lee y analiza textos en ruso",
-                history: "Historia",
-                historyDesc: "Descubre la historia de Rusia",
-                exercises: "Ejercicios",
-                exercisesDesc: "Mejora tu ruso con práctica",
-                assessments: "Evaluaciones",
-                assessmentsDesc: "Mide tu progreso",
-                listening: "Auditivo",
-                listeningDesc: "Entrena tu oído",
-                course: "Curso",
-                courseDesc: "Estudia todos los niveles"
+                courseDesc: "Изучите все уровни языка",
+                modalTitle: "Trilex объявляет",
+                modalMessage: "Этот раздел находится в разработке"
             },
             en: {
                 mainTitle: "Russian",
                 subtitle: "Select a topic to continue",
+                btnHome: "← Languages",
                 footerAttribution: "Image of St. Petersburg, Russia.",
+                source: "Source:",
+                license: "License:",
                 texts: "Texts",
                 textsDesc: "Read and analyze texts in Russian",
                 history: "History",
@@ -427,12 +715,17 @@
                 listening: "Listening",
                 listeningDesc: "Train your ear",
                 course: "Course",
-                courseDesc: "Study all levels"
+                courseDesc: "Study all levels",
+                modalTitle: "Trilex announces",
+                modalMessage: "This section is under development"
             },
             fr: {
                 mainTitle: "Russe",
                 subtitle: "Sélectionnez un sujet pour continuer",
+                btnHome: "← Langues",
                 footerAttribution: "Image de Saint-Pétersbourg, Russie.",
+                source: "Source:",
+                license: "Licence:",
                 texts: "Textes",
                 textsDesc: "Lisez et analysez des textes en russe",
                 history: "Histoire",
@@ -444,12 +737,17 @@
                 listening: "Écoute",
                 listeningDesc: "Entraînez votre oreille",
                 course: "Cours",
-                courseDesc: "Étudiez tous les niveaux"
+                courseDesc: "Étudiez tous les niveaux",
+                modalTitle: "Trilex annonce",
+                modalMessage: "Cette section est en développement"
             },
             de: {
                 mainTitle: "Russisch",
                 subtitle: "Wählen Sie ein Thema zum Fortfahren",
+                btnHome: "← Sprachen",
                 footerAttribution: "Bild von Sankt Petersburg, Russland.",
+                source: "Quelle:",
+                license: "Lizenz:",
                 texts: "Texte",
                 textsDesc: "Lesen und analysieren Sie Texte auf Russisch",
                 history: "Geschichte",
@@ -461,12 +759,17 @@
                 listening: "Hören",
                 listeningDesc: "Trainieren Sie Ihr Gehör",
                 course: "Kurs",
-                courseDesc: "Studieren Sie alle Niveaus"
+                courseDesc: "Studieren Sie alle Niveaus",
+                modalTitle: "Trilex kündigt an",
+                modalMessage: "Dieser Abschnitt befindet sich in der Entwicklung"
             },
             pt: {
                 mainTitle: "Russo",
                 subtitle: "Selecione um tópico para continuar",
+                btnHome: "← Idiomas",
                 footerAttribution: "Imagem de São Petersburgo, Rússia.",
+                source: "Fonte:",
+                license: "Licença:",
                 texts: "Textos",
                 textsDesc: "Leia e analise textos em russo",
                 history: "História",
@@ -478,12 +781,17 @@
                 listening: "Audição",
                 listeningDesc: "Treine seu ouvido",
                 course: "Curso",
-                courseDesc: "Estude todos os níveis"
+                courseDesc: "Estude todos os níveis",
+                modalTitle: "Trilex anuncia",
+                modalMessage: "Esta seção está em desenvolvimento"
             },
             it: {
                 mainTitle: "Russo",
                 subtitle: "Seleziona un argomento per continuare",
+                btnHome: "← Lingue",
                 footerAttribution: "Immagine di San Pietroburgo, Russia.",
+                source: "Fonte:",
+                license: "Licenza:",
                 texts: "Testi",
                 textsDesc: "Leggi e analizza testi in russo",
                 history: "Storia",
@@ -495,12 +803,17 @@
                 listening: "Ascolto",
                 listeningDesc: "Allena il tuo orecchio",
                 course: "Corso",
-                courseDesc: "Studia tutti i livelli"
+                courseDesc: "Studia tutti i livelli",
+                modalTitle: "Trilex annuncia",
+                modalMessage: "Questa sezione è in sviluppo"
             },
             zh: {
                 mainTitle: "俄语",
                 subtitle: "选择一个主题继续",
+                btnHome: "← 语言",
                 footerAttribution: "俄罗斯圣彼得堡图片。",
+                source: "来源:",
+                license: "许可证:",
                 texts: "文本",
                 textsDesc: "阅读和分析俄语文本",
                 history: "历史",
@@ -512,7 +825,9 @@
                 listening: "听力",
                 listeningDesc: "训练你的耳朵",
                 course: "课程",
-                courseDesc: "学习所有级别"
+                courseDesc: "学习所有级别",
+                modalTitle: "Trilex 宣布",
+                modalMessage: "此部分正在开发中"
             }
         };
         
@@ -520,9 +835,15 @@
         function changeLanguage(lang) {
             const t = translations[lang];
             
+            // Actualizar el atributo lang del HTML
+            document.documentElement.lang = lang;
+            
             // Actualizar título principal y subtítulo
             document.getElementById('mainTitle').textContent = t.mainTitle;
             document.getElementById('subtitle').textContent = t.subtitle;
+            
+            // Actualizar botón de navegación
+            document.getElementById('btnHome').textContent = t.btnHome;
             
             // Actualizar todos los elementos con el atributo data-translate
             document.querySelectorAll('[data-translate]').forEach(element => {
@@ -532,16 +853,139 @@
                 }
             });
             
-            // Actualizar pie de página
-            document.querySelector('[data-translate="footerAttribution"]').textContent = t.footerAttribution;
-            
             // Guardar la preferencia de idioma en localStorage
             localStorage.setItem('selectedLanguage', lang);
         }
         
+        // Función para volver al modo edición (contenido base en español)
+        function returnToBaseMode() {
+            // Restaurar el contenido original
+            document.getElementById('mainTitle').textContent = originalContent.mainTitle;
+            document.getElementById('subtitle').textContent = originalContent.subtitle;
+            document.getElementById('btnHome').textContent = originalContent.btnHome;
+            document.querySelector('[data-translate="footerAttribution"]').textContent = originalContent.footerAttribution;
+            document.querySelector('[data-translate="source"]').textContent = originalContent.source;
+            document.querySelector('[data-translate="license"]').textContent = originalContent.license;
+            document.querySelector('[data-translate="texts"]').textContent = originalContent.texts;
+            document.querySelector('[data-translate="textsDesc"]').textContent = originalContent.textsDesc;
+            document.querySelector('[data-translate="history"]').textContent = originalContent.history;
+            document.querySelector('[data-translate="historyDesc"]').textContent = originalContent.historyDesc;
+            document.querySelector('[data-translate="exercises"]').textContent = originalContent.exercises;
+            document.querySelector('[data-translate="exercisesDesc"]').textContent = originalContent.exercisesDesc;
+            document.querySelector('[data-translate="assessments"]').textContent = originalContent.assessments;
+            document.querySelector('[data-translate="assessmentsDesc"]').textContent = originalContent.assessmentsDesc;
+            document.querySelector('[data-translate="listening"]').textContent = originalContent.listening;
+            document.querySelector('[data-translate="listeningDesc"]').textContent = originalContent.listeningDesc;
+            document.querySelector('[data-translate="course"]').textContent = originalContent.course;
+            document.querySelector('[data-translate="courseDesc"]').textContent = originalContent.courseDesc;
+            
+            // Actualizar el atributo lang a español
+            document.documentElement.lang = 'es';
+            
+            // Limpiar la preferencia de idioma en localStorage
+            localStorage.removeItem('selectedLanguage');
+            
+            // Restablecer el selector a una opción neutra
+            document.getElementById('languageSelect').value = '';
+        }
+        
         // Event listener para el selector de idioma
         document.getElementById('languageSelect').addEventListener('change', function() {
-            changeLanguage(this.value);
+            if (this.value) {
+                changeLanguage(this.value);
+            }
+        });
+        
+        // Event listener para mostrar mensaje de desarrollo en idiomas bloqueados
+        document.getElementById('languageSelect').addEventListener('mousedown', function(e) {
+            // Obtener la opción sobre la que se hizo clic
+            const option = e.target;
+            
+            // Verificar si la opción está deshabilitada
+            if (option.disabled) {
+                // Prevenir el comportamiento por defecto
+                e.preventDefault();
+                
+                // Mostrar mensaje de desarrollo
+                const message = document.getElementById('langDevelopmentMessage');
+                message.style.opacity = '1';
+                
+                // Ocultar mensaje después de 2 segundos
+                setTimeout(() => {
+                    message.style.opacity = '0';
+                }, 2000);
+                
+                // Cambiar cursor a not-allowed
+                this.style.cursor = 'not-allowed';
+                
+                // Restaurar cursor después de un tiempo
+                setTimeout(() => {
+                    this.style.cursor = 'pointer';
+                }, 1000);
+            }
+        });
+        
+        // Event listener para el botón de modo edición
+        document.getElementById('baseModeBtn').addEventListener('click', returnToBaseMode);
+        
+        // Prevenir navegación en burbujas bloqueadas
+        document.querySelectorAll('.bubble.locked').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Obtener el idioma actual
+                let currentLang = document.documentElement.lang;
+                // Si no hay idioma en el atributo lang, intentar obtenerlo del localStorage
+                if (!currentLang || currentLang === 'es') {
+                    currentLang = localStorage.getItem('selectedLanguage') || 'es';
+                }
+                
+                // Obtener las traducciones para el modal
+                let modalTitle = 'Trilex anuncia';
+                let modalMessage = 'Esta sección se encuentra en desarrollo';
+                
+                if (currentLang !== 'es' && translations[currentLang]) {
+                    modalTitle = translations[currentLang].modalTitle || modalTitle;
+                    modalMessage = translations[currentLang].modalMessage || modalMessage;
+                }
+                
+                // Crear un modal espacial personalizado
+                const modal = document.createElement('div');
+                modal.className = 'spatial-modal';
+                
+                const modalContent = document.createElement('div');
+                modalContent.className = 'spatial-modal-content';
+                
+                const modalTitleElement = document.createElement('h2');
+                modalTitleElement.className = 'spatial-modal-title';
+                modalTitleElement.textContent = modalTitle;
+                
+                const modalMessageElement = document.createElement('p');
+                modalMessageElement.className = 'spatial-modal-message';
+                modalMessageElement.textContent = modalMessage;
+                
+                const closeButton = document.createElement('button');
+                closeButton.className = 'spatial-modal-close';
+                closeButton.textContent = 'Cerrar';
+                
+                closeButton.addEventListener('click', function() {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(modal);
+                    }, 300);
+                });
+                
+                modalContent.appendChild(modalTitleElement);
+                modalContent.appendChild(modalMessageElement);
+                modalContent.appendChild(closeButton);
+                modal.appendChild(modalContent);
+                document.body.appendChild(modal);
+                
+                // Activar la animación de aparición
+                setTimeout(() => {
+                    modal.classList.add('show');
+                }, 10);
+            });
         });
         
         // Al cargar la página, verificar si hay una preferencia guardada
