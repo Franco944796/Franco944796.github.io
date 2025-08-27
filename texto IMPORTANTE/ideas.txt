@@ -19,6 +19,10 @@ que me ayude a la hora de agregar nuevos idiomas.
 
 4. eliminar la funcion que vuelve para atras o adelante cuando deslizas la pantalla muy a la izq o der.
 
+5. poner algo para que cada usuario mantenga su progreso guardado
+
+6. una opcion para sacarte dudas con nativos, investigar eso (lo escuche de una app llamada "hi native", no copiar la 
+idea pero algo por el estilo estaria bueno)
 
 
 
@@ -36,14 +40,3 @@ Ahora le proporcionaré la seccion en la cual estoy haciendo cambios para que se
 ya que lo que se ve en la pagina (texto e informacion) es lo que esta en las secciones del idioma con los simbolos "" como
 texto, el codigo en el IDE tiene que estar en español, para que se me facilite mas su modificacion cuando corrija errores.
 El archivo en el que necesito que haga esas modificaciones es el ultimo que proporcioné.
-
-quiero modificar por ejemplo el titulo de "Osos en Rusia" para probar, pero cuando modifico el codigo no cambia, mi 
-suposicion es que como ya está la opcion en el selector de idiomas de español, puedo por ejemplo cambiar el titulo dentro
- del html que dice <title> Osos en Rusia - Trilex </title> , pero al estar el selector seleccionado, pisa esa informacion,
-  dejando la que está en la del selector traducido al idioma correspondiente. En la mayoria de casos es util, pero en este
-   caso que es el idioma base que estoy usando para programar no me sirve, quiero poder modificar ese codigo y que cambie
-    en la pagina, sería una buena idea separar todos los idiomas del selector actual para dejarlos como estan ahora, pero
-     poner otra opcion unica digamos, como para volver al idioma base en el que hago los cambios en el codigo y que se vea?
-      se eliminaria la opcion de español del selector tambien, se dejaria como una opcion unica en otro lado, pero no 
-      estaria como parte de las traducciones, seria el texto que pongo en el codigo, el que usan los otros idiomas dentro 
-      del selector como base para saber que traducir al idioma seleccionado
