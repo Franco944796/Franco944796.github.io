@@ -8,7 +8,7 @@ const words = [
     "Interesado en la Ciberseguridad"
 ];
 
-// Variables de control de estado
+// Variables de control de estado.
 let i = 0; // Índice de la palabra actual
 let j = 0; // Índice de la letra actual
 let isDeleting = false; // Estado (borrando o escribiendo)
