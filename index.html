@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franco | Portafolio</title>
+    <!-- Fuentes: Fira Code para código/títulos, Inter para texto de lectura -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navegación Sticky -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#inicio" class="logo">Franco<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#habilidades">Stack</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección Inicio (Hero) -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Hola, soy <span>Franco</span></h1>
+            <div class="typewriter-container">
+                <h2 class="hero-subtitle">
+                    <span id="typewriter-text"></span><span class="cursor">|</span>
+                </h2>
+            </div>
+            <div class="hero-buttons">
+                <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                <a href="#" class="btn btn-outline">Descargar CV</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="section">
+        <div class="section-content">
+            <h2 class="section-title">01. <span>Sobre_Mí</span></h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Un estudiante con curiosidad.</p>
+                </div>
+                <div class="about-tags">
+                    <!-- Badges visuales de habilidades destacadas -->
+                    <span class="badge">EndeavourOS</span>
+                    <span class="badge">Arch Linux</span>
+                    <span class="badge">Hack The Box</span>
+                    <span class="badge">PortSwigger</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="habilidades" class="section">
+        <div class="section-content">
+            <h2 class="section-title">02. <span>Tech_Stack</span></h2>
+            <div class="skills-grid">
+                
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-code"></i> Lenguajes</h3>
+                    <ul>
+                        <li><i class="fa-brands fa-python"></i> Python</li>
+                        <li><i class="fa-solid fa-terminal"></i> Bash</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-toolbox"></i> Herramientas/OS</h3>
+                    <ul>
+                        <li><i class="fa-brands fa-linux"></i> Kali Linux</li>
+                        <li><i class="fa-solid fa-spider"></i> Burpsuite</li>
+                        <li><i class="fa-brands fa-git-alt"></i> Git</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Especialidades</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-bug"></i> Pentesting</li>
+                        <li><i class="fa-solid fa-magnifying-glass-dollar"></i> Bug Bounty</li>
+                        <li><i class="fa-solid fa-network-wired"></i> Redes</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="section">
+        <div class="section-content">
+            <h2 class="section-title">03. <span>Proyectos</span></h2>
+            
+            <div class="projects-grid">
+                <!-- Tarjeta de Proyecto 1 (Solicitada) -->
+                <article class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="dots">
+                            <span class="dot close"></span>
+                            <span class="dot minimize"></span>
+                            <span class="dot maximize"></span>
+                        </div>
+                        <div class="terminal-title">~/proyectos/web-idiomas</div>
+                    </div>
+                    <div class="terminal-body">
+                        <h3 class="project-title">Web idiomas</h3>
+                        <p class="project-desc">Una web para aprender Alemán, Ruso, Inglés o Español.</p>
+                        <div class="project-tags">
+                            <span>java</span>
+                            <span>css</span>
+                            <span>html</span>
+                        </div>
+                        <a href="https://Franco944796.github.io" target="_blank" class="project-link">
+                            <i class="fa-solid fa-link"></i> Franco944796.github.io
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Proyecto 2 (Basada en tu perfil) -->
+                <article class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="dots">
+                            <span class="dot close"></span>
+                            <span class="dot minimize"></span>
+                            <span class="dot maximize"></span>
+                        </div>
+                        <div class="terminal-title">~/proyectos/bugbounty-recon</div>
+                    </div>
+                    <div class="terminal-body">
+                        <h3 class="project-title">Recon Pipeline</h3>
+                        <p class="project-desc">Pipeline de reconocimiento automatizado con subfinder y nmap para programas de Bug Bounty.</p>
+                        <div class="project-tags">
+                            <span>bash</span>
+                            <span>python</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fa-brands fa-github"></i> Ver Repositorio
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Tarjeta de Proyecto 3 (Basada en tu perfil) -->
+                <article class="terminal-card">
+                    <div class="terminal-header">
+                        <div class="dots">
+                            <span class="dot close"></span>
+                            <span class="dot minimize"></span>
+                            <span class="dot maximize"></span>
+                        </div>
+                        <div class="terminal-title">~/proyectos/pypi-package</div>
+                    </div>
+                    <div class="terminal-body">
+                        <h3 class="project-title">Paquete Custom PyPI</h3>
+                        <p class="project-desc">Desarrollo y publicación de un paquete de utilidades en Python disponible en PyPI.</p>
+                        <div class="project-tags">
+                            <span>python</span>
+                            <span>pypi</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fa-brands fa-github"></i> Ver Repositorio
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacto -->
+    <footer id="contacto" class="footer">
+        <div class="footer-content">
+            <h2 class="footer-title">Vamos a conectar.</h2>
+            <div class="social-links">
+                <!-- Reemplaza el # con tus enlaces reales -->
+                <a href="#" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="mailto:tu-correo@email.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <p class="footer-text">Diseñado y construido por Franco</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
