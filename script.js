@@ -4,8 +4,7 @@
 
 // Las frases que se van a escribir y borrar
 const words = [
-    "Estudiante de Informática",
-    "Interesado en la Ciberseguridad"
+    "Estudiante de Informática"
 ];
 
 // Variables de control de estado.
@@ -44,7 +43,7 @@ function type() {
             isDeleting = false;
             // Pasa a la siguiente palabra, o vuelve a la primera si llegó al final
             i = (i + 1) % words.length; 
-            typeSpeed = 500; // Pausa antes de empezar a escribir la siguiente
+            typeSpeed = 600; // Pausa antes de empezar a escribir la siguiente
         }
     }
 
