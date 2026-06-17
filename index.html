@@ -69,7 +69,7 @@
             
             <div class="habilidades-header">
                 <h2 class="section-title">02. <span>Conocimientos</span></h2>
-                <div class="skills-toggle">
+                <div class="toggle-container">
                     <button class="toggle-btn active" data-target="principal">Principales</button>
                     <button class="toggle-btn" data-target="secundario">Secundarios</button>
                 </div>
@@ -126,11 +126,18 @@
     <!-- Sección Proyectos -->
     <section id="proyectos" class="section">
         <div class="section-content">
-            <h2 class="section-title">03. <span>Proyectos en desarrollo</span></h2>
+            
+            <div class="proyectos-header">
+                <h2 class="section-title">03. <span>Proyectos</span></h2>
+                <div class="toggle-container">
+                    <button class="toggle-btn active" data-target="principal">Principales</button>
+                    <button class="toggle-btn" data-target="secundario">Secundarios</button>
+                </div>
+            </div>
             
             <div class="projects-grid">
-                <!-- Tarjeta de Proyecto 1 -->
-                <article class="terminal-card">
+                
+                <article class="terminal-card project-item principal">
                     <div class="terminal-header">
                         <div class="dots">
                             <span class="dot close"></span>
@@ -138,6 +145,7 @@
                             <span class="dot maximize"></span>
                         </div>
                         <div class="terminal-title">~/proyectos/web-idiomas</div>
+                        <span class="status-badge status-desarrollo">En desarrollo</span>
                     </div>
                     <div class="terminal-body">
                         <h3 class="project-title">Web idiomas</h3>
@@ -153,8 +161,7 @@
                     </div>
                 </article>
 
-                <!-- Tarjeta de Proyecto 2 -->
-                <article class="terminal-card">
+                <article class="terminal-card project-item principal">
                     <div class="terminal-header">
                         <div class="dots">
                             <span class="dot close"></span>
@@ -162,6 +169,7 @@
                             <span class="dot maximize"></span>
                         </div>
                         <div class="terminal-title">~/proyectos/bugbounty-autónomo</div>
+                        <span class="status-badge status-desarrollo">En desarrollo</span>
                     </div>
                     <div class="terminal-body">
                         <h3 class="project-title">Orquestador Autónomo End-to-End</h3>
@@ -171,6 +179,30 @@
                         </div>
                         <a href="https://github.com/Franco944796" target="_blank" class="project-link">
                             <i class="fa-brands fa-github"></i>Código privado, solicitar acceso.
+                        </a>
+                    </div>
+                </article>
+
+                <article class="terminal-card project-item secundario">
+                    <div class="terminal-header">
+                        <div class="dots">
+                            <span class="dot close"></span>
+                            <span class="dot minimize"></span>
+                            <span class="dot maximize"></span>
+                        </div>
+                        <div class="terminal-title">~/proyectos/mapa-mundial</div>
+                        <span class="status-badge status-finalizado">Finalizado</span>
+                    </div>
+                    <div class="terminal-body">
+                        <h3 class="project-title">Registro</h3>
+                        <p class="project-desc">Texto estandar, para probar nueva funcionalidad.</p>
+                        <div class="project-tags">
+                            <span>html</span>
+                            <span>css</span>
+                            <span>javascript</span>
+                        </div>
+                        <a href="#" class="project-link">
+                            <i class="fa-solid fa-earth-americas"></i> Volver a inicio.
                         </a>
                     </div>
                 </article>

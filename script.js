@@ -1,106 +1,122 @@
 /**
  * Efecto Typewriter (Máquina de escribir) para el Hero
  */
-
-// Las frases que se van a escribir y borrar
-const words = [
-    "Estudiante de Informática"
-];
-
-// Variables de control de estado.
-let i = 0; // Índice de la palabra actual
-let j = 0; // Índice de la letra actual
-let isDeleting = false; // Estado (borrando o escribiendo)
-let isEnd = false; // Pausa al final de una palabra
+const words = ["Estudiante de Informática"];
+let i = 0;
+let j = 0;
+let isDeleting = false;
+let isEnd = false;
 
 const textElement = document.getElementById("typewriter-text");
 
 function type() {
-    // Evita errores si el elemento no existe en el DOM
     if (!textElement) return;
 
     isEnd = false;
-    // Establece la velocidad de tipeo (más rápida al borrar)
     let typeSpeed = isDeleting ? 50 : 100;
 
-    // Lógica para escribir
     if (!isDeleting && j <= words[i].length) {
         textElement.innerHTML = words[i].substring(0, j);
         j++;
-        // Si termina de escribir la palabra completa
         if (j > words[i].length) {
             isEnd = true;
             isDeleting = true;
-            typeSpeed = 1500; // Pausa antes de empezar a borrar
+            typeSpeed = 1500;
         }
     } 
-    // Lógica para borrar
     else if (isDeleting && j >= 0) {
         textElement.innerHTML = words[i].substring(0, j);
         j--;
-        // Si termina de borrar la palabra
         if (j < 0) {
             isDeleting = false;
-            // Pasa a la siguiente palabra, o vuelve a la primera si llegó al final
             i = (i + 1) % words.length; 
-            typeSpeed = 600; // Pausa antes de empezar a escribir la siguiente
+            typeSpeed = 600;
         }
     }
 
-    // Llama a la función recursivamente con el timeout dinámico
     setTimeout(type, typeSpeed);
 }
 
-// Inicia el efecto cuando el documento ha cargado completamente
+// Inicia el efecto de la máquina de escribir
 document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(type, 1000); // Pequeño retraso inicial para que la animación empiece limpia
+    setTimeout(type, 1000);
 });
 
+
 /**
- * Filtro interactivo avanzado para la sección de Conocimientos
- * Oculta elementos individuales y tarjetas completas si quedan vacías.
+ * =========================================================================
+ * Sistema de Filtros Inteligente, Aislado e Independiente (Conocimientos y Proyectos)
+ * =========================================================================
  */
 document.addEventListener("DOMContentLoaded", () => {
-    const toggleButtons = document.querySelectorAll(".toggle-btn");
-    const skillCategories = document.querySelectorAll(".skill-category");
-
-    // Función encargada de filtrar
-    function filtrarEstructura(targetFilter) {
+    
+    // 1. FUNCIÓN PARA FILTRAR CONOCIMIENTOS
+    function filtrarConocimientos(targetFilter) {
+        const skillCategories = document.querySelectorAll(".skill-category");
+        
         skillCategories.forEach(category => {
             const items = category.querySelectorAll(".skill-item");
             let tieneElementosVisibles = false;
 
-            // 1. Filtrar los elementos individuales
             items.forEach(item => {
                 if (item.classList.contains(targetFilter)) {
                     item.style.display = "flex";
-                    tieneElementosVisibles = true; // Encontramos al menos uno activo
+                    tieneElementosVisibles = true;
                 } else {
                     item.style.display = "none";
                 }
             });
 
-            // 2. Si la tarjeta no tiene contenido para este filtro, se oculta entera
+            // Oculta la tarjeta completa si se queda sin tecnologías bajo este filtro
             if (tieneElementosVisibles) {
-                category.style.display = "block"; // Muestra la tarjeta contenedora
+                category.style.display = "block";
             } else {
-                category.style.display = "none";  // Oculta la tarjeta contenedora por completo
+                category.style.display = "none";
             }
         });
     }
 
-    // Escuchador de clics para los botones
-    toggleButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            // Cambiar estado visual del botón
-            toggleButtons.forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
+    // 2. FUNCIÓN PARA FILTRAR PROYECTOS
+    function filtrarProyectos(targetFilter) {
+        const projectItems = document.querySelectorAll(".project-item");
+        
+        projectItems.forEach(item => {
+            if (item.classList.contains(targetFilter)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
 
-            const targetFilter = button.getAttribute("data-target");
-            filtrarEstructura(targetFilter);
+    // 3. ASIGNACIÓN DE EVENTOS ENCAPSULADA (Evita que las secciones se pisen)
+    const contenedoresToggle = document.querySelectorAll(".toggle-container");
+
+    contenedoresToggle.forEach(container => {
+        // Buscamos los botones SOLO dentro de este contenedor específico
+        const botonesDelContenedor = container.querySelectorAll(".toggle-btn");
+
+        botonesDelContenedor.forEach(button => {
+            button.addEventListener("click", () => {
+                // Quitamos el estado activo SOLO a los botones de este contenedor
+                botonesDelContenedor.forEach(btn => btn.classList.remove("active"));
+                
+                // Le devolvemos el color rojo únicamente al botón clickeado
+                button.classList.add("active");
+
+                const targetFilter = button.getAttribute("data-target");
+
+                // Identificamos la sección correspondiente para disparar el filtro correcto
+                if (container.closest(".habilidades-header")) {
+                    filtrarConocimientos(targetFilter);
+                } else if (container.closest(".proyectos-header")) {
+                    filtrarProyectos(targetFilter);
+                }
+            });
         });
     });
 
-    // EJECUCIÓN INICIAL: Fuerza el filtro "principal" al cargar la web
-    filtrarEstructura("principal");
+    // 4. ESTADO INICIAL (Ambas secciones arrancan mostrando "Principales")
+    filtrarConocimientos("principal");
+    filtrarProyectos("principal");
 });
