@@ -55,3 +55,52 @@ function type() {
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(type, 1000); // Pequeño retraso inicial para que la animación empiece limpia
 });
+
+/**
+ * Filtro interactivo avanzado para la sección de Conocimientos
+ * Oculta elementos individuales y tarjetas completas si quedan vacías.
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleButtons = document.querySelectorAll(".toggle-btn");
+    const skillCategories = document.querySelectorAll(".skill-category");
+
+    // Función encargada de filtrar
+    function filtrarEstructura(targetFilter) {
+        skillCategories.forEach(category => {
+            const items = category.querySelectorAll(".skill-item");
+            let tieneElementosVisibles = false;
+
+            // 1. Filtrar los elementos individuales
+            items.forEach(item => {
+                if (item.classList.contains(targetFilter)) {
+                    item.style.display = "flex";
+                    tieneElementosVisibles = true; // Encontramos al menos uno activo
+                } else {
+                    item.style.display = "none";
+                }
+            });
+
+            // 2. Si la tarjeta no tiene contenido para este filtro, se oculta entera
+            if (tieneElementosVisibles) {
+                category.style.display = "block"; // Muestra la tarjeta contenedora
+            } else {
+                category.style.display = "none";  // Oculta la tarjeta contenedora por completo
+            }
+        });
+    }
+
+    // Escuchador de clics para los botones
+    toggleButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            // Cambiar estado visual del botón
+            toggleButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            const targetFilter = button.getAttribute("data-target");
+            filtrarEstructura(targetFilter);
+        });
+    });
+
+    // EJECUCIÓN INICIAL: Fuerza el filtro "principal" al cargar la web
+    filtrarEstructura("principal");
+});

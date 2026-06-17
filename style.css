@@ -417,8 +417,9 @@ ul {
         display: flex; /* Muestra enlaces en Desktop */
     }
 
+    /* Versión optimizada para albergar dinámicamente las 4 columnas */
     .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 
     .projects-grid {
@@ -436,4 +437,52 @@ ul {
     .about-text {
         max-width: 50%;
     }
+}
+
+/* --- TOGGLE DE HABILIDADES --- */
+.habilidades-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap; /* Para que baje ordenado en celulares */
+    gap: 1rem;
+}
+
+.skills-toggle {
+    display: flex;
+    background-color: rgba(2, 12, 27, 0.7); /* Fondo oscuro acorde a la web */
+    border: 1px solid #233554;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.toggle-btn {
+    background: transparent;
+    color: #8892b0;
+    border: none;
+    padding: 8px 16px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    color: #ccd6f6;
+}
+
+.toggle-btn.active {
+    background-color: #233554; /* Fondo del botón seleccionado */
+    color: #64ffda; /* Color de acento de tu portafolio */
+}
+
+/* Manejo de visibilidad en la lista */
+.skill-item {
+    display: flex;
+    align-items: center;
+}
+
+.skill-item.complementarios {
+    display: none; /* Oculto al cargar la página */
 }
