@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,15 @@
     <!-- Fuentes: Fira Code para código/títulos, Inter para texto de lectura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
+
 <body>
 
     <!-- Navegación Sticky -->
@@ -50,7 +54,8 @@
             <h2 class="section-title">01. <span>Sobre mí</span></h2>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>Me interesan la ciberseguridad y los proyectos que empiezan con "¿será posible hacer...?". Cuando no estoy aprendiendo algo nuevo, probablemente estoy buscando qué aprender.</p>
+                    <p>Me interesan la ciberseguridad y los proyectos que empiezan con "¿será posible hacer...?". Cuando
+                        no estoy aprendiendo algo nuevo, probablemente estoy buscando qué aprender.</p>
                 </div>
                 <div class="about-tags">
                     <!-- Badges visuales de habilidades destacadas -->
@@ -65,7 +70,7 @@
     <!-- Sección Habilidades -->
     <section id="habilidades" class="section">
         <div class="section-content">
-            
+
             <div class="habilidades-header">
                 <h2 class="section-title">02. <span>Conocimientos</span></h2>
                 <div class="toggle-container">
@@ -75,7 +80,7 @@
             </div>
 
             <div class="skills-grid">
-                
+
                 <div class="skill-category">
                     <h3><i class="fa-solid fa-code"></i> Lenguajes</h3>
                     <ul>
@@ -100,19 +105,25 @@
                     <h3><i class="fa-solid fa-shield-halved"></i> Especialidades</h3>
                     <ul>
                         <li class="skill-item principal"><i class="fa-solid fa-bug"></i> PortSwigger (próximo)</li>
-                        <li class="skill-item principal"><i class="fa-solid fa-magnifying-glass-dollar"></i> Bug Bounty (próximo)</li>
+                        <li class="skill-item principal"><i class="fa-solid fa-magnifying-glass-dollar"></i> Bug Bounty
+                            (próximo)</li>
                         <li class="skill-item principal"><i class="fa-solid fa-network-wired"></i> Redes (próximo)</li>
-                        <li class="skill-item principal"><i class="fa-solid fa-magnifying-glass"></i> Investigación técnica</li>
-                        <li class="skill-item principal"><i class="fa-solid fa-book-open"></i> Lectocomprensión (EN/DE)</li>
+                        <li class="skill-item principal"><i class="fa-solid fa-magnifying-glass"></i> Investigación
+                            técnica</li>
+                        <li class="skill-item principal"><i class="fa-solid fa-book-open"></i> Lectocomprensión (EN/DE)
+                        </li>
                     </ul>
                 </div>
 
                 <div class="skill-category">
                     <h3><i class="fa-solid fa-gears"></i> Procesos Técnicos / Taller</h3>
                     <ul>
-                        <li class="skill-item secundario"><i class="fa-solid fa-plane-militar"></i> <i class="fa-solid fa-clock"></i> +300hs Prácticas Profesionalizantes (Aeronáutica)</li>
-                        <li class="skill-item secundario"><i class="fa-solid fa-fire-burner"></i> Fundición de Precisión y Moldeo (cera y metal)</li>
-                        <li class="skill-item secundario"><i class="fa-solid fa-layer-group"></i> Materiales Compuestos (Fibra de vidrio)</li>
+                        <li class="skill-item secundario"><i class="fa-solid fa-plane-militar"></i> <i
+                                class="fa-solid fa-clock"></i> +300hs Prácticas Profesionalizantes (Aeronáutica)</li>
+                        <li class="skill-item secundario"><i class="fa-solid fa-fire-burner"></i> Fundición de Precisión
+                            y Moldeo (cera y metal)</li>
+                        <li class="skill-item secundario"><i class="fa-solid fa-layer-group"></i> Materiales Compuestos
+                            (Fibra de vidrio)</li>
                         <li class="skill-item secundario"><i class="fa-solid fa-pen-nib"></i> Redacción técnica</li>
                     </ul>
                 </div>
@@ -124,7 +135,7 @@
     <!-- Sección Proyectos -->
     <section id="proyectos" class="section">
         <div class="section-content">
-            
+
             <div class="proyectos-header">
                 <h2 class="section-title">03. <span>Proyectos</span></h2>
                 <div class="toggle-container">
@@ -132,9 +143,58 @@
                     <button class="toggle-btn" data-target="secundario">Secundarios</button>
                 </div>
             </div>
-            
+
             <div class="projects-grid">
-                
+
+                <article class="terminal-card project-item principal">
+                    <div class="terminal-header">
+                        <div class="dots">
+                            <span class="dot close"></span>
+                            <span class="dot minimize"></span>
+                            <span class="dot maximize"></span>
+                        </div>
+                        <div class="terminal-title">~/proyectos/traje-funcional</div>
+                        <span class="status-badge status-desarrollo">En fase de estudio</span>
+                    </div>
+                    <div class="terminal-body">
+                        <h3 class="project-title"> Unidad Exo-mecánica </h3>
+                        <p class="project-desc">Web donde se gestiona y centraliza la
+                            investigación de un proyecto robótico modular. Gestiona planos, documentación
+                            multilingüe, bitácoras, y otros recursos.</p>
+                        <div class="project-tags">
+                            <span>html</span>
+                            <span>javascript</span>
+                            <span>json</span>
+                        </div>
+                        <a href="https://Franco944796.github.io/Traje_funcional" target="_blank" class="project-link">
+                            <i class="fa-solid fa-folder-open"></i> Acceder
+                        </a>
+                    </div>
+                </article>
+
+                <article class="terminal-card project-item principal">
+                    <div class="terminal-header">
+                        <div class="dots">
+                            <span class="dot close"></span>
+                            <span class="dot minimize"></span>
+                            <span class="dot maximize"></span>
+                        </div>
+                        <div class="terminal-title">~/proyectos/bugbounty-autónomo</div>
+                        <span class="status-badge status-desarrollo">En desarrollo</span>
+                    </div>
+                    <div class="terminal-body">
+                        <h3 class="project-title">Orquestador Autonomous End-to-End</h3>
+                        <p class="project-desc">Automatiza el ciclo completo de Bug Bounty, desde el reconocimiento
+                            pasivo hasta la generación de reportes finales.</p>
+                        <div class="project-tags">
+                            <span>bash</span>
+                        </div>
+                        <a href="https://github.com/Franco944796" target="_blank" class="project-link">
+                            <i class="fa-brands fa-github"></i>Código privado.
+                        </a>
+                    </div>
+                </article>
+
                 <article class="terminal-card project-item principal">
                     <div class="terminal-header">
                         <div class="dots">
@@ -154,29 +214,7 @@
                             <span>html</span>
                         </div>
                         <a href="https://Franco944796.github.io/web-idiomas" target="_blank" class="project-link">
-                            <i class="fa-solid fa-link"></i> Trilex.
-                        </a>
-                    </div>
-                </article>
-
-                <article class="terminal-card project-item principal">
-                    <div class="terminal-header">
-                        <div class="dots">
-                            <span class="dot close"></span>
-                            <span class="dot minimize"></span>
-                            <span class="dot maximize"></span>
-                        </div>
-                        <div class="terminal-title">~/proyectos/bugbounty-autónomo</div>
-                        <span class="status-badge status-desarrollo">En desarrollo</span>
-                    </div>
-                    <div class="terminal-body">
-                        <h3 class="project-title">Orquestador Autónomo End-to-End</h3>
-                        <p class="project-desc">Automatiza el ciclo completo de Bug Bounty, desde el reconocimiento pasivo hasta la generación de reportes finales.</p>
-                        <div class="project-tags">
-                            <span>bash</span>
-                        </div>
-                        <a href="https://github.com/Franco944796" target="_blank" class="project-link">
-                            <i class="fa-brands fa-github"></i>Código privado, solicitar acceso.
+                            <i class="fa-solid fa-link"></i> Trilex
                         </a>
                     </div>
                 </article>
@@ -189,11 +227,12 @@
                             <span class="dot maximize"></span>
                         </div>
                         <div class="terminal-title">~/proyectos/emprendimiento</div>
-                        <span class="status-badge status-desarrollo">En desarrollo</span> <!-- cambiar "desarrollo" por finalizado para modificar el color-->
+                        <span class="status-badge status-desarrollo">En desarrollo</span>
                     </div>
                     <div class="terminal-body">
                         <h3 class="project-title">Emprendimiento (aun sin nombre)</h3>
-                        <p class="project-desc">Emprendimiento familiar dedicado a la creación de accesorios únicos. Usamos la técnica del vaciado en cera para fundir en metal cada diseño personalizado.</p>
+                        <p class="project-desc">Emprendimiento familiar dedicado a la creación de accesorios únicos.
+                            Usamos la técnica del vaciado en cera para fundir en metal cada diseño personalizado.</p>
                         <div class="project-tags">
                             <span>html</span>
                             <span>css</span>
@@ -215,8 +254,10 @@
             <h2 class="footer-title">Ponte en contacto.</h2>
             <div class="social-links">
                 <!-- Reemplaza el # con tus enlaces reales -->
-                <a href="https://github.com/Franco944796" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sudoanonimo@gmail.com" target="_blank" aria-label="Gmail"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/Franco944796" target="_blank" aria-label="GitHub"><i
+                        class="fa-brands fa-github"></i></a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sudoanonimo@gmail.com" target="_blank"
+                    aria-label="Gmail"><i class="fa-solid fa-envelope"></i></a>
             </div>
             <p class="footer-text">Diseñado por Franco y su asistente (una IA).</p>
         </div>
@@ -224,4 +265,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
