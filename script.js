@@ -42,6 +42,26 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(type, 1000);
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    function setMenu(open) {
+        navLinks.classList.toggle("open", open);
+        navToggle.setAttribute("aria-expanded", open);
+        navToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    }
+
+    navToggle.addEventListener("click", () => setMenu(!navLinks.classList.contains("open")));
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => setMenu(false)));
+
+    const heroVideo = document.querySelector(".hero-media video");
+    if (heroVideo && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        heroVideo.removeAttribute("autoplay");
+        heroVideo.pause();
+    }
+});
+
 
 /**
  * =========================================================================

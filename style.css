@@ -138,10 +138,59 @@ ul {
 }
 
 .nav-links {
-    display: none; /* Mobile first: Oculto en móviles (se puede añadir un menú hamburguesa luego) */
+    display: none;
     gap: 30px;
     font-family: var(--font-mono);
     font-size: 0.9rem;
+}
+
+.nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 10px 20px 20px;
+    gap: 0;
+    background-color: rgba(5, 5, 5, 0.97);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-links.open a {
+    display: block;
+    padding: 12px 0;
+}
+
+.nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-toggle span {
+    display: block;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 .nav-links a:hover {
@@ -152,6 +201,8 @@ ul {
    HERO (INICIO)
 ========================================= */
 .hero {
+    position: relative;
+    overflow: hidden;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -160,8 +211,30 @@ ul {
 }
 
 .hero-content {
+    position: relative;
+    z-index: 1;
     max-width: 800px;
     width: 100%;
+}
+
+/* En celular el video ocupa todo el fondo, oscurecido para que el texto se lea */
+.hero-media {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(5, 5, 5, 0.65);
 }
 
 .hero-title {
@@ -413,8 +486,34 @@ ul {
    MEDIA QUERIES (Responsividad)
 ========================================= */
 @media (min-width: 768px) {
-    .nav-links {
-        display: flex; /* Muestra enlaces en Desktop */
+    .nav-links,
+    .nav-links.open {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        padding: 0;
+        gap: 30px;
+        background: none;
+        border: none;
+    }
+
+    .nav-links.open a {
+        padding: 0;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    /* El video ocupa la mitad derecha y se funde hacia el texto */
+    .hero-media {
+        left: 40%;
+        -webkit-mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5) 40%, #000 75%);
+        mask-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5) 40%, #000 75%);
+    }
+
+    .hero-media::after {
+        background-color: rgba(5, 5, 5, 0.25);
     }
 
     /* Versión optimizada para albergar dinámicamente las 4 columnas */
@@ -439,53 +538,12 @@ ul {
     }
 }
 
-/* --- TOGGLE DE HABILIDADES --- */
-.habilidades-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: wrap; /* Para que baje ordenado en celulares */
-    gap: 1rem;
-}
-
-.skills-toggle {
-    display: flex;
-    background-color: rgba(2, 12, 27, 0.7); /* Fondo oscuro acorde a la web */
-    border: 1px solid #233554;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.toggle-btn {
-    background: transparent;
-    color: #8892b0;
-    border: none;
-    padding: 8px 16px;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.toggle-btn:hover {
-    color: #ccd6f6;
-}
-
-.toggle-btn.active {
-    background-color: #233554; /* Fondo del botón seleccionado */
-    color: #64ffda; /* Color de acento de tu portafolio */
-}
-
 /* Manejo de visibilidad en la lista */
 .skill-item {
     display: flex;
     align-items: center;
 }
 
-.skill-item.complementarios {
-    display: none; /* Oculto al cargar la página */
-}
 
 /* =========================================
    COMPONENTES DE FILTRADO (TOGGLES UNIFICADOS)
@@ -556,6 +614,11 @@ ul {
 .status-finalizado {
     color: #27c93f;
     background-color: rgba(39, 201, 99, 0.1);
+}
+
+.status-completado {
+    color: var(--text-main);
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 .status-desarrollo {

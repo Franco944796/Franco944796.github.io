@@ -13,6 +13,7 @@
         rel="stylesheet">
     <!-- FontAwesome para íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -23,7 +24,12 @@
     <nav class="navbar">
         <div class="nav-content">
             <a href="#inicio" class="logo">Franco Insúa<span>.</span></a>
-            <ul class="nav-links">
+            <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#sobre-mi">Sobre Mí</a></li>
                 <li><a href="#habilidades">Conocimientos</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
@@ -34,6 +40,16 @@
 
     <!-- Sección Inicio -->
     <header id="inicio" class="hero">
+        <div class="hero-media" aria-hidden="true">
+            <!-- Para activar el video, descomentar y poner el archivo en video/.
+                 muted + playsinline son obligatorios para que arranque solo en celulares. -->
+            <!--
+            <video autoplay muted loop playsinline preload="metadata" poster="video/hero-poster.jpg">
+                <source src="video/hero.webm" type="video/webm">
+                <source src="video/hero.mp4" type="video/mp4">
+            </video>
+            -->
+        </div>
         <div class="hero-content">
             <h1 class="hero-title">Hola, soy <span>Franco</span></h1>
             <div class="typewriter-container">
