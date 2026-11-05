@@ -16,6 +16,11 @@ Portafolio personal estático (HTML/CSS/JS) publicado en GitHub Pages.
 - Menú hamburguesa en celular (`.nav-toggle`, lógica en `script.js`).
 - Estilo para el badge `status-completado` («Finalizado»): blanco neutro.
 - Borrado CSS muerto de toggles turquesa.
+- 2026-11-05 Contador de visitas en la navbar, junto al nombre («👁 1.234 visitas»; en celular ≤ 480 px solo ojo +
+  número). Servicio Abacus (gratis, sin cuenta): `abacus.jasoncameron.dev/hit/franco944796-portafolio/inicio` suma 1 por
+  carga o recarga. En `file://` o localhost usa `/get` (solo lee, no infla). Si falla, queda oculto. El contador vence a
+  los 6 meses sin visitas. Mismo código en `web-idiomas/script.js` (Trilex). Probado en Firefox (1280, 800, 375, 320 px y
+  caso 404).
 
 ## Pendiente
 - Grabar el video y activarlo: poner `video/hero.webm`, `video/hero.mp4` y `video/hero-poster.jpg`
