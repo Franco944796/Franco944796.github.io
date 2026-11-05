@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
     filtrarProyectos("principal");
 });
 
-// El mismo contador (Abacus) está en Trilex (web-idiomas/script.js) y en carreras_uni (js/ui/visits.js)
 (function initVisitCounter() {
     const badge = document.querySelector('.visit-count');
     if (!badge) return;
