@@ -658,6 +658,21 @@ ul {
     border-radius: 4px;
 }
 
+/* En celular el título y el badge no entran en una línea: el badge baja a la siguiente.
+   64px = los tres puntos (48px) más el margen del título. */
+@media (max-width: 480px) {
+    .terminal-header {
+        flex-wrap: wrap;
+        row-gap: 6px;
+    }
+
+    .terminal-title {
+        flex: 1 1 auto;
+        max-width: calc(100% - 64px);
+        overflow-wrap: anywhere;
+    }
+}
+
 .status-finalizado {
     color: #27c93f;
     background-color: rgba(39, 201, 99, 0.1);
@@ -671,4 +686,7 @@ ul {
 .status-desarrollo {
     color: #ffbd2e;
     background-color: rgba(255, 189, 46, 0.1);
+}
+a[data-href] {
+    cursor: pointer;
 }

@@ -168,3 +168,34 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(() => { });
 })();
+
+// El navegador muestra la URL abajo a la izquierda en todo <a> con href: se quita y se navega por JS.
+// Sin JS los enlaces siguen funcionando porque el HTML no se toca.
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("a[href]").forEach(link => {
+        const url = link.getAttribute("href");
+        link.dataset.href = url;
+        link.removeAttribute("href");
+        link.setAttribute("role", "link");
+        link.tabIndex = 0;
+
+        const abrir = nuevaPestana => {
+            if (url.startsWith("#")) {
+                document.querySelector(url)?.scrollIntoView();
+                history.replaceState(null, "", url);
+            } else if (nuevaPestana || link.target === "_blank") {
+                window.open(url, "_blank", "noopener");
+            } else {
+                location.href = url;
+            }
+        };
+
+        link.addEventListener("click", e => abrir(e.ctrlKey || e.metaKey));
+        link.addEventListener("auxclick", e => {
+            if (e.button === 1) abrir(true);
+        });
+        link.addEventListener("keydown", e => {
+            if (e.key === "Enter") link.click();
+        });
+    });
+});
