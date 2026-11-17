@@ -489,6 +489,13 @@ ul {
     color: var(--accent-red);
 }
 
+.project-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+}
+
 /* =========================================
    CONTACTO (FOOTER)
 ========================================= */
