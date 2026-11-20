@@ -447,6 +447,25 @@ ul {
     padding: 25px;
 }
 
+.cert-image {
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.cert-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.cert-image:hover img {
+    transform: scale(1.02);
+}
+
 .project-title {
     font-size: 1.5rem;
     margin-bottom: 10px;
